@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 function Signupform() {
-    const [fullName, setFullName] = useState("");
+  const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -10,7 +10,7 @@ function Signupform() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     setFullName("");
     setEmail("");
     setPassword("");
@@ -18,7 +18,7 @@ function Signupform() {
     setAddress("");
     setProfilePicture("");
   };
-  
+
   return (
     <div className="flex w-full h-screen">
       <div className="w-full lg:w-1/2 flex items-center justify-center relative">
@@ -27,10 +27,9 @@ function Signupform() {
           <p className="font-medium text-lg text-gray-500 mt-4">
             Please enter your details
           </p>
-        <form onSubmit={handleSubmit}>
-
-          <div className="mt-8">
-            <input
+          <form onSubmit={handleSubmit}>
+            <div className="mt-8">
+              <input
                 type="text"
                 className="w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent"
                 placeholder="Full name"
@@ -38,59 +37,69 @@ function Signupform() {
                 onChange={(e) => setFullName(e.target.value)}
                 required
               />
-          </div>
-          <div>
-            <input
-            type='email'
-              className="w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent"
-              placeholder="Email"
-              value={email}
-              onChange={(e)=> setEmail(e.target.value)}
-              required
-            />
-          </div>
-          <div>
-            <input
-              className="w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent"
-              placeholder="Password"
-              type="password"
-            />
-          </div>
-          <div>
-            <input
-            type='tel'
-              className="w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent"
-              placeholder="Phone number" value={phoneNumber} 
-              onChange={(e)=>{setPhoneNumber(e.target.value)}}
-            />
-          </div>
+            </div>
+            <div>
+              <input
+                type="email"
+                className="w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
+            <div>
+              <input
+                className="w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent"
+                placeholder="Password"
+                value={password}
+                type="password"
+              />
+            </div>
+            <div>
+              <input
+                type="tel"
+                className="w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent"
+                placeholder="Phone number"
+                value={phoneNumber}
+                onChange={(e) => {
+                  setPhoneNumber(e.target.value);
+                }}
+              />
+            </div>
 
-          <div>
-            <input
-            type='text'
-              className="w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent"
-              placeholder="Address" value={address}
-              onChange={(e)=>{setAddress(e.target.value)}}
-            />
-          </div>
-          <div>
-            <input
-            type='text'
-              className="w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent"
-              placeholder="Add profile picture" value={profilePicture}
-              onChange={(e)=>{setProfilePicture(e.target.value)}}
-            />
-          </div>
+            <div>
+              <input
+                type="text"
+                className="w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent"
+                placeholder="Address"
+                value={address}
+                onChange={(e) => {
+                  setAddress(e.target.value);
+                }}
+              />
+            </div>
+            <div>
+              <input
+                type="text"
+                className="w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent"
+                placeholder="Add profile picture"
+                value={profilePicture}
+                onChange={(e) => {
+                  setProfilePicture(e.target.value);
+                }}
+              />
+            </div>
 
-          <div className="mt-8 flex flex-col gap-y-4">
-          <button
+            <div className="mt-8 flex flex-col gap-y-4">
+              <button
                 type="submit"
                 className="bg-blue-500 text-white text-lg font-bold py-3 rounded-xl active:scale-[.98] active:duration-75 hover:scale-[1.01] ease-in-out"
               >
                 Sign up
               </button>
-          </div>
-        </form>
+            </div>
+          </form>
         </div>
       </div>
 

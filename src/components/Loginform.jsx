@@ -1,6 +1,10 @@
 import React from "react";
 
 function Loginform() {
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
   return (
     <div className="flex w-full h-screen">
       <div className="w-full lg:w-1/2 flex items-center justify-center relative">
@@ -9,6 +13,8 @@ function Loginform() {
           <p className="font-medium text-lg text-gray-500 mt-4">
             Please enter your details
           </p>
+          <form onSubmit={handleSubmit}>
+
           <div className="mt-8">
             <label className="font-medium text-lg">Email</label>
             <input
@@ -37,7 +43,7 @@ function Loginform() {
           </div>
 
           <div className="mt-8 flex flex-col gap-y-4">
-            <button className="bg-blue-500 text-white text-lg font-bold py-3 rounded-xl active:scale-[.98] active:duration-75 hover:scale-[1.01] ease-in-out">
+            <button type="submit" className="bg-blue-500 text-white text-lg font-bold py-3 rounded-xl active:scale-[.98] active:duration-75 hover:scale-[1.01] ease-in-out">
               Login
             </button>
           </div>
@@ -48,6 +54,7 @@ function Loginform() {
               Sign up
             </button>
           </div>
+          </form>
         </div>
       </div>
 

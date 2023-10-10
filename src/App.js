@@ -9,20 +9,20 @@ import ErrorPage from "./pages/ErrorPage/ErrorPage";
 
 function App() {
   return (
-    <div className="bg-gradient-to-b from-[#0080FF]/20 to-white">
-      <Navbar />
+    <div className="page-bg">
+        <Navbar />
+        {/* Add routes here */}
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/pets" element={<AllPetsPage />} />
+          <Route path="/pets/:id" element={<PetDetailsPage />} />
 
-      {/* Add routes here */}
-      <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="/pets" element={<AllPetsPage />} />
-        <Route path="/pets/:id" element={<PetDetailsPage />} />
+          {/* This should be the error page, any routes that we have not declared will be routed here */}
+          <Route path="*" element={<ErrorPage />} />
+        </Routes>
 
-        {/* This should be the error page, any routes that we have not declared will be routed here */}
-        <Route path="*" element={<ErrorPage />} />
-      </Routes>
-
-      {/* end add routes */}
+        {/* end add routes */}
+   
     </div>
   );
 }

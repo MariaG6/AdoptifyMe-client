@@ -24,8 +24,8 @@ function Navbar() {
   return (
     <header className="w-full h-auto bg-transparent overflow-x-hidden fixed z-50 top-0 left-0">
       <nav
-        className={`w-full lg:h-28 md:h-24 h-20 ${
-          navBarColor ? "bg-zinc-900" : " bg-transparent"
+        className={`w-full lg:h-16 md:h-16 h-16 ${
+          navBarColor ? "bg-opacity-50 backdrop-blur-md shadow-xl" : " bg-transparent"
         } lg:px-16 md:px-9 px-8 flex justify-between items-center`}
       >
         <Link
@@ -33,7 +33,7 @@ function Navbar() {
           className="font-extrabold flex items-center relative md:text-2xl text-lg"
         >
           <span className="text-[#0080FF]">Adoptify</span>
-          <span className="text-[#FFFF00]">Me</span>
+          <span className="text-orange-400">Me</span>
         </Link>
 
         <div className="lg:flex hidden items-center h-full gap-20">
@@ -102,7 +102,7 @@ function Navbar() {
                 className="font-extrabold flex items-center relative md:text-2xl text-lg"
               >
                 <span className="text-[#0080FF]">Adoptify</span>
-                <span className="text-[#FFFF00]">Me</span>
+                <span className="text-orange-400">Me</span>
               </Link>
               <div
                 className="hamburger text-white cursor-pointer"

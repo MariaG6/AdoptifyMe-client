@@ -22,7 +22,7 @@ function Navbar() {
   }, []);
 
   return (
-    <header className="w-full">
+    <header className="w-full h-auto bg-transparent overflow-x-hidden fixed z-50 top-0 left-0">
       <nav
         className={`w-full lg:h-28 md:h-24 h-20 ${
           navBarColor ? "bg-zinc-900" : " bg-transparent"

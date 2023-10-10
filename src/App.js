@@ -9,7 +9,7 @@ import ErrorPage from "./pages/ErrorPage/ErrorPage";
 
 function App() {
   return (
-    <div className="">
+    <div className="bg-gradient-to-b from-[#0080FF]/20 to-white">
       <Navbar />
 
       {/* Add routes here */}

@@ -9,7 +9,7 @@ import ErrorPage from "./pages/ErrorPage/ErrorPage";
 
 function App() {
   return (
-    <div className="page-bg">
+    <div className="page-bg min-h-screen">
         <Navbar />
         {/* Add routes here */}
         <Routes>

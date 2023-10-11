@@ -4,10 +4,10 @@
 
 @import url("https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Dela+Gothic+One&display=swap");
 
-/* * {
+* {
   font-family: "BIZ UDPGothic", sans-serif;
   font-family: "Dela Gothic One", cursive;
-} */
+}
 
 
 .active {
@@ -19,7 +19,6 @@
   background-repeat: repeat;
   height: 100%;
   width: 100%;
-  
   z-index: 1 !important;
 }
 

@@ -34,9 +34,11 @@ function Homepage() {
           <PetsSection />
         </div>
 
-        <div className="bg-opacity-50 backdrop-blur-md px-4 md:px-8 mt-8 md:mt-12">
+        <div className="bg-opacity-50 backdrop-blur-md px-4 md:px-8 mt-8 md:mt-8">
           <AdoptionProcess />
         </div>
+
+
       </div>
     </div>
   );

@@ -1,7 +1,6 @@
 import React from "react";
 import dogImage from "../../../assets/images/dog.png";
 import { Fade, Slide } from "react-awesome-reveal";
-import Filters from "./Filters";
 import { Link } from "react-router-dom";
 import { ArrowCircleRight } from "@phosphor-icons/react";
 

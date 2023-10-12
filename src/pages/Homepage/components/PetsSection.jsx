@@ -2,9 +2,11 @@ import { ArrowCircleRight } from "@phosphor-icons/react/dist/ssr";
 import React from "react";
 import { Link } from "react-router-dom";
 import PetCard from "../../../components/PetCard";
-import { Slide } from "react-awesome-reveal";
+import { usePetsContext } from "../../../context/pets.context";
+import PetCardShimmer from "../../../components/PetCardShimmer";
 
 function PetsSection() {
+  const { loading, allPets } = usePetsContext();
   return (
     <div className="p-4">
       <div className="flex justify-between">
@@ -16,16 +18,13 @@ function PetsSection() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 mt-4 gap-4">
-        <Slide direction={"left"} damping={0.1} triggerOnce>
-          <PetCard />
-          <PetCard />
-          <PetCard />
-          <PetCard />
-          <PetCard />
-          <PetCard />
-          <PetCard />
-          <PetCard />
-        </Slide>
+        {loading
+          ? [1, 2, 3, 4, 5, 6].map((shimmerId) => {
+              return <PetCardShimmer key={shimmerId} />;
+            })
+          : allPets.map((petData) => {
+              return <PetCard petData={petData} key={petData._id} />;
+            })}
       </div>
     </div>
   );

@@ -10,12 +10,13 @@ import Loginform from "./components/Loginform";
 
 function App() {
   return (
-    <div className="bg-gradient-to-b from-[#0080FF]/20 to-white">
+    <div className="page-bg min-h-screen">
       <Navbar />
-
       {/* Add routes here */}
       <Routes>
         <Route path="/" element={<Homepage />} />
+        <Route path="/signup" element={<Signupform />} />
+        <Route path="/login" element={<Loginform />} />
         <Route path="/pets" element={<AllPetsPage />} />
         <Route path="/pets/:id" element={<PetDetailsPage />} />
         <Route path='/signup' element={<Signupform/>} />

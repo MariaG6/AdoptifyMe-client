@@ -1,3 +1,4 @@
+import { ArrowCircleRight, DotsNine } from "@phosphor-icons/react";
 import React, { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 
@@ -24,8 +25,10 @@ function Navbar() {
   return (
     <header className="w-full h-auto bg-transparent overflow-x-hidden fixed z-50 top-0 left-0">
       <nav
-        className={`w-full lg:h-28 md:h-24 h-20 ${
-          navBarColor ? "bg-zinc-900" : " bg-transparent"
+        className={`w-full lg:h-16 md:h-16 h-16 ${
+          navBarColor
+            ? "bg-opacity-50 backdrop-blur-md shadow-xl"
+            : " bg-transparent"
         } lg:px-16 md:px-9 px-8 flex justify-between items-center`}
       >
         <Link
@@ -33,7 +36,7 @@ function Navbar() {
           className="font-extrabold flex items-center relative md:text-2xl text-lg"
         >
           <span className="text-[#0080FF]">Adoptify</span>
-          <span className="text-[#FFFF00]">Me</span>
+          <span className="text-orange-400">Me</span>
         </Link>
 
         <div className="lg:flex hidden items-center h-full gap-20">
@@ -77,10 +80,9 @@ function Navbar() {
           className="hamburger lg:hidden flex text-white cursor-pointer"
           onClick={handleToggle}
         >
-          {/* <CirclesFour size={30} color="currentColor" weight="light" />
-           */}
-
-          <p className="text-black">Toggle</p>
+          <p className="text-black">
+            <DotsNine size={30} color="currentColor" weight="light" />
+          </p>
         </div>
       </nav>
 
@@ -102,7 +104,7 @@ function Navbar() {
                 className="font-extrabold flex items-center relative md:text-2xl text-lg"
               >
                 <span className="text-[#0080FF]">Adoptify</span>
-                <span className="text-[#FFFF00]">Me</span>
+                <span className="text-orange-400">Me</span>
               </Link>
               <div
                 className="hamburger text-white cursor-pointer"
@@ -113,7 +115,13 @@ function Navbar() {
                   color="currentColor"
                   weight="light"
                 /> */}
-                <p className="text-black">Toggle</p>
+                <p className="text-black">
+                  <ArrowCircleRight
+                    size={25}
+                    color="currentColor"
+                    weight="light"
+                  />
+                </p>
               </div>
             </div>
             <ul className="flex flex-col gap-4 px-4">

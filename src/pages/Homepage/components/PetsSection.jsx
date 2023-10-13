@@ -10,7 +10,7 @@ function PetsSection() {
   return (
     <div className="p-4">
       <div className="flex justify-between">
-        <h3 className="text-xl font-bold">Pets</h3>
+        <h3 className="text-lg font-bold">Pets available</h3>
 
         <Link to={"/pets"} className="flex items-center gap-4 text-orange-400">
           Find all pets <ArrowCircleRight size={20} />
@@ -22,7 +22,7 @@ function PetsSection() {
           ? [1, 2, 3, 4, 5, 6].map((shimmerId) => {
               return <PetCardShimmer key={shimmerId} />;
             })
-          : allPets.map((petData) => {
+          : allPets.slice(0, 8).map((petData) => {
               return <PetCard petData={petData} key={petData._id} />;
             })}
       </div>

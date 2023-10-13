@@ -23,7 +23,7 @@ function PetDetailsPage() {
     <div className="w-full pb-12">
       {/* body */}
       <section className="pt-16 px-8 md:px-12">
-        <div className="bg-opacity-50 backdrop-blur-md p-4">
+        <div className="bg-opacity-50 backdrop-blur-sm p-4">
           <button
             onClick={() => {
               navigator(-1);
@@ -106,9 +106,9 @@ function PetDetailsPage() {
           </div>
 
           {/* if there are images, show them here */}
-          <div className="flex justify-center items-center overflow-x-scroll mt-6 gap-3">
+          <div className="flex justify-center items-center mt-6 gap-3">
             {petDetails?.images != null &&
-              petDetails?.images.map((image) => {
+              petDetails?.images.slice(0, 4).map((image) => {
                 const key = uuidv4();
                 return (
                   <img src={image} className="h-48 object-cover" key={key} />

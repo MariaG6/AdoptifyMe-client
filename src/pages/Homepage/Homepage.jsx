@@ -3,6 +3,7 @@ import PageHeader from "./components/PageHeader";
 import Filters from "./components/Filters";
 import PetsSection from "./components/PetsSection";
 import AdoptionProcess from "./components/AdoptionProcess";
+import CallToActionSection from "./components/CallToActionSection";
 
 function Homepage() {
   return (
@@ -34,8 +35,12 @@ function Homepage() {
           <PetsSection />
         </div>
 
-        <div className="bg-opacity-50 backdrop-blur-md px-4 md:px-8 mt-8 md:mt-12">
+        <div className="bg-opacity-50 backdrop-blur-md px-4 md:px-8 mt-8 md:mt-8">
           <AdoptionProcess />
+        </div>
+
+        <div className="mt-6 px-4 md:px-12">
+          <CallToActionSection />
         </div>
       </div>
     </div>

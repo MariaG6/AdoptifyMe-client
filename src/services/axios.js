@@ -29,7 +29,7 @@ class Api {
   }
 
   verify() {
-    return this.api.get("/auth/verify")
+    return this.api.get("/auth/verify");
   }
 
   uploadImage(file) {
@@ -65,6 +65,11 @@ class Api {
 
   deletePet(id) {
     return this.api.delete(`/pets/${id}`);
+  }
+
+  // ============ Questionnaire Routes ===============
+  createQuestionnarie(id, formData) {
+    return this.api.post(`/pets/${id}/adopt`, formData);
   }
 }
 

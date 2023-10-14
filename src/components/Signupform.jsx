@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import service from "../api/service.js";
-import { AuthContext, useAuthContext } from "../context/Auth.Context.jsx";
+import { useAuthContext } from "../context/Auth.Context.js";
 
 function Signupform() {
   const [fullName, setFullName] = useState("");
@@ -29,14 +29,14 @@ function Signupform() {
       })
       .catch((err) => console.log("Error while uploading the file: ", err));
 
-    setProfilePicture(e.target.file)
+    setProfilePicture(e.target.file);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const uploadData = new FormData();
-    uploadData.append("profilePicture",profilePicture);
+    uploadData.append("profilePicture", profilePicture);
     uploadData.append("fullName", fullName);
     uploadData.append("email", email);
     uploadData.append("password", password);

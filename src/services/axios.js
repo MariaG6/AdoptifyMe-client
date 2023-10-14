@@ -22,6 +22,26 @@ class Api {
     );
   }
 
+  // ============ auth Routes ===============
+
+  login(loginData) {
+    return this.api.post("/auth/login", loginData);
+  }
+
+  verify() {
+    return this.api.get("/auth/verify")
+  }
+
+  uploadImage(file) {
+    return this.api.post("/api/upload", file, {
+      headers: { "Content-Type": "multipart/form-data" },
+    });
+  }
+
+  createUser(newUser) {
+    return this.api.post("/auth/signup", newUser);
+  }
+
   // ============ Pets Routes ===============
   getAllPets() {
     return this.api.get("/pets/allPets");

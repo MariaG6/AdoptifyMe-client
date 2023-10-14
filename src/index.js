@@ -5,14 +5,17 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { PetsProviderWrapper } from "./context/pets.context";
+import { AuthProviderWrapper } from "./context/Auth.Context";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <PetsProviderWrapper>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </PetsProviderWrapper>
+  <AuthProviderWrapper>
+    <PetsProviderWrapper>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </PetsProviderWrapper>
+  </AuthProviderWrapper>
 );
 
 // If you want to start measuring performance in your app, pass a function

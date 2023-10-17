@@ -22,7 +22,7 @@ function App() {
         <Route path="/pets/:id" element={<PetDetailsPage />} />
         <Route path='/signup' element={<Signupform/>} />
         <Route path='/login' element={<Loginform/>} />
-        <Route path="/pets/:id/adopt" element={<Questionnaire />} />
+        <Route path="/pets/adopt" element={<Questionnaire />} />
 
         {/* This should be the error page, any routes that we have not declared will be routed here */}
         <Route path="*" element={<ErrorPage />} />

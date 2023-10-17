@@ -8,23 +8,24 @@ function Questionnaire() {
   const navigate = useNavigate();
   const { createQuestionnaire } = useAuthContext();
   const { id } = useParams();
+
   const [formData, setformData] = useState({
-    areaOfHome: "",
-    landlordApproval: "",
-    whereItStays: "",
-    allergiesOrDisagreements: "",
+    designatedArea: "",
+    landlordAware: "",
+    whereStaysWhenNotHome: "",
+    familyInfo: "",
     childrenCharacteristics: "",
-    calculateExpenses: "",
-    employmentStatus: "",
+    annualExpenses: "",
+    employed: "",
     vacationPlans: "",
-    timeSpentAlone: "",
+    timeAloneAtHome: "",
     expenses: "",
     suitableFood: "",
     previousAnimals: "",
-    whyChooseAnimal: "",
-    walkFrequency: "",
-    willingToTrain: "",
-    behavioralProblem: "",
+    whyAdopt: "",
+    walkingFrequency: "",
+    willingnessToTrain: "",
+    behaviorResponse: "",
     preAdoptionFollowUps: "",
   });
 
@@ -83,10 +84,10 @@ function Questionnaire() {
   return (
     <div className="w-full flex items-center justify-center h-screen">
       <div className="bg-white px-10 py-20 rounded-3xl border-2 border-gray-100">
-        <div>
-          <PawPrint size={40} className="text-orange-400" />
-          <h1 className="mt-2 text-orange-400 justify-center">
-            PRE-ADOPTION QUESTIONNAIRE FOR DOG/CAT ADOPTION{" "}
+        <div className="justify-center text-justify">
+          <PawPrint size={40} className="text-orange-400 mt-2" />
+          <h1 className=" text-orange-400 justify-center">
+            PRE-ADOPTION QUESTIONNAIRE FOR DOG/CAT ADOPTION
           </h1>
           <p className="text-sm text-gray-400 justify-center">
             The main objective of this questionnaire is to find the optimal
@@ -102,85 +103,131 @@ function Questionnaire() {
 
         <form onSubmit={handleSubmit} method="post">
           <section>
-            <h2 className="mt-2 text-AMblue bg-gray-300">A) HOUSING</h2>
+            <h2 className="mt-2 text-AMblue">A) HOUSING</h2>
             <div className="mt-4">
-              <label className="font-medium text-lg">
+              <label className="font-medium text-lg bg-gray-300 text-blue-950">
                 1) What area of the home will be designated for the animal?
               </label>
               <select
-                name="areaOfHome"
+                name="designatedArea"
                 onChange={handleChange}
-                value={formData.areaOfHome}
+                value={formData.designatedArea}
                 className="w-full border-2 border-gray-100 rounded-xl mt-1 bg-transparent"
               >
-                <option value="allTheHouse">All the house</option>
-                <option value="partOfIt">Part of it</option>
-                <option value="notClearYet">It's not clear yet</option>
+                <option value="all the house">All the house</option>
+                <option value="part of it">Part of it</option>
+                <option value="It's not clear yet">It's not clear yet</option>
               </select>
             </div>
 
             <div className="mt-4">
-              <label className="font-medium text-lg">
+              <label className="font-medium text-lg bg-gray-300 text-blue-950">
                 2) If you live in a rented property, does the landlord/landlady
                 know that you are adopting an animal, and do they agree to it?
               </label>
-              <input
-                type="radio"
-                name="landlordApproval"
-                value="yes"
+              <div className="mt-1">
+                <input
+                  className="mr-1"
+                  type="radio"
+                  name="landlordAware"
+                  value="yes"
+                  onChange={handleChange}
+                />
+                Yes
+                <input
+                  className="ml-3"
+                  type="radio"
+                  name="landlordAware"
+                  value="no"
+                  onChange={handleChange}
+                />
+                No
+              </div>
+            </div>
+
+            <div className="mt-4">
+              <label className="font-medium text-lg bg-gray-300 text-blue-950">
+                3) Where will it stay when you are not at home?
+              </label>
+              <select
+                name="whereStaysWhenNotHome"
                 onChange={handleChange}
-              />{" "}
-              Yes
-              <input
-                type="radio"
-                name="landlordApproval"
-                value="no"
-                onChange={handleChange}
-              />{" "}
-              No
+                value={formData.whereStaysWhenNotHome}
+                className="w-full border-2 border-gray-100 rounded-xl mt-1 bg-transparent"
+              >
+                <option value="outside the house">Outside the house</option>
+                <option value="all the house">All the house</option>
+                <option value="part of it">Part of it</option>
+                <option value="with family/friends">With family/friends</option>
+                <option value="It's not clear yet">It's not clear yet</option>
+              </select>
             </div>
           </section>
 
           <section>
-            <h2 className="mt-2 text-AMblue bg-gray-300"> B) FAMILY</h2>
+            <h2 className="mt-2 text-AMblue"> B) FAMILY</h2>
             <div className="mt-4">
-              <label className="font-medium text-lg"></label>
-              <input className="w-full border-2 border-gray-100 rounded-xl mt-1 bg-transparent" />
+              <label className="font-medium text-lg bg-gray-300 text-blue-950">
+                4) Is there anyone in your family with allergies or not agree to
+                the decision to adopt?
+              </label>
+              <div className="mt-1">
+                <input
+                  className="mr-1"
+                  type="radio"
+                  name="familyInfo"
+                  value="yes"
+                  onChange={handleChange}
+                />
+                Yes
+                <input
+                  className="ml-3"
+                  type="radio"
+                  name="familyInfo"
+                  value="no"
+                  onChange={handleChange}
+                />
+                No
+              </div>
+            </div>
+            <div className="mt-4">
+              <label className="font-medium text-lg bg-gray-300 text-blue-950">
+                5) We want to offer you the most suitable animal for your
+                characteristics. What are your children like?
+              </label>
+              <select
+                name="childrenCharacteristics"
+                onChange={handleChange}
+                value={formData.childrenCharacteristics}
+                className="w-full border-2 border-gray-100 rounded-xl mt-1 bg-transparent"
+              >
+                <option value="I dont have">I dont have children</option>
+                <option value="calm">Calm</option>
+                <option value="energetic">Energetic</option>
+                <option value="responsable">Responsable</option>
+              </select>
             </div>
           </section>
           <section>
-            <h2 className="mt-2 text-AMblue bg-gray-300">
-              C) OCCUPATION / FREE TIME
-            </h2>
-            <div className="mt-4">
-              <label className="font-medium text-lg"></label>
-              <input className="w-full border-2 border-gray-100 rounded-xl mt-1 bg-transparent" />
-            </div>
+            <h2 className="mt-2 text-AMblue">C) OCCUPATION / FREE TIME</h2>
           </section>
           <section>
-            <h2 className="mt-2 text-AMblue bg-gray-300">
+            <h2 className="mt-2 text-AMblue ">
               D) ABOUT COMPANION ANIMALS IN GENERAL
             </h2>
-            <div className="mt-4">
-              <label className="font-medium text-lg"></label>
-              <input className="w-full border-2 border-gray-100 rounded-xl mt-1 bg-transparent" />
-            </div>
           </section>
           <section>
-            <h2 className="mt-2 text-AMblue bg-gray-300">E) ABOUT ADOPTION</h2>
-            <div className="mt-4">
-              <label className="font-medium text-lg"></label>
-              <input className="w-full border-2 border-gray-100 rounded-xl mt-1 bg-transparent" />
-            </div>
+            <h2 className="mt-2 text-AMblue">E) ABOUT ADOPTION</h2>
           </section>
           <section>
-            <h2 className="mt-2 text-AMblue bg-gray-300">
-              F) ABOUT ANIMAL BEHAVIOR
-            </h2>
-            <div className="mt-4">
-              <label className="font-medium text-lg"></label>
-              <input className="w-full border-2 border-gray-100 rounded-xl mt-1 bg-transparent" />
-            </div>
+            <h2 className="mt-2 text-AMblue ">F) ABOUT ANIMAL BEHAVIOR</h2>
+          </section>
+          <section>
+            <h2 className="mt-2 text-AMblue ">OBSERVATIONS</h2>
+            <textarea name="observations"
+                onChange={handleChange}
+                value={formData.observations}
+                className="w-full border-2 border-gray-100 rounded-xl mt-1 bg-transparent"></textarea>
           </section>
           <button>SUBMIT</button>
         </form>

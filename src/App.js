@@ -24,13 +24,16 @@ function App() {
         <Route path="/" element={<Homepage />} />
         <Route path="/pets" element={<AllPetsPage />} />
         <Route path="/pets/:id" element={<PetDetailsPage />} />
-        <Route path="/shops" element={<AllShopsPage />} />
-        <Route path="/shops/:id" element={<ShopDetailsPage />} />
         <Route path="/pets/adopt" element={<Questionnaire />} />
-        <Route path='/signup' element={<Signupform/>} />
-        <Route path='/login' element={<Loginform/>} />
+        <Route path="/pets/add" element={<Questionnaire />} />
         <Route path="/pets/:id/adopt" element={<Questionnaire />} />
-  
+
+        <Route path="/shops" element={<AllShopsPage />} />
+        <Route path="/shops/add" element={<ShopForm />} />
+        <Route path="/shops/:id" element={<ShopDetailsPage />} />
+
+        <Route path="/signup" element={<Signupform />} />
+        <Route path="/login" element={<Loginform />} />
 
         {/* This should be the error page, any routes that we have not declared will be routed here */}
         <Route path="*" element={<ErrorPage />} />

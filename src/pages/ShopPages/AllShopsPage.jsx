@@ -1,11 +1,12 @@
 import React from "react";
-import { useShopsContext } from "../../context/shops.context";
 import ShopCard from "../../components/ShopCard";
 import PetCardShimmer from "../../components/PetCardShimmer";
 import { SmileySad } from "@phosphor-icons/react";
+import { useShopsContext } from "../../context/shops.context";
 
 function AllShopsPage() {
   const { allShops, loading } = useShopsContext();
+
   return (
     <div className="w-full pb-12">
       {/* body */}
@@ -16,12 +17,12 @@ function AllShopsPage() {
               ? [1, 2, 3, 4, 5, 6].map((shimmerId) => {
                   return <PetCardShimmer key={shimmerId} />;
                 })
-              : allShops.map((shopData) => {
+              : allShops?.map((shopData) => {
                   return <ShopCard shopData={shopData} key={shopData._id} />;
                 })}
           </div>
 
-          {allShops.length === 0 && (
+          {allShops?.length === 0 && (
             <div className="flex justify-center flex-col items-center pb-12">
               <SmileySad size={80} />
               <h1>Shops Unavailable at the moment!</h1>

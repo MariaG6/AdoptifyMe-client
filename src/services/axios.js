@@ -8,7 +8,7 @@ class Api {
 
     this.api.interceptors.request.use(
       (config) => {
-        const token = localStorage.getItem("token");
+        const token = localStorage.getItem("authToken");
         if (token) {
           config.headers = {
             Authorization: `Bearer ${token}`,
@@ -23,9 +23,23 @@ class Api {
   }
 
   // ============ auth routes ===============
+
   login(loginData) {
-    // {email: test@gmail.com, password: 12345}
-    return this.api.post("/login");
+    return this.api.post("/auth/login", loginData);
+  }
+
+  verify() {
+    return this.api.get("/auth/verify");
+  }
+
+  uploadImage(file) {
+    return this.api.post("/api/upload", file, {
+      headers: { "Content-Type": "multipart/form-data" },
+    });
+  }
+
+  createUser(newUser) {
+    return this.api.post("/auth/signup", newUser);
   }
 
   // ============ Pets Routes ===============
@@ -68,6 +82,10 @@ class Api {
 
   updateShop(id, updateData) {
     return this.api.put(`/shops/${id}`, updateData);
+  }
+  // ============ Questionnaire Routes ===============
+  createQuestionnarie(id, formData) {
+    return this.api.post(`/pets/${id}/adopt`, formData);
   }
 }
 

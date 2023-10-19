@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-const API_URL = "http://localhost:5005";
+import React, { useState, useEffect, useContext } from "react";
+import { apiConnect } from "../services/axios";
 
 const AuthContext = React.createContext();
 
@@ -8,6 +7,7 @@ function AuthProviderWrapper(props) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState(null);
+  const [errorMessage, setErrorMessage] = useState(null);
 
   const storeToken = (token) => {
     localStorage.setItem("authToken", token);
@@ -24,12 +24,9 @@ function AuthProviderWrapper(props) {
     // If the token exists in the localStorage
     if (storedToken) {
       // We must send the JWT token in the request's "Authorization" Headers
-      axios
-        .get(`${API_URL}/auth/verify`, {
-          headers: { Authorization: `Bearer ${storedToken}` },
-        })
+      apiConnect
+        .verify()
         .then((response) => {
-          console.log(response.data);
           // If the server verifies that the JWT token is valid
           const user = response.data;
           // Update state variables
@@ -52,6 +49,38 @@ function AuthProviderWrapper(props) {
     }
   };
 
+  function login(email, password) {
+    apiConnect
+      .login({ email, password })
+      .then((response) => {
+        storeToken(response.data.authToken);
+        authenticateUser();
+      })
+      .catch((error) => {
+        const { response } = error;
+        console.log(response.data);
+        setErrorMessage(response.data.errorMessage);
+      });
+  }
+
+  function signup(newUser) {
+    apiConnect
+      .createUser(newUser)
+      .then((res) => {
+        const { email, password } = newUser;
+        login(email, password);
+      })
+      .catch((error) => {
+        const { response } = error;
+        console.log(response.data);
+        setErrorMessage(response.data.errorMessage);
+      });
+  }
+
+  function handleProfilePicture(file) {
+    apiConnect.uploadImage(file);
+  }
+
   function logOutUser() {
     localStorage.removeItem("authToken");
     authenticateUser();
@@ -70,6 +99,10 @@ function AuthProviderWrapper(props) {
         storeToken,
         authenticateUser,
         logOutUser,
+        login,
+        signup,
+        errorMessage,
+        handleProfilePicture,
       }}
     >
       {props.children}
@@ -77,4 +110,10 @@ function AuthProviderWrapper(props) {
   );
 }
 
-export { AuthProviderWrapper, AuthContext };
+// Define a custom hook to access the context
+const useAuthContext = () => {
+  const context = useContext(AuthContext);
+  return context;
+};
+
+export { AuthProviderWrapper, AuthContext, useAuthContext };

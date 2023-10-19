@@ -28,6 +28,19 @@ const PetsProviderWrapper = ({ children }) => {
     }
   };
 
+  // Create a pet
+  const createPet = async (petFormData) => {
+    try {
+      setLoading(true);
+      const response = await apiConnect.createPet(petFormData);
+      setPetDetails(response.data);
+      setLoading(false);
+      setError(null);
+    } catch (error) {
+      handleError(error);
+    }
+  };
+
   // Fetch a pet by ID
   const getPetById = async (id) => {
     try {
@@ -69,6 +82,29 @@ const PetsProviderWrapper = ({ children }) => {
     }
   };
 
+  // Create a shop
+    const createShop = async (shopFormData) => {
+      try {
+        setLoading(true);
+        await apiConnect.createShop(shopFormData);
+        setLoading(false);
+        setError(null);
+      } catch (error) {
+        handleError(error);
+      }
+    };
+
+  // Create questionaire
+  const createQuestionnaire = async (id, formData) => {
+    try {
+      setLoading(true);
+      const response = await apiConnect.createQuestionnarie(id, formData);
+      setMessage(response.data);
+    } catch (error) {
+      handleError(error);
+    }
+  };
+
   useEffect(() => {
     fetchAllPets();
   }, []);
@@ -80,10 +116,13 @@ const PetsProviderWrapper = ({ children }) => {
     loading,
     message,
     error,
+    createPet,
     fetchAllPets,
     getPetById,
     deletePetById,
     updatePetById,
+    createQuestionnaire,
+    createShop,
   };
 
   return (

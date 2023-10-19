@@ -1,10 +1,12 @@
 import { ArrowCircleRight, DotsNine } from "@phosphor-icons/react";
 import React, { useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
 function Navbar() {
-  const [open, setOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  const [open, setOpen] = useState(false);
+  const navigator = useNavigate();
   const [navBarColor, setNavBarColor] = useState(false);
 
   const handleToggle = () => {
@@ -73,9 +75,38 @@ function Navbar() {
                 Success Stories
               </NavLink>
             </li>
+
+            <li className="w-full text-base">
+              <NavLink
+                to={"/shops"}
+                className={
+                  "relative inline-block px-2 whitespace-nowrap text-black text-xs font-bold transition-all duration-200 hover:text-[#0080FF]"
+                }
+              >
+                Shops
+              </NavLink>
+            </li>
           </ul>
         </div>
 
+        <div className="hidden lg:flex">
+          {!isLoggedIn && (
+            <button
+              className="text-white text-sm bg-AMblue px-6 py-2 rounded-xl"
+              onClick={() => {
+                navigator("/login");
+              }}
+            >
+              Login
+            </button>
+          )}
+
+          {isLoggedIn && (
+            <div className="bg-AMblue/30 p-2 rounded-full">OF</div>
+          )}
+        </div>
+
+        {/* toggle for mobile */}
         <div
           className="hamburger lg:hidden flex text-white cursor-pointer"
           onClick={handleToggle}
@@ -149,6 +180,17 @@ function Navbar() {
 
               <li className="w-full text-base">
                 <NavLink
+                  to={"/shops"}
+                  className={
+                    "relative inline-block px-2 whitespace-nowrap text-black text-xs font-bold transition-all duration-200 hover:text-[#0080FF]"
+                  }
+                >
+                  Shops
+                </NavLink>
+              </li>
+
+              <li className="w-full text-base">
+                <NavLink
                   to={"/success-stories"}
                   className={
                     "relative inline-block px-2 whitespace-nowrap text-black text-xs font-bold transition-all duration-200 hover:text-[#0080FF]"
@@ -158,6 +200,19 @@ function Navbar() {
                 </NavLink>
               </li>
             </ul>
+
+            {!isLoggedIn && (
+              <div className="flex flex-col justify-center px-4">
+                <button
+                  className="text-white text-sm bg-AMblue px-6 py-2 rounded-xl"
+                  onClick={() => {
+                    navigator("/login");
+                  }}
+                >
+                  Login
+                </button>
+              </div>
+            )}
           </section>
         </div>
       </nav>

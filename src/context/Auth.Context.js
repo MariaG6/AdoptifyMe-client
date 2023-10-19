@@ -27,7 +27,6 @@ function AuthProviderWrapper(props) {
       apiConnect
         .verify()
         .then((response) => {
-          console.log(response.data);
           // If the server verifies that the JWT token is valid
           const user = response.data;
           // Update state variables
@@ -54,7 +53,7 @@ function AuthProviderWrapper(props) {
     apiConnect
       .login({ email, password })
       .then((response) => {
-        storeToken(response.data.token);
+        storeToken(response.data.authToken);
         authenticateUser();
       })
       .catch((error) => {
@@ -78,11 +77,9 @@ function AuthProviderWrapper(props) {
       });
   }
 
-function handleProfilePicture(file){
-  apiConnect
-  .uploadImage(file)
-  
-}
+  function handleProfilePicture(file) {
+    apiConnect.uploadImage(file);
+  }
 
   function logOutUser() {
     localStorage.removeItem("authToken");

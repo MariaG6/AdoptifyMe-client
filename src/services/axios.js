@@ -8,7 +8,7 @@ class Api {
 
     this.api.interceptors.request.use(
       (config) => {
-        const token = localStorage.getItem("token");
+        const token = localStorage.getItem("authToken");
         if (token) {
           config.headers = {
             Authorization: `Bearer ${token}`,
@@ -22,7 +22,7 @@ class Api {
     );
   }
 
-  // ============ auth Routes ===============
+  // ============ auth routes ===============
 
   login(loginData) {
     return this.api.post("/auth/login", loginData);
@@ -67,10 +67,31 @@ class Api {
     return this.api.delete(`/pets/${id}`);
   }
 
+  // =========== shops routes =================
+  getAllShops() {
+    return this.api.get("/shops/allShops");
+  }
+
+  getShopById(id) {
+    return this.api.get(`/shops/${id}`);
+  }
+
+  deleteShop(id) {
+    return this.api.delete(`/shops/${id}`);
+  }
+
+  updateShop(id, updateData) {
+    return this.api.put(`/shops/${id}`, updateData);
+  }
   // ============ Questionnaire Routes ===============
   createQuestionnarie(id, formData) {
     return this.api.post(`/pets/${id}/adopt`, formData);
   }
+
+    // ============ Shop Routes ===============
+    createShop(newShopData) {
+      return this.api.post("/shops/new", newShopData);
+    }
 }
 
 export const apiConnect = new Api();

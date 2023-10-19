@@ -1,11 +1,10 @@
 import React from "react";
-import { MapPin } from "@phosphor-icons/react";
 import { Link } from "react-router-dom";
 import { Fade } from "react-awesome-reveal";
 
-function PetCard({ petData }) {
+function ShopCard({ shopData }) {
   return (
-    <Link to={`/pets/${petData._id}`}>
+    <Link to={`/shops/${shopData._id}`}>
       <div className="w-full shadow-xl overflow-hidden transition-transform hover:scale-105 hover:shadow-orange-400/20 rounded-xl">
         {/* <div className="absolute rounded-br-xl backdrop-blur-md bg-white px-2 text-orange-400 text-sm">
         New
@@ -14,7 +13,7 @@ function PetCard({ petData }) {
         <div className="h-[180px] overflow-hidden">
           <Fade>
             <img
-              src={petData.profilePicture}
+              src={shopData.shopLogo}
               alt="pet image"
               className="object-cover"
             />
@@ -23,11 +22,11 @@ function PetCard({ petData }) {
 
         {/* card body */}
         <div className="p-3 text-sm flex justify-between bg-white">
-          <h3>{petData.name}</h3>
+          <h3>{shopData.shopName}</h3>
 
-          <div className="flex gap-1 items-center">
-            <MapPin size={14} />
-            <h3 className="overflow-ellipsis">{petData?.shop?.shopName}</h3>
+          <div className="flex gap-1 items-center text-gray-400 text-sm">
+            <h3>{shopData.pets.length}</h3>
+            <h3 className="overflow-ellipsis">Animals</h3>
           </div>
         </div>
       </div>
@@ -35,4 +34,4 @@ function PetCard({ petData }) {
   );
 }
 
-export default PetCard;
+export default ShopCard;

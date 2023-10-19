@@ -6,14 +6,17 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { PetsProviderWrapper } from "./context/pets.context";
 import { AuthProviderWrapper } from "./context/Auth.Context";
+import { ShopsProviderWrapper } from "./context/shops.context";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <AuthProviderWrapper>
     <PetsProviderWrapper>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <ShopsProviderWrapper>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </ShopsProviderWrapper>
     </PetsProviderWrapper>
   </AuthProviderWrapper>
 );

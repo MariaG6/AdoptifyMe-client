@@ -5,13 +5,16 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { PetsProviderWrapper } from "./context/pets.context";
+import { ShopsProviderWrapper } from "./context/shops.context";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <PetsProviderWrapper>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <ShopsProviderWrapper>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </ShopsProviderWrapper>
   </PetsProviderWrapper>
 );
 

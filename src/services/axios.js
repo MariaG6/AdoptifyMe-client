@@ -22,6 +22,12 @@ class Api {
     );
   }
 
+  // ============ auth routes ===============
+  login(loginData) {
+    // {email: test@gmail.com, password: 12345}
+    return this.api.post("/login");
+  }
+
   // ============ Pets Routes ===============
   getAllPets() {
     return this.api.get("/pets/allPets");
@@ -45,6 +51,23 @@ class Api {
 
   deletePet(id) {
     return this.api.delete(`/pets/${id}`);
+  }
+
+  // =========== shops routes =================
+  getAllShops() {
+    return this.api.get("/shops/allShops");
+  }
+
+  getShopById(id) {
+    return this.api.get(`/shops/${id}`);
+  }
+
+  deleteShop(id) {
+    return this.api.delete(`/shops/${id}`);
+  }
+
+  updateShop(id, updateData) {
+    return this.api.put(`/shops/${id}`, updateData);
   }
 }
 

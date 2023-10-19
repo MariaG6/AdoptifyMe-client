@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import service from "../api/service.js";
-import { AuthContext } from "../context/Auth.Context.jsx";
+import service from "../../api/service.js";
+import { AuthContext } from "../../context/Auth.Context.js";
 
 function Signupform() {
   const [fullName, setFullName] = useState("");

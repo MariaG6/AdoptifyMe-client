@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../context/Auth.Context.jsx";
+import { AuthContext } from "../../context/Auth.Context.js";
 
 function Loginform() {
   const [email, setEmail] = useState("");

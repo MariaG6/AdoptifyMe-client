@@ -87,6 +87,11 @@ class Api {
   createQuestionnarie(id, formData) {
     return this.api.post(`/pets/${id}/adopt`, formData);
   }
+
+    // ============ Shop Routes ===============
+    createShop(newShopData) {
+      return this.api.post("/shops/new", newShopData);
+    }
 }
 
 export const apiConnect = new Api();

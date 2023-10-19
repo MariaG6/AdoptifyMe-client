@@ -7,6 +7,7 @@ import AllPetsPage from "./pages/AllPetsPage/AllPetsPage";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
 import Signupform from "./components/Signupform";
 import Loginform from "./components/Loginform";
+import Questionnaire from "./components/Questionnaire";
 
 function App() {
   return (
@@ -21,7 +22,8 @@ function App() {
         <Route path="/pets/:id" element={<PetDetailsPage />} />
         <Route path='/signup' element={<Signupform/>} />
         <Route path='/login' element={<Loginform/>} />
-  
+        <Route path="/pets/adopt" element={<Questionnaire />} />
+
         {/* This should be the error page, any routes that we have not declared will be routed here */}
         <Route path="*" element={<ErrorPage />} />
       </Routes>

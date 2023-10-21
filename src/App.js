@@ -14,6 +14,9 @@ import { Toaster } from "react-hot-toast";
 import PetForm from "./pages/PetsPage/PetForm";
 import ShopForm from "./pages/ShopPages/ShopForm";
 import IsPrivate from "./components/IsPrivate";
+import UserProfile from "./pages/UserProfile/UserProfile";
+import UserDetails from "./pages/UserProfile/components/UserDetails";
+import ShopDetails from "./pages/UserProfile/components/ShopDetails";
 
 function App() {
   return (
@@ -62,6 +65,13 @@ function App() {
         3. 
         
         */}
+        <Route path="/signup" element={<Signupform />} />
+        <Route path="/login" element={<Loginform />} />
+        <Route path="/pets/:id/adopt" element={<Questionnaire />} />
+        <Route path="/shops/new" element={<ShopForm />} />
+        <Route path="/user" element={<UserProfile />} />
+        <Route path="/user/details" element={<UserDetails />} />
+        <Route path="/shops/details" element={<ShopDetails />} />
 
         {/* This should be the error page, any routes that we have not declared will be routed here */}
         <Route path="*" element={<ErrorPage />} />

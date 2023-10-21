@@ -69,7 +69,7 @@ function ShopForm() {
   };
 
   return (
-    <div className="w-full flex items-center justify-center">
+    <div className="w-full flex items-center justify-center h-screen pb-12 ">
       <div className="bg-white px-10 py-20 rounded-3xl border-2 border-gray-100">
         <div className="flex flex-col items-center justify-center text-center">
           <Storefront size={40} className="text-AMblue mt-2" />

@@ -73,7 +73,7 @@ function CallToActionSection() {
             <img
               src="https://unsplash.com/photos/jOD_1MSlVCc/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8NXx8c3RyZWV0JTIwY2F0fGVufDB8fHx8MTY5NzIxMDc1NHww&force=true&w=640"
               alt="Sleeping street cat"
-              className=""
+              className="float-right"
             />
           </Slide>
         </div>

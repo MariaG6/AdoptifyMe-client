@@ -10,10 +10,7 @@ function PetDetailsPage() {
   const { id } = useParams();
   const navigator = useNavigate();
 
-  const { petDetails, loading, message, error, getPetById, allPets } =
-    usePetsContext();
-
-  console.log(petDetails);
+  const { petDetails, loading, getPetById, allPets } = usePetsContext();
 
   useEffect(() => {
     getPetById(id);
@@ -96,7 +93,7 @@ function PetDetailsPage() {
 
               <button
                 onClick={() => {
-                  navigator(`/${petDetails._id}/adopt`);
+                  navigator(`/pets/${petDetails._id}/adopt`);
                 }}
                 className="mt-4 p-4 bg-orange-400 text-white rounded-xl shadow-xl shadow-orange-400/20"
               >

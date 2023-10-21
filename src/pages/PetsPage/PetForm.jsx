@@ -1,12 +1,19 @@
 import React, { useState } from "react";
-import { usePetsContext } from "../context/pets.context";
+import { usePetsContext } from "../../context/pets.context";
 import Swal from "sweetalert2";
 import { PawPrint } from "@phosphor-icons/react/dist/ssr";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { useShopsContext } from "../../context/shops.context";
+import toast from "react-hot-toast";
 
 function PetForm() {
   const navigate = useNavigate();
+
+  const { id } = useParams();
+
   const { createPet } = usePetsContext();
+  const { addPetToShop, loading, message, error } = useShopsContext();
+
   const [profilePicture, setProfilePicture] = useState("");
   //   const [images,setImages] = useState('')
 
@@ -16,9 +23,8 @@ function PetForm() {
     age: "young",
     size: "medium",
     name: "",
-    gender: "",
+    gender: "Female",
     dateOfBirth: "",
-    profilePicture: "",
     images: [],
     description: "",
   });
@@ -39,8 +45,23 @@ function PetForm() {
       cancelButtonText: "No",
     }).then((result) => {
       if (result.isConfirmed) {
-        createPet(petFormData); // Create the pet and save data
-        Swal.fire("Pet created!", "Your pet has been created.", "success");
+        const petData = new FormData();
+
+        for (const [key, value] of Object.entries(petFormData)) {
+          petData.append(key, value);
+        }
+        petData.append("profilePicture", profilePicture);
+
+        addPetToShop(petData, id).then(() => {
+          if (error) {
+            toast.error(error, { position: "top-center" });
+          } else {
+            toast.success(message, { position: "top-center" });
+            navigate(`/shops/${id}`);
+          }
+        });
+
+        // Swal.fire("Pet created!", "Your pet has been created.", "success");
         navigate(`/pets/`);
       } else if (result.isDenied) {
         Swal.fire("Changes are not saved", "", "info");
@@ -74,7 +95,11 @@ function PetForm() {
             Add a new pet to AdoptifyMe family!
           </h1>
         </div>
-        <form onSubmit={handleSubmit} method="post" encType="multipart/form-data">
+        <form
+          onSubmit={handleSubmit}
+          method="post"
+          encType="multipart/form-data"
+        >
           <div className="mt-4">
             <label className="font-medium text-lg text-AMblue">Name:</label>
             <input
@@ -222,8 +247,11 @@ function PetForm() {
           </div>
 
           <div className="mt-6 flex justify-center items-center">
-            <button className="bg-orange-400 text-white p-5 rounded-xl text-sm shadow-xl shadow-orange-400/25">
-              Add new pet
+            <button
+              className="bg-orange-400 text-white p-5 rounded-xl text-sm shadow-xl shadow-orange-400/25"
+              disabled={loading}
+            >
+              {loading ? "Adding new pet" : "Add new pet"}
             </button>
           </div>
         </form>

@@ -2,8 +2,11 @@ import { Storefront } from "@phosphor-icons/react";
 import { PawPrint } from "@phosphor-icons/react/dist/ssr";
 import React from "react";
 import { Slide } from "react-awesome-reveal";
+import { useNavigate } from "react-router-dom";
 
 function CallToActionSection() {
+  const navigator = useNavigate();
+
   return (
     <div className="bg-white rounded-xl">
       {/* for shop owners */}
@@ -30,7 +33,12 @@ function CallToActionSection() {
             your pets for adoption and be a part of the rescue mission!
           </p>
 
-          <button className="bg-orange-400 text-white p-3 rounded-xl text-sm shadow-xl shadow-orange-400/25">
+          <button
+            className="bg-orange-400 text-white p-3 rounded-xl text-sm shadow-xl shadow-orange-400/25"
+            onClick={() => {
+              navigator("/shops/add");
+            }}
+          >
             Create your virtual shop now!
           </button>
         </div>

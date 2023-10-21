@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuthContext } from "../../context/Auth.Context"; 
+import { useAuthContext } from "../../context/Auth.Context";
+import toast from "react-hot-toast";
 
 function Loginform() {
   const [email, setEmail] = useState("");
@@ -22,7 +23,7 @@ function Loginform() {
       navigate("/pets");
     } else {
       if (errorMessage) {
-        alert(errorMessage);
+        toast.error(errorMessage, { position: "top-center" });
       } else {
         alert("Something went wrong!");
       }

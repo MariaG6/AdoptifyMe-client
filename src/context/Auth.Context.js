@@ -33,19 +33,23 @@ function AuthProviderWrapper(props) {
           setIsLoggedIn(true);
           setIsLoading(false);
           setUser(user);
+          setErrorMessage(null);
         })
         .catch((error) => {
           // If the server sends an error response (invalid token)
           // Update state variables
+          const { response } = error;
           setIsLoggedIn(false);
           setIsLoading(false);
           setUser(null);
+          setErrorMessage(response.data.error);
         });
     } else {
       // If the token is not available (or is removed)
       setIsLoggedIn(false);
       setIsLoading(false);
       setUser(null);
+      setErrorMessage("Please login!");
     }
   };
 

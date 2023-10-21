@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { Storefront } from "@phosphor-icons/react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import service from "../api/service.js";
-import { usePetsContext } from "../context/pets.context";
+import service from "../../api/service.js";
+import { usePetsContext } from "../../context/pets.context.js";
+import { useShopsContext } from "../../context/shops.context.js";
+import toast from "react-hot-toast";
 
 function ShopForm() {
   const navigate = useNavigate();
@@ -12,24 +14,26 @@ function ShopForm() {
   const [webSite, setWebSite] = useState("");
   const [shopLogo, setShopLogo] = useState("");
 
+  const { addNewShop, loading, message, error } = useShopsContext();
+
   // ******** this method handles the file upload ********
-  const handleFileUpload = (e) => {
-    console.log("The file to be uploaded is: ", e.target.files[0]);
+  // const handleSubmit = (e) => {
+  //   console.log("The file to be uploaded is: ", e.target.files[0]);
 
-    const uploadData = new FormData();
+  //   const uploadData = new FormData();
 
-    uploadData.append("shopLogo", e.target.files[0]);
+  //   uploadData.append("shopLogo", e.target.files[0]);
 
-    service
-      .uploadImage(uploadData)
-      .then((response) => {
-        console.log("response is: ", response);
-        setShopLogo(response.fileUrl);
-      })
-      .catch((err) => console.log("Error while uploading the file: ", err));
+  //   service
+  //     .uploadImage(uploadData)
+  //     .then((response) => {
+  //       console.log("response is: ", response);
+  //       setShopLogo(response.fileUrl);
+  //     })
+  //     .catch((err) => console.log("Error while uploading the file: ", err));
 
-    setShopLogo(e.target.file);
-  };
+  //   setShopLogo(e.target.file);
+  // };
 
   const showSubmitAlert = () => {
     Swal.fire({
@@ -47,21 +51,29 @@ function ShopForm() {
         uploadData.append("website", webSite);
         uploadData.append("shopLogo", shopLogo);
 
-        createShop(uploadData); // Create the pet and save data
+        addNewShop(uploadData).then(() => {
+          if (error) {
+            toast.error(error, { position: "top-center" });
+          } else {
+            toast.success(message, { position: "top-center" });
+            navigate(`/shops`);
+          }
+        });
 
-        Swal.fire("Shop created!", "Your shop has been created.", "success");
-        navigate(`/shops/`);
+        // Swal.fire("Shop created!", "Your shop has been created.", "success");
       } else if (result.isDenied) {
         Swal.fire("Changes are not saved", "", "info");
-        navigate(`/shops/`);
+        setShopName("");
+        setWebSite("");
+        setShopLogo("");
+        navigate(`/shops`);
       }
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     showSubmitAlert();
-
     // Reset the form
     setShopName("");
     setWebSite("");
@@ -110,16 +122,18 @@ function ShopForm() {
             <input
               type="file"
               name="shopLogo"
-              value={shopLogo}
               onChange={(e) => {
-                handleFileUpload(e);
+                setShopLogo(e.target.files[0]);
               }}
               className="w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent"
             />
           </div>
           <div className="mt-6 flex justify-center items-center">
-            <button className="bg-orange-400 text-white p-5 rounded-xl text-sm shadow-xl shadow-orange-400/25">
-              Add shop
+            <button
+              className="bg-orange-400 text-white p-5 rounded-xl text-sm shadow-xl shadow-orange-400/25"
+              disabled={loading}
+            >
+              {loading ? "Adding Shop" : "Add Shop"}
             </button>
           </div>
         </form>

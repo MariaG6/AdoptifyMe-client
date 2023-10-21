@@ -1,9 +1,10 @@
 import { ArrowCircleRight, DotsNine } from "@phosphor-icons/react";
 import React, { useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
+import { useAuthContext } from "../context/Auth.Context";
 
 function Navbar() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const { isLoggedIn } = useAuthContext();
 
   const [open, setOpen] = useState(false);
   const navigator = useNavigate();

@@ -22,7 +22,7 @@ function AllShopsPage() {
                 })}
           </div>
 
-          {allShops?.length === 0 && (
+          {allShops?.length === 0 && !loading && (
             <div className="flex justify-center flex-col items-center pb-12">
               <SmileySad size={80} />
               <h1>Shops Unavailable at the moment!</h1>

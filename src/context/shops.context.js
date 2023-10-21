@@ -12,6 +12,9 @@ const ShopsProviderWrapper = ({ children }) => {
 
   function handleError(error) {
     setLoading(false);
+
+    console.log(error);
+
     const { response } = error;
     setError(response?.message);
   }
@@ -23,6 +26,38 @@ const ShopsProviderWrapper = ({ children }) => {
       setAllShops(response.data);
       setLoading(false);
       setError(null);
+    } catch (error) {
+      handleError(error);
+    }
+  };
+
+  const addNewShop = async (shopData) => {
+    try {
+      setLoading(true);
+      const response = await apiConnect.createShop(shopData);
+
+      console.log(response);
+
+      setMessage(response.data.message);
+      setLoading(false);
+      setError(null);
+
+      fetchAllShops();
+    } catch (error) {
+      handleError(error);
+    }
+  };
+
+  const addPetToShop = async (newPetData, shopID) => {
+    try {
+      setLoading(true);
+      const response = await apiConnect.addPetToShop(newPetData, shopID);
+
+      setMessage(response.data.data.message);
+      setLoading(false);
+      setError(null);
+
+      fetchAllShops();
     } catch (error) {
       handleError(error);
     }
@@ -84,6 +119,8 @@ const ShopsProviderWrapper = ({ children }) => {
     getShopById,
     deleteShopById,
     updateShopById,
+    addNewShop,
+    addPetToShop,
   };
 
   return (

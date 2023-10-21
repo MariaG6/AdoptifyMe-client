@@ -88,10 +88,18 @@ class Api {
     return this.api.post(`/pets/${id}/adopt`, formData);
   }
 
-    // ============ Shop Routes ===============
-    createShop(newShopData) {
-      return this.api.post("/shops/new", newShopData);
-    }
+  createShop(newShopData) {
+    return this.api.post("/shops/new", newShopData, {
+      headers: { "Content-Type": "multipart/form-data" },
+    });
+  }
+
+  addPetToShop(newPetData, shopID) {
+    return this.api.post(`/shops/${shopID}/pets/new`, newPetData, {
+      headers: { "Content-Type": "multipart/form-data" },
+    });
+  }
+  // ============ Shop Routes ===============
 }
 
 export const apiConnect = new Api();

@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import { PawPrint } from "@phosphor-icons/react/dist/ssr";
-import { usePetsContext } from "../context/pets.context.js";
+import { usePetsContext } from "../../context/pets.context.js";
 
 function Questionnaire() {
   const navigate = useNavigate();
-  const { createQuestionnaire } = usePetsContext();
+  const { createQuestionnaire, message, loading } = usePetsContext();
   const { id } = useParams();
 
   const [formData, setformData] = useState({
@@ -35,8 +35,8 @@ function Questionnaire() {
       Swal.fire({
         icon: "warning",
         title: "IMPORTANT - BEFORE BEGINNING",
-        html: "<p class='text-justify'>STERILIZATION is a fundamental requirement for adoption. The animal will be delivered sterilized, but if, for health reasons, at a young age, or for other reasons, it has not been done at the time of delivery, the adopting person must have it done within two months after adoption, if it is an adult, and when recommended by the veterinarian if it is a puppy. AdoptifyMe will be informed at all times about this circumstance and may request immediate sterilization from the new owner when the precise time comes.AdoptifyMe will provide the animal dewormed, with the appropriate vaccinations, sterilized, with an identifying microchip and a passport, whenever possible according to the age and health status of the animal. The possible payment of the costs of these interventions will be agreed upon between AdoptifyMe and the adopting person. Interventions not performed at the time of the animal's adoption due to its age or health must be performed later, always in the collaborating clinics indicated by AdoptifyMe. Diagnostic tests not performed by AdoptifyMeand any actions taken after the animal is adopted will be the responsibility of the adopter. These actions can be performed in collaborating clinics with AdoptifyMe but always at the expense of the adopter. AdoptifyMe is never a commercial transaction. AdoptifyMe does not benefit from any financial contribution from the adopter, which is simply a collaboration to help with the medical expenses of the animal. At no time does AdoptifyMe cover the costs of collecting, feeding, staying in a residence or shelter, transportation, or any other expenses related to the animal.Continue with the questionnaire only if you agree to these conditions.</p>",
-        width: "80%",
+        html: "<p class='text-justify text-sm'>STERILIZATION is a fundamental requirement for adoption. The animal will be delivered sterilized, but if, for health reasons, at a young age, or for other reasons, it has not been done at the time of delivery, the adopting person must have it done within two months after adoption, if it is an adult, and when recommended by the veterinarian if it is a puppy. AdoptifyMe will be informed at all times about this circumstance and may request immediate sterilization from the new owner when the precise time comes.AdoptifyMe will provide the animal dewormed, with the appropriate vaccinations, sterilized, with an identifying microchip and a passport, whenever possible according to the age and health status of the animal. The possible payment of the costs of these interventions will be agreed upon between AdoptifyMe and the adopting person. Interventions not performed at the time of the animal's adoption due to its age or health must be performed later, always in the collaborating clinics indicated by AdoptifyMe. Diagnostic tests not performed by AdoptifyMeand any actions taken after the animal is adopted will be the responsibility of the adopter. These actions can be performed in collaborating clinics with AdoptifyMe but always at the expense of the adopter. AdoptifyMe is never a commercial transaction. AdoptifyMe does not benefit from any financial contribution from the adopter, which is simply a collaboration to help with the medical expenses of the animal. At no time does AdoptifyMe cover the costs of collecting, feeding, staying in a residence or shelter, transportation, or any other expenses related to the animal.Continue with the questionnaire only if you agree to these conditions.</p>",
+        width: "50%",
       });
     };
     showRequirimentsAlert();
@@ -56,8 +56,10 @@ function Questionnaire() {
     }).then((result) => {
       if (result.isConfirmed) {
         // Create questionnaire and save data
-        Swal.fire("Saved!", "", "success");
-        createQuestionnaire(id, formData);
+        createQuestionnaire(id, formData).then(() => {
+          Swal.fire("Saved!", message, "success");
+        });
+
         navigate(`/pets/${id}/adopt`);
       } else if (result.isDenied) {
         Swal.fire("Changes are not saved", "", "info");
@@ -116,6 +118,7 @@ function Questionnaire() {
                 value={formData.designatedArea}
                 className="w-full border-2 border-gray-100 rounded-xl mt-1 bg-transparent"
               >
+                <option value="">Choose response</option>
                 <option value="all the house">All the house</option>
                 <option value="part of it">Part of it</option>
                 <option value="It's not clear yet">It's not clear yet</option>
@@ -157,6 +160,7 @@ function Questionnaire() {
                 value={formData.whereStaysWhenNotHome}
                 className="w-full border-2 border-gray-100 rounded-xl mt-1 bg-transparent"
               >
+                <option value="">Choose response</option>
                 <option value="outside the house">Outside the house</option>
                 <option value="all the house">All the house</option>
                 <option value="part of it">Part of it</option>
@@ -203,6 +207,7 @@ function Questionnaire() {
                 value={formData.childrenCharacteristics}
                 className="w-full border-2 border-gray-100 rounded-xl mt-1 bg-transparent"
               >
+                <option value="">Choose response</option>
                 <option value="I dont have">I dont have children</option>
                 <option value="calm">Calm</option>
                 <option value="energetic">Energetic</option>
@@ -322,6 +327,7 @@ function Questionnaire() {
                 value={formData.suitableFood}
                 className="w-full border-2 border-gray-100 rounded-xl mt-1 bg-transparent"
               >
+                <option value="">Choose response</option>
                 <option value="leftovers">Leftovers</option>
                 <option value="bread">Bread</option>
                 <option value="dry food">Dry food</option>
@@ -460,8 +466,11 @@ function Questionnaire() {
             ></textarea>
           </section>
           <div className="mt-4 lex justify-center items-center">
-            <button className="bg-orange-400 text-white p-5 rounded-xl text-sm shadow-xl shadow-orange-400/25">
-              SUBMIT
+            <button
+              className="bg-orange-400 text-white p-5 rounded-xl text-sm shadow-xl shadow-orange-400/25"
+              disabled={loading}
+            >
+              {loading ? "SUBMITTING" : "SUBMIT"}
             </button>
           </div>
         </form>

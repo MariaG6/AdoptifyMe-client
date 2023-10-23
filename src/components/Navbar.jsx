@@ -4,7 +4,7 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useAuthContext } from "../context/Auth.Context";
 
 function Navbar() {
-  const { isLoggedIn } = useAuthContext();
+  const { isLoggedIn, user } = useAuthContext();
 
   const [open, setOpen] = useState(false);
   const navigator = useNavigate();
@@ -103,7 +103,16 @@ function Navbar() {
           )}
 
           {isLoggedIn && (
-            <div className="bg-AMblue/30 p-2 rounded-full">OF</div>
+            <button
+              className="bg-AMblue/30 p-2 rounded-full"
+              onClick={() => {
+                navigator("/user/details");
+              }}
+            >
+              {`${user.fullName.split(" ")[0][0]}${
+                user.fullName.split(" ")[1][0]
+              }`}
+            </button>
           )}
         </div>
 

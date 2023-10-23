@@ -24,9 +24,7 @@ function Loginform() {
     } else {
       if (errorMessage) {
         toast.error(errorMessage, { position: "top-center" });
-      } else {
-        alert("Something went wrong!");
-      }
+      } 
     }
   };
 

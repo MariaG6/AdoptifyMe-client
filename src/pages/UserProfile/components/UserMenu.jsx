@@ -9,8 +9,7 @@ import { House } from "@phosphor-icons/react/dist/ssr";
 import React, { useState } from "react";
 import UserDetails from "./UserDetails";
 import ShopDetails from "./ShopDetails";
-import { Link } from "react-router-dom";
-
+import { NavLink } from "react-router-dom";
 
 function UserMenu() {
   // Handle display components
@@ -40,56 +39,59 @@ function UserMenu() {
   const isAdmin = true;
 
   return (
-    <div className="w-48 bg-gray-200 p-4 flex flex-col justify-between">
+    <div className="w-48 bg-gray-200 p-4 flex flex-col z-10">
       <section className="mb-4">
         <h3 className="text-lg text-gray-700">Account</h3>
-        <div className="my-2">
-          <Link to='/' className="flex items-center text-sm text-gray-400">
+        {/* <div className="my-2">
+          <NavLink to="/" className="flex items-center text-sm text-gray-400">
             <House size={25} color="gray" />
             <p className="ml-2">Homepage</p>
-          </Link>
-        </div>
+          </NavLink>
+        </div> */}
 
         <div className="my-2">
-          <a href="" className="flex items-center text-sm text-gray-400">
+          <NavLink
+            to={"/user/details"}
+            className="flex items-center text-sm text-gray-400"
+          >
             <UserList size={25} color="gray" />
             <p className="ml-2">User Details</p>
-          </a>
+          </NavLink>
         </div>
 
         {isAdmin ? (
           <div className="my-2">
-            <Link to="/" className="flex items-center text-sm text-gray-400">
+            <NavLink to="/" className="flex items-center text-sm text-gray-400">
               <PawPrint size={25} color="gray" />
               <p className="ml-2">All Pets</p>
-            </Link>
+            </NavLink>
           </div>
         ) : (
           <div className="my-2">
-            <Link to="/" className="flex items-center text-sm text-gray-400">
+            <NavLink to="/" className="flex items-center text-sm text-gray-400">
               <PawPrint size={25} color="gray" />
               <p className="ml-2">My Pets</p>
-            </Link>
+            </NavLink>
           </div>
         )}
 
         {isAdmin ? (
           <div className="my-2">
-            <Link to="/" className="flex items-center text-sm text-gray-400">
+            <NavLink to="/" className="flex items-center text-sm text-gray-400">
               <Storefront size={25} color="gray" />
               <p className="ml-2">All Shops</p>
-            </Link>
+            </NavLink>
           </div>
         ) : (
           <div className="my-2">
-            <Link
-              to='/shops/details'
+            <NavLink
+              to="/shops/details"
               onClick={openShopDetails}
               className="flex items-center text-sm text-gray-400"
             >
               <Storefront size={25} color="gray" />
               <p className="ml-2">My Shops</p>
-            </Link>
+            </NavLink>
           </div>
         )}
       </section>
@@ -98,22 +100,22 @@ function UserMenu() {
         <section className="mb-4">
           <h3 className="text-lg text-gray-700">Admin Controls</h3>
           <div className="my-2">
-            <Link to="/" className="flex items-center text-sm text-gray-400">
+            <NavLink to="/" className="flex items-center text-sm text-gray-400">
               <Users size={25} color="gray" />
               <p className="ml-2">Users</p>
-            </Link>
+            </NavLink>
           </div>
           <div className="my-2">
-            <Link to="/" className="flex items-center text-sm text-gray-400">
+            <NavLink to="/" className="flex items-center text-sm text-gray-400">
               <Storefront size={25} color="gray" />
               <p className="ml-2">Shops</p>
-            </Link>
+            </NavLink>
           </div>
           <div className="my-2">
-            <Link to="/" className="flex items-center text-sm text-gray-400">
+            <NavLink to="/" className="flex items-center text-sm text-gray-400">
               <PawPrint size={25} color="gray" />
               <p className="ml-2">Pets</p>
-            </Link>
+            </NavLink>
           </div>
         </section>
       )}

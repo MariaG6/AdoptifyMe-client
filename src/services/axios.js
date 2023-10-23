@@ -85,6 +85,7 @@ class Api {
   }
   // ============ Questionnaire Routes ===============
   createQuestionnarie(id, formData) {
+    console.log(formData);
     return this.api.post(`/pets/${id}/adopt`, formData);
   }
 

@@ -83,23 +83,24 @@ const PetsProviderWrapper = ({ children }) => {
   };
 
   // Create a shop
-    const createShop = async (shopFormData) => {
-      try {
-        setLoading(true);
-        await apiConnect.createShop(shopFormData);
-        setLoading(false);
-        setError(null);
-      } catch (error) {
-        handleError(error);
-      }
-    };
+  const createShop = async (shopFormData) => {
+    try {
+      setLoading(true);
+      await apiConnect.createShop(shopFormData);
+      setLoading(false);
+      setError(null);
+    } catch (error) {
+      handleError(error);
+    }
+  };
 
   // Create questionaire
   const createQuestionnaire = async (id, formData) => {
     try {
       setLoading(true);
       const response = await apiConnect.createQuestionnarie(id, formData);
-      setMessage(response.data);
+      setMessage(response.data.message);
+      setLoading(false);
     } catch (error) {
       handleError(error);
     }

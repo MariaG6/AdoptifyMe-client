@@ -76,6 +76,10 @@ class Api {
     return this.api.get(`/shops/${id}`);
   }
 
+  getShopByUser(userId) {
+    return this.api.get(`/shops/${userId}`);
+  }
+
   deleteShop(id) {
     return this.api.delete(`/shops/${id}`);
   }

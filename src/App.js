@@ -16,7 +16,8 @@ import ShopForm from "./pages/ShopPages/ShopForm";
 import IsPrivate from "./components/IsPrivate";
 import UserProfile from "./pages/UserProfile/UserProfile";
 import UserDetails from "./pages/UserProfile/components/UserDetails";
-import ShopDetails from "./pages/UserProfile/components/ShopDetails";
+import MyShops from "./pages/UserProfile/components/MyShops";
+import MyPets from "./pages/UserProfile/components/MyPets";
 
 function App() {
   return (
@@ -69,15 +70,17 @@ function App() {
         <Route path="/login" element={<Loginform />} />
         <Route path="/pets/:id/adopt" element={<Questionnaire />} />
         <Route path="/shops/new" element={<ShopForm />} />
-        <Route path="/user" element={<UserProfile />} />
-        <Route path="/user/details" element={<UserDetails />} />
-        <Route path="/shops/details" element={<ShopDetails />} />
+
+        <Route path="/user" element={<UserProfile />}>
+          <Route path="details" element={<UserDetails />} />
+          <Route path="mypets" element={<MyPets />} />
+          <Route path="shops" element={<MyShops />} />
+        </Route>
 
         {/* This should be the error page, any routes that we have not declared will be routed here */}
         <Route path="*" element={<ErrorPage />} />
       </Routes>
-
-      {/* end add routes */}
+      {/* end add routes */}s
     </div>
   );
 }

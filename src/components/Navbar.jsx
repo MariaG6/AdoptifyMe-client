@@ -103,7 +103,17 @@ function Navbar() {
           )}
 
           {isLoggedIn && (
-            <div className="bg-AMblue/30 p-2 rounded-full">OF</div>
+            <div>
+              <button
+                className="text-white text-sm bg-AMblue px-6 py-2 rounded-xl"
+                onClick={() => {
+                  navigator("/user");
+                }}
+              >
+                User Profile
+              </button>
+              <div className="bg-AMblue/30 p-2 rounded-full">OF</div>
+            </div>
           )}
         </div>
 

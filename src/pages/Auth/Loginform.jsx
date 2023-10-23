@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../context/Auth.Context";
 import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
 
 function Loginform() {
   const [email, setEmail] = useState("");
@@ -23,7 +24,7 @@ function Loginform() {
       navigate("/pets");
     } else {
       if (errorMessage) {
-        toast.error(errorMessage, { position: "top-center" });
+        // toast.error(errorMessage, { position: "top-center" });
       } else {
         alert("Something went wrong!");
       }
@@ -46,7 +47,6 @@ function Loginform() {
                 placeholder="Enter your email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                required
               />
             </div>
             <div>
@@ -115,20 +115,26 @@ function Loginform() {
 
             <div className="mt-8 flex justify-center items-center">
               <p className="font-medium text-base">Don't have an account?</p>
+              <Link to='/signup'>
               <button className=" text-AMblue text-base font-medium ml-2">
                 Sign up
               </button>
+              </Link>
             </div>
           </form>
         </div>
       </div>
 
-      <div className="hidden lg:flex h-full items-center justify-center w-1/2">
-        <img
-          src="https://unsplash.com/photos/XATEEfeN7C4/download?ixid=M3wxMjA3fDB8MXxhbGx8fHx8fHx8fHwxNjk2OTU3NTA0fA&force=true&w=2400"
-          alt="Puppy-img"
-        />
-      </div>
+      <div className="hidden lg:flex h-full items-center justify-center w-1/2 overflow-hidden">
+  <img
+    src="https://unsplash.com/photos/XATEEfeN7C4/download?ixid=M3wxMjA3fDB8MXxhbGx8fHx8fHx8fHwxNjk3OTYzODQzfA&force=true&w=640"
+    alt="Puppy-img"
+    style={{
+
+    }}
+  />
+</div>
+
     </div>
   );
 }

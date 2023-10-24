@@ -169,9 +169,9 @@ function Signupform() {
         </div>
       </div>
 
-      <div className="hidden lg:flex h-full items-center justify-center w-1/2">
+      <div className="hidden lg:flex h-full items-center justify-center w-1/2 overflow-hidden">
         <img
-          src="https://unsplash.com/photos/XATEEfeN7C4/download?ixid=M3wxMjA3fDB8MXxhbGx8fHx8fHx8fHwxNjk2OTU3NTA0fA&force=true&w=2400"
+          src="https://unsplash.com/photos/XATEEfeN7C4/download?ixid=M3wxMjA3fDB8MXxhbGx8fHx8fHx8fHwxNjk3OTYzODQzfA&force=true&w=640"
           alt="Puppy-img"
         />
       </div>

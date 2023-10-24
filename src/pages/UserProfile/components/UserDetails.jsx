@@ -5,7 +5,7 @@ function UserDetails() {
   const user = useAuthContext();
 
   return (
-    <div className="fixed flex items-center justify-center">
+    <div className="items-center justify-center flex w-max mr-20 flex-1">
       <div className="p-4 w-1/2 rounded-lg">
         <h2 className="text-2xl mb-4 text-AMblue">User Details</h2>
         <div className="flex items-center mb-2">
@@ -32,7 +32,7 @@ function UserDetails() {
           {/* {user.adoptedPets.length > 0 ? (
             <ul>
               {user.adoptedPets.map((pet) => (
-                <li key={pet._id}>{pet.name}</li>
+                <li key={pet.id}>{pet.name}</li>
               ))}
             </ul>
           ) : (
@@ -44,7 +44,7 @@ function UserDetails() {
           {/* {user.reportedPets.length > 0 ? (
             <ul>
               {user.reportedPets.map((pet) => (
-                <li key={pet._id}>{pet.name}</li>
+                <li key={pet.id}>{pet.name}</li>
               ))}
             </ul>
           ) : (

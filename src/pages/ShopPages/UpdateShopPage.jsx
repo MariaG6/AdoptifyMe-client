@@ -32,7 +32,6 @@ function UpdateShopForm() {
         uploadData.append("shopName", shopName);
         uploadData.append("website", webSite);
         uploadData.append("shopLogo", shopLogo || shopDetails?.shopLogo);
-
         updateShopById(shopId, uploadData).then(() => {
           if (error) {
             toast.error(error, { position: "top-center" });

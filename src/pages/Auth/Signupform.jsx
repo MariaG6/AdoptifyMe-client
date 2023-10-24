@@ -135,7 +135,7 @@ function Signupform() {
                 {isLoading ? "Signing up" : "Sign up"}
               </button>
               <button
-                disabled={isLoading}
+                disabled
                 className="flex items-center justify-center gap-2 active:scale-[.98] active:duration-75 hover:scale-[1.01]  ease-in-out transform py-4  rounded-xl text-gray-700 font-semibold text-lg border-2 border-gray-100 "
               >
                 <svg

@@ -21,6 +21,7 @@ import Users from "./pages/UserProfile/components/admin/Users";
 import IsAdmin from "./components/IsAdmin";
 import MyShops from "./pages/UserProfile/components/MyShops";
 import MyPets from "./pages/UserProfile/components/MyPets";
+import UpdateShopForm from "./pages/ShopPages/UpdateShopPage";
 
 function App() {
   return (
@@ -59,6 +60,7 @@ function App() {
           }
         />
         <Route path="/shops/:id" element={<ShopDetailsPage />} />
+        <Route path="/shops/:shopId/update" element={<UpdateShopForm />} />
         {/* 
         1. profile => shops, pets, update profile details
         2. admin manage pages

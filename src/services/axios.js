@@ -87,7 +87,9 @@ class Api {
   }
 
   updateShop(id, updateData) {
-    return this.api.put(`/shops/${id}`, updateData);
+    return this.api.put(`/shops/${id}`, updateData, {
+      headers: { "Content-Type": "multipart/form-data" },
+    });
   }
   // ============ Questionnaire Routes ===============
   createQuestionnarie(id, formData) {

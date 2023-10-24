@@ -2,16 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Dela+Gothic+One&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Dela+Gothic+One&display=swap"); */
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz@6..12&family=Orbitron&family=Poppins&family=Quintessential&display=swap");
 
 * {
-  font-family: "BIZ UDPGothic", sans-serif;
-  font-family: "Dela Gothic One", cursive;
+  /* font-family: "BIZ UDPGothic", sans-serif;
+  font-family: "Dela Gothic One", cursive; */
+
+  font-family: 'Poppins', sans-serif;
 }
 
-
 .active {
-  color: #0080FF !important;
+  color: #0080ff !important;
 }
 
 .page-bg {
@@ -27,7 +29,5 @@
 .zi-10 {
   z-index: 100 !important;
 }
-
-
 
 /* border-2 border-blue-500 p-2 rounded shadow-md */

@@ -5,12 +5,14 @@ import { usePetsContext } from "../../context/pets.context";
 import PetCardShimmer from "../../components/PetCardShimmer";
 import PetCard from "../../components/PetCard";
 import { v4 as uuidv4 } from "uuid";
+import { useAuthContext } from "../../context/Auth.Context";
 
 function PetDetailsPage() {
   const { id } = useParams();
   const navigator = useNavigate();
 
   const { petDetails, loading, getPetById, allPets } = usePetsContext();
+  const { isLoggedIn } = useAuthContext();
 
   useEffect(() => {
     getPetById(id);
@@ -91,14 +93,25 @@ function PetDetailsPage() {
                 className="rounded-full w-56 h-56 object-cover"
               />
 
-              <button
-                onClick={() => {
-                  navigator(`/pets/${petDetails._id}/adopt`);
-                }}
-                className="mt-4 p-4 bg-orange-400 text-white rounded-xl shadow-xl shadow-orange-400/20"
-              >
-                I want to Adopt
-              </button>
+              {isLoggedIn ? (
+                <button
+                  onClick={() => {
+                    navigator(`/pets/${petDetails._id}/adopt`);
+                  }}
+                  className="mt-4 p-4 bg-orange-400 text-white rounded-xl shadow-xl shadow-orange-400/20"
+                >
+                  I want to Adopt
+                </button>
+              ) : (
+                <button
+                  onClick={() => {
+                    navigator(`/login`);
+                  }}
+                  className="mt-4 p-4 bg-orange-400 text-white rounded-xl shadow-xl shadow-orange-400/20"
+                >
+                  Login to Adopt
+                </button>
+              )}
             </div>
           </div>
 

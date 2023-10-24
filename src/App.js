@@ -7,7 +7,6 @@ import AllPetsPage from "./pages/PetsPage/AllPetsPage";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
 import Signupform from "./pages/Auth/Signupform";
 import Loginform from "./pages/Auth/Loginform";
-import Questionnaire from "./components/Questionnaire";
 import AllShopsPage from "./pages/ShopPages/AllShopsPage";
 import ShopDetailsPage from "./pages/ShopPages/ShopDetailsPage";
 import { Toaster } from "react-hot-toast";
@@ -17,6 +16,10 @@ import IsPrivate from "./components/IsPrivate";
 import UserProfile from "./pages/UserProfile/UserProfile";
 import UserDetails from "./pages/UserProfile/components/UserDetails";
 import ShopDetails from "./pages/UserProfile/components/ShopDetails";
+import Questionnaire from "./pages/PetsPage/Questionnaire";
+import IsAnon from "./components/IsAnon";
+import Users from "./pages/UserProfile/components/admin/Users";
+import IsAdmin from "./components/IsAdmin";
 
 function App() {
   return (
@@ -55,23 +58,71 @@ function App() {
           }
         />
         <Route path="/shops/:id" element={<ShopDetailsPage />} />
-
-        <Route path="/signup" element={<Signupform />} />
-        <Route path="/login" element={<Loginform />} />
-
         {/* 
         1. profile => shops, pets, update profile details
         2. admin manage pages
         3. 
-        
         */}
-        <Route path="/signup" element={<Signupform />} />
-        <Route path="/login" element={<Loginform />} />
-        <Route path="/pets/:id/adopt" element={<Questionnaire />} />
-        <Route path="/shops/new" element={<ShopForm />} />
-        <Route path="/user" element={<UserProfile />} />
-        <Route path="/user/details" element={<UserDetails />} />
-        <Route path="/shops/details" element={<ShopDetails />} />
+
+        <Route
+          path="/signup"
+          element={
+            <IsAnon>
+              <Signupform />
+            </IsAnon>
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <IsAnon>
+              <Loginform />
+            </IsAnon>
+          }
+        />
+
+        <Route
+          path="/user/details"
+          element={
+            <IsPrivate>
+              <UserProfile>
+                <UserDetails />
+              </UserProfile>
+            </IsPrivate>
+          }
+        />
+
+        <Route
+          path="/admin/users"
+          element={
+            <IsPrivate>
+              <UserProfile>
+                <IsAdmin>
+                  <Users />
+                </IsAdmin>
+              </UserProfile>
+            </IsPrivate>
+          }
+        />
+
+        {/* <Route
+          path="/user/details"
+          element={
+            <IsPrivate>
+              <UserDetails>
+                <p>hello</p>
+              </UserDetails>
+            </IsPrivate>
+          }
+        /> */}
+        <Route
+          path="/shops/details"
+          element={
+            <IsPrivate>
+              <ShopDetails />
+            </IsPrivate>
+          }
+        />
 
         {/* This should be the error page, any routes that we have not declared will be routed here */}
         <Route path="*" element={<ErrorPage />} />

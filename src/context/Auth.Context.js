@@ -49,35 +49,41 @@ function AuthProviderWrapper(props) {
       setIsLoggedIn(false);
       setIsLoading(false);
       setUser(null);
-      setErrorMessage("Please login!");
+      setErrorMessage(null);
     }
   };
 
-  function login(email, password) {
+  async function login(email, password) {
+    setIsLoading(true);
     apiConnect
       .login({ email, password })
-      .then((response) => {
+      .then(async (response) => {
         storeToken(response.data.authToken);
         authenticateUser();
       })
       .catch((error) => {
         const { response } = error;
-        console.log(response.data);
         setErrorMessage(response.data.errorMessage);
+        setIsLoading(true);
       });
   }
 
-  function signup(newUser) {
+  async function signup(newUser) {
+    setIsLoading(true);
+    setErrorMessage("");
+
     apiConnect
       .createUser(newUser)
-      .then((res) => {
-        const { email, password } = newUser;
-        login(email, password);
+      .then(async (res) => {
+        const email = newUser.get("email");
+        const password = newUser.get("password");
+        await login(email, password);
       })
       .catch((error) => {
         const { response } = error;
         console.log(response.data);
-        setErrorMessage(response.data.errorMessage);
+        setErrorMessage(response.data?.message);
+        setIsLoading(false);
       });
   }
 

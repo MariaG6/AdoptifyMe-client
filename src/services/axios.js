@@ -39,7 +39,9 @@ class Api {
   }
 
   createUser(newUser) {
-    return this.api.post("/auth/signup", newUser);
+    return this.api.post("/auth/signup", newUser, {
+      headers: { "Content-Type": "multipart/form-data" },
+    });
   }
 
   // ============ Pets Routes ===============
@@ -85,6 +87,7 @@ class Api {
   }
   // ============ Questionnaire Routes ===============
   createQuestionnarie(id, formData) {
+    console.log(formData);
     return this.api.post(`/pets/${id}/adopt`, formData);
   }
 

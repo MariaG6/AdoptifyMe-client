@@ -79,8 +79,8 @@ const ShopsProviderWrapper = ({ children }) => {
   const deleteShopById = async (id) => {
     try {
       setLoading(true);
-      await apiConnect.deleteShop(id);
-
+      const response = await apiConnect.deleteShop(id);
+      setMessage(response.data.message);
       // update all pets by fetching it
       await fetchAllShops();
       setLoading(false);
@@ -94,7 +94,7 @@ const ShopsProviderWrapper = ({ children }) => {
     try {
       setLoading(true);
       const response = await apiConnect.updateShop(id, updatedData);
-      setMessage(response.data);
+      setMessage(response.data?.message);
       // Update the pet in the state
       await fetchAllShops();
       setLoading(false);

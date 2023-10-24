@@ -2,6 +2,9 @@ import { PencilLine, Trash } from "@phosphor-icons/react";
 import React from "react";
 import { useAuthContext } from "../../../context/Auth.Context";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import toast from "react-hot-toast";
+import { useShopsContext } from "../../../context/shops.context";
 
 const ShopBanner = ({ shopName, website, shopLogo, owner, _id }) => {
   const bannerStyle = {
@@ -14,6 +17,39 @@ const ShopBanner = ({ shopName, website, shopLogo, owner, _id }) => {
   const navigator = useNavigate();
 
   const { user } = useAuthContext();
+  const { error, message, deleteShopById } = useShopsContext();
+
+  const showSubmitAlert = () => {
+    Swal.fire({
+      title: "Delete Shop?",
+      text: "Do you want to delete this shop?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes",
+      cancelButtonText: "No",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteShopById(_id).then(() => {
+          if (error) {
+            toast.error(error, { position: "top-center" });
+          } else {
+            toast.success(message, { position: "top-center" });
+            navigator(`/shops`);
+          }
+        });
+
+        // Swal.fire("Shop created!", "Your shop has been created.", "success");
+      } else if (result.isDenied) {
+        Swal.fire("Changes are not saved", "", "info");
+        navigator(`/shops`);
+      }
+    });
+  };
+
+  const handleDelete = async (e) => {
+    e.preventDefault();
+    showSubmitAlert();
+  };
 
   return (
     <div className="relative h-[70vh]">
@@ -49,7 +85,11 @@ const ShopBanner = ({ shopName, website, shopLogo, owner, _id }) => {
             >
               <PencilLine size={20} /> Edit Shop Details
             </button>
-            <button className="bg-red-400 text-white px-3 py-3 flex items-center gap-2 rounded-xl">
+
+            <button
+              className="bg-red-400 text-white px-3 py-3 flex items-center gap-2 rounded-xl"
+              onClick={handleDelete}
+            >
               <Trash size={20} /> Delete This Shop
             </button>
           </div>

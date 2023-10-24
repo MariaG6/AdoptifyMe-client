@@ -87,7 +87,7 @@ class Api {
   }
 
   updateShop(id, updateData) {
-    return this.api.put(`/shops/${id}`, updateData, {
+    return this.api.patch(`/shops/${id}`, updateData, {
       headers: { "Content-Type": "multipart/form-data" },
     });
   }

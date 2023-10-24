@@ -15,7 +15,7 @@ function UpdateShopForm() {
 
   const [shopName, setShopName] = useState("");
   const [webSite, setWebSite] = useState(shopDetails?.website);
-  const [shopLogo, setShopLogo] = useState("");
+  const [shopLogo, setShopLogo] = useState(null);
 
   const showSubmitAlert = () => {
     Swal.fire({
@@ -31,14 +31,14 @@ function UpdateShopForm() {
 
         uploadData.append("shopName", shopName);
         uploadData.append("website", webSite);
-        uploadData.append("shopLogo", shopLogo || shopDetails?.shopLogo);
+        uploadData.append("shopLogo", shopLogo ?? shopDetails?.shopLogo);
 
         updateShopById(shopId, uploadData).then(() => {
           if (error) {
             toast.error(error, { position: "top-center" });
           } else {
             toast.success(message, { position: "top-center" });
-            navigate(`/shops`);
+            navigate(`/shops/${shopId}`);
           }
         });
 

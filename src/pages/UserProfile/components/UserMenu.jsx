@@ -7,12 +7,13 @@ import {
 } from "@phosphor-icons/react";
 import { House } from "@phosphor-icons/react/dist/ssr";
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../../context/Auth.Context";
 
 function UserMenu() {
   const { logOutUser, user } = useAuthContext();
-  const { isAdmin } = user;
+  const { isAdmin } = user || {};
+  const navigator = useNavigate()
 
   return (
     <div className="w-48 bg-gray-200 h-screen p-4 flex flex-col">
@@ -94,7 +95,11 @@ function UserMenu() {
         <div className="bottom-0 absolute">
           <button
             className="flex items-center text-sm text-gray-700"
-            onClick={logOutUser}
+            onClick={() => {
+              logOutUser();
+
+              navigator("/", { replace: true });
+            }}
           >
             <SignOut size={25} />
             <p className="ml-2">Logout</p>

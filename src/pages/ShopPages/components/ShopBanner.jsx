@@ -1,3 +1,4 @@
+import { DeviceTablet, PencilLine, Trash } from "@phosphor-icons/react";
 import React from "react";
 
 const ShopBanner = ({ shopName, website, shopLogo }) => {
@@ -31,6 +32,15 @@ const ShopBanner = ({ shopName, website, shopLogo }) => {
             {website}
           </a>
         </p>
+
+        <div className="gap-6 flex">
+          <button className="bg-green-400 text-white px-4 py-3 flex items-center gap-2 rounded-xl">
+            <PencilLine size={20} /> Edit Shop Details
+          </button>
+          <button className="bg-red-400 text-white px-3 py-3 flex items-center gap-2 rounded-xl">
+            <Trash size={20} /> Delete This Shop
+          </button>
+        </div>
       </div>
     </div>
   );

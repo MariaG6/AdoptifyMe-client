@@ -111,7 +111,14 @@ function App() {
         <Route path="/pets/:id/adopt" element={<Questionnaire />} />
         <Route path="/shops/new" element={<ShopForm />} />
 
-        <Route path="/user" element={<UserProfile />}>
+        <Route
+          path="/user"
+          element={
+            <IsPrivate>
+              <UserProfile />
+            </IsPrivate>
+          }
+        >
           <Route path="details" element={<UserDetails />} />
           <Route path="mypets" element={<MyPets />} />
           <Route path="shops" element={<MyShops />} />

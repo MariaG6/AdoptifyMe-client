@@ -2,14 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Dela+Gothic+One&display=swap");
-/* @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz@6..12&family=Orbitron&family=Poppins&family=Quintessential&display=swap"); */
+/* @import url("https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Dela+Gothic+One&display=swap"); */
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz@6..12&family=Orbitron&family=Poppins&family=Quintessential&display=swap");
 
 * {
-  font-family: "BIZ UDPGothic", sans-serif;
-  font-family: "Dela Gothic One", cursive;
+  /* font-family: "BIZ UDPGothic", sans-serif;
+  font-family: "Dela Gothic One", cursive; */
 
-  /* font-family: 'Poppins', sans-serif; */
+  font-family: 'Poppins', sans-serif;
 }
 
 .active {

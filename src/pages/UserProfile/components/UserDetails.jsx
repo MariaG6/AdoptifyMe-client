@@ -5,7 +5,7 @@ function UserDetails() {
   const user = useAuthContext();
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center">
+    <div className="fixed flex items-center justify-center">
       <div className="p-4 w-1/2 rounded-lg">
         <h2 className="text-2xl mb-4 text-AMblue">User Details</h2>
         <div className="flex items-center mb-2">

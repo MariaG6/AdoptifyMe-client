@@ -17,6 +17,9 @@ import UserProfile from "./pages/UserProfile/UserProfile";
 import UserDetails from "./pages/UserProfile/components/UserDetails";
 import ShopDetails from "./pages/UserProfile/components/ShopDetails";
 import Questionnaire from "./pages/PetsPage/Questionnaire";
+import IsAnon from "./components/IsAnon";
+import Users from "./pages/UserProfile/components/admin/Users";
+import IsAdmin from "./components/IsAdmin";
 
 function App() {
   return (
@@ -61,8 +64,22 @@ function App() {
         3. 
         */}
 
-        <Route path="/signup" element={<Signupform />} />
-        <Route path="/login" element={<Loginform />} />
+        <Route
+          path="/signup"
+          element={
+            <IsAnon>
+              <Signupform />
+            </IsAnon>
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <IsAnon>
+              <Loginform />
+            </IsAnon>
+          }
+        />
 
         <Route
           path="/user/details"
@@ -75,8 +92,18 @@ function App() {
           }
         />
 
-
-        
+        <Route
+          path="/admin/users"
+          element={
+            <IsPrivate>
+              <UserProfile>
+                <IsAdmin>
+                  <Users />
+                </IsAdmin>
+              </UserProfile>
+            </IsPrivate>
+          }
+        />
 
         {/* <Route
           path="/user/details"

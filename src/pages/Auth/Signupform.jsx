@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../context/Auth.Context.js";
+import toast from "react-hot-toast";
 
 function Signupform() {
   const [fullName, setFullName] = useState("");
@@ -13,23 +14,23 @@ function Signupform() {
   const navigate = useNavigate();
 
   // ******** this method handles the file upload ********
-  const handleFileUpload = (e) => {
-    console.log("The file to be uploaded is: ", e.target.files[0]);
+  // const handleFileUpload = (e) => {
+  //   console.log("The file to be uploaded is: ", e.target.files[0]);
 
-    const uploadData = new FormData();
+  //   const uploadData = new FormData();
 
-    uploadData.append("profilePicture", e.target.files[0]);
+  //   uploadData.append("profilePicture", e.target.files[0]);
 
-    service
-      .uploadImage(uploadData)
-      .then((response) => {
-        console.log("response is: ", response);
-        setProfilePicture(response.fileUrl);
-      })
-      .catch((err) => console.log("Error while uploading the file: ", err));
+  //   service
+  //     .uploadImage(uploadData)
+  //     .then((response) => {
+  //       console.log("response is: ", response);
+  //       setProfilePicture(response.fileUrl);
+  //     })
+  //     .catch((err) => console.log("Error while uploading the file: ", err));
 
-    setProfilePicture(e.target.file);
-  };
+  //   setProfilePicture(e.target.file);
+  // };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -42,26 +43,11 @@ function Signupform() {
     uploadData.append("address", address);
     uploadData.append("phoneNumber", phoneNumber);
 
-    signup(uploadData);
-
-    if (user) {
-      // Reset the form
-      setFullName("");
-      setEmail("");
-      setPassword("");
-      setPhoneNumber("");
-      setAddress("");
-      setProfilePicture("");
-
-      navigate("/pets");
-    } else {
-      // TODO: Change the alert later
+    signup(uploadData).then(() => {
       if (errorMessage) {
-        alert(errorMessage);
-      } else {
-        alert("Something went wrong!");
+        toast.error(errorMessage, { position: "top-center" });
       }
-    }
+    });
   };
 
   return (
@@ -134,9 +120,8 @@ function Signupform() {
                 type="file"
                 className="w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent"
                 placeholder="Add profile picture"
-                value={profilePicture}
                 onChange={(e) => {
-                  handleFileUpload(e);
+                  setProfilePicture(e.target.files[0]);
                 }}
               />
             </div>

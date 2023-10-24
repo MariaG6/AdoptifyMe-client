@@ -7,24 +7,23 @@ function Loginform() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  const { login, isLoading, user, errorMessage } = useAuthContext();
+  const { login, isLoading, isLoggedIn, errorMessage } = useAuthContext();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     // logs user in
-    login(email, password);
-
-    if (user) {
+    await login(email, password);
+    
+    if (isLoggedIn) {
       // Reset the form
       setEmail("");
       setPassword("");
-
-      navigate("/pets");
+      navigate("/");
     } else {
       if (errorMessage) {
         toast.error(errorMessage, { position: "top-center" });
-      } 
+      }
     }
   };
 
@@ -113,7 +112,12 @@ function Loginform() {
 
             <div className="mt-8 flex justify-center items-center">
               <p className="font-medium text-base">Don't have an account?</p>
-              <button className=" text-AMblue text-base font-medium ml-2">
+              <button
+                className=" text-AMblue text-base font-medium ml-2"
+                onClick={() => {
+                  navigate("/signup");
+                }}
+              >
                 Sign up
               </button>
             </div>

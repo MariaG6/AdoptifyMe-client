@@ -26,7 +26,7 @@ function Navbar() {
   }, []);
 
   return (
-    <header className="w-full h-auto bg-transparent overflow-x-hidden fixed z-50 top-0 left-0">
+    <header className="w-full h-auto bg-transparent overflow-x-hidden fixed z-30 top-0 left-0">
       <nav
         className={`w-full lg:h-16 md:h-16 h-16 ${
           navBarColor

@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ShopCard from "../../components/ShopCard";
 import PetCardShimmer from "../../components/PetCardShimmer";
 import { SmileySad } from "@phosphor-icons/react";
 import { useShopsContext } from "../../context/shops.context";
 
 function AllShopsPage() {
-  const { allShops, loading } = useShopsContext();
+  const { allShops, loading, fetchAllShops } = useShopsContext();
+
+  useEffect(() => {
+    fetchAllShops();
+  }, []);
 
   return (
     <div className="w-full pb-12">

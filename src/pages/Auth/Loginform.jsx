@@ -29,10 +29,10 @@ function Loginform() {
   };
 
   return (
-    <div className="flex w-full h-screen">
-      <div className="w-full lg:w-1/2 flex items-center justify-center relative">
-        <div className="bg-white px-10 py-20 rounded-3xl border-2 border-gray-100">
-          <h1 className="text-5xl font-semibold">Welcome back!</h1>
+    <div className="flex w-full ">
+      <div className="w-full lg:w-1/2 flex items-center justify-center bg-white">
+        <div className="px-10 pt-16 pb-4">
+          <h1 className="text-3xl font-semibold">Welcome back!</h1>
           <p className="font-medium text-lg text-gray-500 mt-4">
             Please enter your details
           </p>
@@ -106,7 +106,7 @@ function Loginform() {
                     fill="#FBBC05"
                   />
                 </svg>
-                {isLoading ? "Logging in with Google" : "Login with Google"}
+                Login with Google
               </button>
             </div>
 
@@ -125,11 +125,11 @@ function Loginform() {
         </div>
       </div>
 
-      <div className="hidden lg:flex h-full items-center justify-center w-1/2 overflow-hidden">
+      <div className="hidden lg:flex items-center justify-center h-[100vh] w-1/2 overflow-hidden">
         <img
           src="https://unsplash.com/photos/XATEEfeN7C4/download?ixid=M3wxMjA3fDB8MXxhbGx8fHx8fHx8fHwxNjk3OTYzODQzfA&force=true&w=640"
           alt="Puppy-img"
-          style={{}}
+          className="h-max"
         />
       </div>
     </div>

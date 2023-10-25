@@ -44,6 +44,13 @@ class Api {
     });
   }
 
+  // =========== User Routes=============
+  getUserById(id) {
+    return this.api.get(`/users/${id}`);
+  }
+
+  // ========================================
+
   // ============ Pets Routes ===============
   getAllPets() {
     return this.api.get("/pets/allPets");

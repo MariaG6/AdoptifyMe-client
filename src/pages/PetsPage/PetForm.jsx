@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { usePetsContext } from "../../context/pets.context";
 import Swal from "sweetalert2";
 import { PawPrint } from "@phosphor-icons/react/dist/ssr";
@@ -78,6 +78,10 @@ function PetForm() {
     // Reset the form
     setPetFormData("");
   };
+
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, []);
 
   return (
     <div className="w-full flex items-center justify-center pt-24 pb-12">

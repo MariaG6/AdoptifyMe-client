@@ -13,13 +13,13 @@ import { useAuthContext } from "../../../context/Auth.Context";
 function UserMenu() {
   const { logOutUser, user } = useAuthContext();
   const { isAdmin } = user || {};
-  const navigator = useNavigate()
+  const navigator = useNavigate();
 
   return (
-    <div className="w-48 bg-gray-200 h-screen p-4 flex flex-col">
+    <div className="w-52 h-max p-4 flex flex-col">
       <section className="mb-4">
         <h3 className="text-lg text-gray-700">Account</h3>
-        <div className="my-2">
+        {/* <div className="my-2">
           <NavLink
             exact
             to="/"
@@ -28,7 +28,7 @@ function UserMenu() {
             <House size={25} color="gray" />
             <p className="ml-2">Homepage</p>
           </NavLink>
-        </div>
+        </div> */}
 
         <div className="my-2">
           <NavLink

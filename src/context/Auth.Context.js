@@ -106,6 +106,34 @@ function AuthProviderWrapper(props) {
     authenticateUser();
   }
 
+  function getUserById(id) {
+    apiConnect
+      .getUserById(id)
+      .then((response) => {
+        // Check if response and response.data are defined
+        if (response && response.data) {
+          // If the server verifies that the JWT token is valid
+          const user = response.data;
+          // Update state variables
+          setIsLoggedIn(true);
+          setIsLoading(false);
+          setUser(user);
+          setErrorMessage(null);
+        } else {
+          console.log("Invalid response from the server");
+        }
+      })
+      .catch((error) => {
+        // If the server sends an error response (invalid token)
+        // Update state variables
+        const { response } = error;
+        setIsLoggedIn(false);
+        setIsLoading(false);
+        setUser(null);
+        setErrorMessage(response?.data?.error);
+      });
+  }
+
   useEffect(() => {
     authenticateUser();
   }, []);
@@ -123,6 +151,7 @@ function AuthProviderWrapper(props) {
         signup,
         errorMessage,
         handleProfilePicture,
+        getUserById,
       }}
     >
       {props.children}

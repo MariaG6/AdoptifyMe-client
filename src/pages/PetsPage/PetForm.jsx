@@ -11,11 +11,10 @@ function PetForm() {
 
   const { id } = useParams();
 
-  const { createPet } = usePetsContext();
   const { addPetToShop, loading, message, error } = useShopsContext();
 
   const [profilePicture, setProfilePicture] = useState("");
-  //   const [images,setImages] = useState('')
+  const [images, setImages] = useState([]);
 
   const [petFormData, setPetFormData] = useState({
     typeOfAnimal: "dog",
@@ -45,6 +44,7 @@ function PetForm() {
           petData.append(key, value);
         }
         petData.append("profilePicture", profilePicture);
+        petData.append("images", images);
 
         addPetToShop(petData, id).then(() => {
           if (error) {
@@ -56,7 +56,6 @@ function PetForm() {
         });
 
         // Swal.fire("Pet created!", "Your pet has been created.", "success");
-        navigate(`/pets/`);
       } else if (result.isDenied) {
         Swal.fire("Changes are not saved", "", "info");
         navigate(`/pets/`);
@@ -195,8 +194,9 @@ function PetForm() {
             <input
               type="file"
               name="profilePicture"
-              onChange={handleChange}
-              value={petFormData.profilePicture}
+              onChange={(e) => {
+                setProfilePicture(e.target.files[0]);
+              }}
               className="w-full border-2 border-gray-100 rounded-xl mt-1 bg-transparent"
             />
           </div>
@@ -207,8 +207,10 @@ function PetForm() {
             <input
               type="file"
               name="images"
-              onChange={handleChange}
-              value={petFormData.images}
+              multiple
+              onChange={(e) => {
+                setImages(e.target.files[0]);
+              }}
               className="w-full border-2 border-gray-100 rounded-xl mt-1 bg-transparent"
             />
           </div>

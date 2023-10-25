@@ -13,8 +13,9 @@ function UpdateShopForm() {
 
   const navigate = useNavigate();
 
-  const [shopName, setShopName] = useState("");
+  const [shopName, setShopName] = useState(shopDetails?.shopName);
   const [webSite, setWebSite] = useState(shopDetails?.website);
+  const [location, setLocation] = useState(shopDetails?.location);
   const [shopLogo, setShopLogo] = useState(null);
 
   const showSubmitAlert = () => {
@@ -31,6 +32,7 @@ function UpdateShopForm() {
 
         uploadData.append("shopName", shopName);
         uploadData.append("website", webSite);
+        uploadData.append("location", location);
         uploadData.append("shopLogo", shopLogo ?? shopDetails?.shopLogo);
 
         updateShopById(shopId, uploadData).then(() => {
@@ -102,6 +104,21 @@ function UpdateShopForm() {
               required
             />
           </div>
+
+          <div className="mt-4">
+            <label className="font-medium text-lg text-AMblue">
+              Shop Location:
+            </label>
+            <input
+              type="text"
+              name="location"
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+              className="w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent"
+              required
+            />
+          </div>
+
           <div className="mt-4">
             <label className="font-medium text-lg text-AMblue">Website:</label>
             <input

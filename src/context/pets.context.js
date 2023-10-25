@@ -7,6 +7,7 @@ const PetsProviderWrapper = ({ children }) => {
   const [allPets, setAllPets] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [searchResults, setsearchResults] = useState([]);
   const [petDetails, setPetDetails] = useState(null);
   const [message, setMessage] = useState(null);
 
@@ -94,6 +95,19 @@ const PetsProviderWrapper = ({ children }) => {
     }
   };
 
+  // search pets
+  const searchPets = async (searchQuery) => {
+    try {
+      setLoading(true);
+      const response = await apiConnect.searchPets(searchQuery);
+      setsearchResults(response.data);
+      setLoading(false);
+      setError(null);
+    } catch (error) {
+      handleError(error);
+    }
+  };
+
   // Create questionaire
   const createQuestionnaire = async (id, formData) => {
     try {
@@ -117,6 +131,7 @@ const PetsProviderWrapper = ({ children }) => {
     loading,
     message,
     error,
+    searchResults,
     createPet,
     fetchAllPets,
     getPetById,
@@ -124,6 +139,7 @@ const PetsProviderWrapper = ({ children }) => {
     updatePetById,
     createQuestionnaire,
     createShop,
+    searchPets,
   };
 
   return (

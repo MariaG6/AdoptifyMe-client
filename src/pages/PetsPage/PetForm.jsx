@@ -29,12 +29,6 @@ function PetForm() {
     description: "",
   });
 
-  // Handle images
-  const handleFileUpload = (e) => {
-    const file = e.target.files[0];
-    setProfilePicture(file);
-  };
-
   const showSubmitAlert = () => {
     Swal.fire({
       title: "Submit",
@@ -87,8 +81,8 @@ function PetForm() {
   };
 
   return (
-    <div className="w-full flex items-center justify-center">
-      <div className="bg-white px-10 py-20 rounded-3xl border-2 border-gray-100">
+    <div className="w-full flex items-center justify-center pt-24 pb-12">
+      <div className="bg-white px-10 py-12 rounded-3xl border-2 border-gray-100">
         <div className="flex flex-col items-center justify-center text-center">
           <PawPrint size={40} className="text-AMblue mt-2" />
           <h1 className="text-orange-400 text-xl">

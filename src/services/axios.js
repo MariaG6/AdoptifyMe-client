@@ -69,7 +69,7 @@ class Api {
     return this.api.delete(`/pets/${id}`);
   }
 
-  // =========== shops routes =================
+  // =========== Shops routes =================
   getAllShops() {
     return this.api.get("/shops/allShops");
   }
@@ -108,7 +108,10 @@ class Api {
       headers: { "Content-Type": "multipart/form-data" },
     });
   }
-  // ============ Shop Routes ===============
+
+  searchPets(searchQuery) {
+    return this.api.get(`/pets/search`, { params: searchQuery });
+  }
 }
 
 export const apiConnect = new Api();

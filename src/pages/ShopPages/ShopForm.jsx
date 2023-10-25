@@ -9,9 +9,9 @@ import toast from "react-hot-toast";
 
 function ShopForm() {
   const navigate = useNavigate();
-  const { createShop } = usePetsContext();
   const [shopName, setShopName] = useState("");
   const [webSite, setWebSite] = useState("");
+  const [location, setLocation] = useState("")
   const [shopLogo, setShopLogo] = useState("");
 
   const { addNewShop, loading, message, error } = useShopsContext();
@@ -50,6 +50,7 @@ function ShopForm() {
         uploadData.append("shopName", shopName);
         uploadData.append("website", webSite);
         uploadData.append("shopLogo", shopLogo);
+        uploadData.append("location", location);
 
         addNewShop(uploadData).then(() => {
           if (error) {
@@ -81,8 +82,8 @@ function ShopForm() {
   };
 
   return (
-    <div className="w-full flex items-center justify-center h-screen pb-12 ">
-      <div className="bg-white px-10 py-20 rounded-3xl border-2 border-gray-100">
+    <div className="w-full flex items-center justify-center pt-24 pb-12 ">
+      <div className="bg-white px-10 py-8 rounded-3xl border-2 border-gray-100">
         <div className="flex flex-col items-center justify-center text-center">
           <Storefront size={40} className="text-AMblue mt-2" />
           <h1 className="text-orange-400 text-xl">Connect a new shop!</h1>
@@ -105,6 +106,21 @@ function ShopForm() {
               required
             />
           </div>
+
+          <div className="mt-4">
+            <label className="font-medium text-lg text-AMblue">
+              Shop Location:
+            </label>
+            <input
+              type="text"
+              name="location"
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+              className="w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent"
+              required
+            />
+          </div>
+
           <div className="mt-4">
             <label className="font-medium text-lg text-AMblue">Website:</label>
             <input

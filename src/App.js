@@ -22,6 +22,7 @@ import IsAdmin from "./components/IsAdmin";
 import MyShops from "./pages/UserProfile/components/MyShops";
 import MyPets from "./pages/UserProfile/components/MyPets";
 import UpdateShopForm from "./pages/ShopPages/UpdateShopPage";
+import SearchResults from "./pages/Homepage/SearchResults";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
       {/* Add routes here */}
       <Routes>
         <Route path="/" element={<Homepage />} />
+        <Route path="/search" element={<SearchResults />} />
         <Route path="/pets" element={<AllPetsPage />} />
         <Route path="/pets/:id" element={<PetDetailsPage />} />
 

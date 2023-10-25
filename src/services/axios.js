@@ -69,7 +69,7 @@ class Api {
     return this.api.delete(`/pets/${id}`);
   }
 
-  // =========== shops routes =================
+  // =========== Shops routes =================
   getAllShops() {
     return this.api.get("/shops/allShops");
   }
@@ -78,12 +78,18 @@ class Api {
     return this.api.get(`/shops/${id}`);
   }
 
+  getShopByUser(userId) {
+    return this.api.get(`/shops/${userId}`);
+  }
+
   deleteShop(id) {
     return this.api.delete(`/shops/${id}`);
   }
 
   updateShop(id, updateData) {
-    return this.api.put(`/shops/${id}`, updateData);
+    return this.api.put(`/shops/${id}`, updateData, {
+      headers: { "Content-Type": "multipart/form-data" },
+    });
   }
   // ============ Questionnaire Routes ===============
   createQuestionnarie(id, formData) {
@@ -102,7 +108,6 @@ class Api {
       headers: { "Content-Type": "multipart/form-data" },
     });
   }
-  // ============ Shop Routes ===============
 }
 
 export const apiConnect = new Api();

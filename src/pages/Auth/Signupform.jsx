@@ -10,8 +10,7 @@ function Signupform() {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [address, setAddress] = useState("");
   const [profilePicture, setProfilePicture] = useState("");
-  const { signup, user, errorMessage, isLoading } = useAuthContext();
-  const navigate = useNavigate();
+  const { signup, errorMessage, isLoading } = useAuthContext();
 
   // ******** this method handles the file upload ********
   // const handleFileUpload = (e) => {
@@ -32,16 +31,16 @@ function Signupform() {
   //   setProfilePicture(e.target.file);
   // };
 
+  const uploadData = new FormData();
+  uploadData.append("profilePicture", profilePicture);
+  uploadData.append("fullName", fullName);
+  uploadData.append("email", email);
+  uploadData.append("password", password);
+  uploadData.append("address", address);
+  uploadData.append("phoneNumber", phoneNumber);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    const uploadData = new FormData();
-    uploadData.append("profilePicture", profilePicture);
-    uploadData.append("fullName", fullName);
-    uploadData.append("email", email);
-    uploadData.append("password", password);
-    uploadData.append("address", address);
-    uploadData.append("phoneNumber", phoneNumber);
 
     signup(uploadData).then(() => {
       if (errorMessage) {
@@ -135,7 +134,7 @@ function Signupform() {
                 {isLoading ? "Signing up" : "Sign up"}
               </button>
               <button
-                disabled={isLoading}
+                disabled
                 className="flex items-center justify-center gap-2 active:scale-[.98] active:duration-75 hover:scale-[1.01]  ease-in-out transform py-4  rounded-xl text-gray-700 font-semibold text-lg border-2 border-gray-100 "
               >
                 <svg
@@ -169,9 +168,9 @@ function Signupform() {
         </div>
       </div>
 
-      <div className="hidden lg:flex h-full items-center justify-center w-1/2">
+      <div className="hidden lg:flex h-full items-center justify-center w-1/2 overflow-hidden">
         <img
-          src="https://unsplash.com/photos/XATEEfeN7C4/download?ixid=M3wxMjA3fDB8MXxhbGx8fHx8fHx8fHwxNjk2OTU3NTA0fA&force=true&w=2400"
+          src="https://unsplash.com/photos/XATEEfeN7C4/download?ixid=M3wxMjA3fDB8MXxhbGx8fHx8fHx8fHwxNjk3OTYzODQzfA&force=true&w=640"
           alt="Puppy-img"
         />
       </div>

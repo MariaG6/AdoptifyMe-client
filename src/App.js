@@ -15,11 +15,14 @@ import ShopForm from "./pages/ShopPages/ShopForm";
 import IsPrivate from "./components/IsPrivate";
 import UserProfile from "./pages/UserProfile/UserProfile";
 import UserDetails from "./pages/UserProfile/components/UserDetails";
-import ShopDetails from "./pages/UserProfile/components/ShopDetails";
 import Questionnaire from "./pages/PetsPage/Questionnaire";
 import IsAnon from "./components/IsAnon";
 import Users from "./pages/UserProfile/components/admin/Users";
 import IsAdmin from "./components/IsAdmin";
+import MyShops from "./pages/UserProfile/components/MyShops";
+import MyPets from "./pages/UserProfile/components/MyPets";
+import UpdateShopForm from "./pages/ShopPages/UpdateShopPage";
+import UpdatePetPage from "./pages/PetsPage/UpdatePetPage.jsx";
 
 function App() {
   return (
@@ -35,6 +38,14 @@ function App() {
         {/* should be authenticated */}
         {/* <Route path="/pets/add" element={<PetForm />} /> */}
         <Route path="/shops/:id/pets/new" element={<PetForm />} />
+        <Route
+          path="/pets/:id/update"
+          element={
+            <IsPrivate>
+              <UpdatePetPage />
+            </IsPrivate>
+          }
+        />
 
         {/* should be authenticated */}
         <Route
@@ -58,6 +69,7 @@ function App() {
           }
         />
         <Route path="/shops/:id" element={<ShopDetailsPage />} />
+        <Route path="/shops/:shopId/update" element={<UpdateShopForm />} />
         {/* 
         1. profile => shops, pets, update profile details
         2. admin manage pages
@@ -78,17 +90,6 @@ function App() {
             <IsAnon>
               <Loginform />
             </IsAnon>
-          }
-        />
-
-        <Route
-          path="/user/details"
-          element={
-            <IsPrivate>
-              <UserProfile>
-                <UserDetails />
-              </UserProfile>
-            </IsPrivate>
           }
         />
 
@@ -115,20 +116,29 @@ function App() {
             </IsPrivate>
           }
         /> */}
+
+        <Route path="/signup" element={<Signupform />} />
+        <Route path="/login" element={<Loginform />} />
+        <Route path="/pets/:id/adopt" element={<Questionnaire />} />
+        <Route path="/shops/new" element={<ShopForm />} />
+
         <Route
-          path="/shops/details"
+          path="/user"
           element={
             <IsPrivate>
-              <ShopDetails />
+              <UserProfile />
             </IsPrivate>
           }
-        />
+        >
+          <Route path="details" element={<UserDetails />} />
+          <Route path="mypets" element={<MyPets />} />
+          <Route path="shops" element={<MyShops />} />
+        </Route>
 
         {/* This should be the error page, any routes that we have not declared will be routed here */}
         <Route path="*" element={<ErrorPage />} />
       </Routes>
-
-      {/* end add routes */}
+      {/* end add routes */}s
     </div>
   );
 }

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../context/Auth.Context";
 import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
 
 function Loginform() {
   const [email, setEmail] = useState("");
@@ -14,7 +15,7 @@ function Loginform() {
 
     // logs user in
     await login(email, password);
-    
+
     if (isLoggedIn) {
       // Reset the form
       setEmail("");
@@ -43,7 +44,6 @@ function Loginform() {
                 placeholder="Enter your email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                required
               />
             </div>
             <div>
@@ -79,7 +79,7 @@ function Loginform() {
                 {isLoading ? "Logging in" : "Login"}
               </button>
               <button
-                disabled={isLoading}
+                disabled
                 className="flex items-center justify-center gap-2 active:scale-[.98] active:duration-75 hover:scale-[1.01]  ease-in-out transform py-3  rounded-xl text-gray-700 font-semibold text-lg border-2 border-gray-100 "
               >
                 <svg
@@ -125,10 +125,11 @@ function Loginform() {
         </div>
       </div>
 
-      <div className="hidden lg:flex h-full items-center justify-center w-1/2">
+      <div className="hidden lg:flex h-full items-center justify-center w-1/2 overflow-hidden">
         <img
-          src="https://unsplash.com/photos/XATEEfeN7C4/download?ixid=M3wxMjA3fDB8MXxhbGx8fHx8fHx8fHwxNjk2OTU3NTA0fA&force=true&w=2400"
+          src="https://unsplash.com/photos/XATEEfeN7C4/download?ixid=M3wxMjA3fDB8MXxhbGx8fHx8fHx8fHwxNjk3OTYzODQzfA&force=true&w=640"
           alt="Puppy-img"
+          style={{}}
         />
       </div>
     </div>

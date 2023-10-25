@@ -4,7 +4,7 @@ import ShopBanner from "./components/ShopBanner";
 import { useShopsContext } from "../../context/shops.context";
 import { useAuthContext } from "../../context/Auth.Context";
 import PetCardShimmer from "../../components/PetCardShimmer";
-import PetCard from "../../components/PetCard";
+import PetCardOwner from "../../components/PetCardOwner";
 
 function ShopDetailsPage() {
   const { getShopById, shopDetails, loading } = useShopsContext();
@@ -26,7 +26,7 @@ function ShopDetailsPage() {
         <div className="flex justify-between">
           <h3 className="text-lg font-bold">Pets available</h3>
 
-          {shopDetails?.owner.includes(user._id) && (
+          {/* {shopDetails?.owner.includes(user._id) && (
             <button
               className="flex items-center gap-4 bg-orange-400 p-2 text-sm text-white rounded"
               onClick={() => {
@@ -35,7 +35,7 @@ function ShopDetailsPage() {
             >
               Add New Pet
             </button>
-          )}
+          )} */}
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 mt-4 gap-4 px-4 py-4 bg-opacity-50 backdrop-blur-md">
@@ -44,7 +44,7 @@ function ShopDetailsPage() {
                 return <PetCardShimmer key={shimmerId} />;
               })
             : shopDetails?.pets.map((petData) => {
-                return <PetCard petData={petData} key={petData._id} />;
+                return <PetCardOwner petData={petData} key={petData._id} />;
               })}
         </div>
       </section>

@@ -58,8 +58,8 @@ const PetsProviderWrapper = ({ children }) => {
   const deletePetById = async (id) => {
     try {
       setLoading(true);
-      await apiConnect.deletePet(id);
-
+      const response = await apiConnect.deletePet(id);
+      setMessage(response.data?.message);
       // update all pets by fetching it
       await fetchAllPets();
       setLoading(false);

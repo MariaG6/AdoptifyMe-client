@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { usePetsContext } from "../../context/pets.context";
 import PetCardShimmer from "../../components/PetCardShimmer";
 import PetCard from "../../components/PetCard";
 
 function AllPetsPage() {
   const { loading, allPets } = usePetsContext();
+
+  useEffect(() => {
+window.scroll(0, 0)
+  }, [])
 
   return (
     <div className="w-full pb-12">

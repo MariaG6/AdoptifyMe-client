@@ -44,7 +44,7 @@ function ShopDetailsPage() {
                 return <PetCardShimmer key={shimmerId} />;
               })
             : shopDetails?.pets.map((petData) => {
-                return <PetCardOwner petData={petData} key={petData._id} />;
+                return <PetCardOwner petData={petData} shop={shopDetails} key={petData._id} />;
               })}
         </div>
       </section>

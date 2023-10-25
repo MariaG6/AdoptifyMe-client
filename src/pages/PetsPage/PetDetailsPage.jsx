@@ -16,6 +16,7 @@ function PetDetailsPage() {
 
   useEffect(() => {
     getPetById(id);
+    window.scroll(0, 0);
   }, [id]);
 
   return (

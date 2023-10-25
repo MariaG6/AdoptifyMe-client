@@ -87,7 +87,7 @@ class Api {
   }
 
   updateShop(id, updateData) {
-    return this.api.put(`/shops/${id}`, updateData, {
+    return this.api.patch(`/shops/${id}`, updateData, {
       headers: { "Content-Type": "multipart/form-data" },
     });
   }
@@ -107,6 +107,10 @@ class Api {
     return this.api.post(`/shops/${shopID}/pets/new`, newPetData, {
       headers: { "Content-Type": "multipart/form-data" },
     });
+  }
+
+  searchPets(searchQuery) {
+    return this.api.get(`/pets/search`, { params: searchQuery });
   }
 }
 

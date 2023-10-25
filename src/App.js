@@ -23,6 +23,7 @@ import MyShops from "./pages/UserProfile/components/MyShops";
 import MyPets from "./pages/UserProfile/components/MyPets";
 import UpdateShopForm from "./pages/ShopPages/UpdateShopPage";
 import UpdatePetPage from "./pages/PetsPage/UpdatePetPage.jsx";
+import SearchResults from "./pages/Homepage/SearchResults";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
       {/* Add routes here */}
       <Routes>
         <Route path="/" element={<Homepage />} />
+        <Route path="/search" element={<SearchResults />} />
         <Route path="/pets" element={<AllPetsPage />} />
         <Route path="/pets/:id" element={<PetDetailsPage />} />
 
@@ -138,7 +140,7 @@ function App() {
         {/* This should be the error page, any routes that we have not declared will be routed here */}
         <Route path="*" element={<ErrorPage />} />
       </Routes>
-      {/* end add routes */}s
+      {/* end add routes */}
     </div>
   );
 }

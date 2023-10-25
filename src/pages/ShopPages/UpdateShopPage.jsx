@@ -13,9 +13,10 @@ function UpdateShopForm() {
 
   const navigate = useNavigate();
 
-  const [shopName, setShopName] = useState("");
+  const [shopName, setShopName] = useState(shopDetails?.shopName);
   const [webSite, setWebSite] = useState(shopDetails?.website);
-  const [shopLogo, setShopLogo] = useState("");
+  const [location, setLocation] = useState(shopDetails?.location);
+  const [shopLogo, setShopLogo] = useState(null);
 
   const showSubmitAlert = () => {
     Swal.fire({
@@ -31,13 +32,15 @@ function UpdateShopForm() {
 
         uploadData.append("shopName", shopName);
         uploadData.append("website", webSite);
-        uploadData.append("shopLogo", shopLogo || shopDetails?.shopLogo);
+        uploadData.append("location", location);
+        uploadData.append("shopLogo", shopLogo ?? shopDetails?.shopLogo);
+
         updateShopById(shopId, uploadData).then(() => {
           if (error) {
             toast.error(error, { position: "top-center" });
           } else {
             toast.success(message, { position: "top-center" });
-            navigate(`/shops`);
+            navigate(`/shops/${shopId}`);
           }
         });
 
@@ -101,6 +104,21 @@ function UpdateShopForm() {
               required
             />
           </div>
+
+          <div className="mt-4">
+            <label className="font-medium text-lg text-AMblue">
+              Shop Location:
+            </label>
+            <input
+              type="text"
+              name="location"
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+              className="w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent"
+              required
+            />
+          </div>
+
           <div className="mt-4">
             <label className="font-medium text-lg text-AMblue">Website:</label>
             <input

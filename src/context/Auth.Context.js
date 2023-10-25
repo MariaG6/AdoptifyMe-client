@@ -27,13 +27,18 @@ function AuthProviderWrapper(props) {
       apiConnect
         .verify()
         .then((response) => {
-          // If the server verifies that the JWT token is valid
-          const user = response.data;
-          // Update state variables
-          setIsLoggedIn(true);
-          setIsLoading(false);
-          setUser(user);
-          setErrorMessage(null);
+          // Check if response and response.data are defined
+          if (response && response.data) {
+            // If the server verifies that the JWT token is valid
+            const user = response.data;
+            // Update state variables
+            setIsLoggedIn(true);
+            setIsLoading(false);
+            setUser(user);
+            setErrorMessage(null);
+          } else {
+            console.log("Invalid response from the server");
+          }
         })
         .catch((error) => {
           // If the server sends an error response (invalid token)
@@ -42,7 +47,7 @@ function AuthProviderWrapper(props) {
           setIsLoggedIn(false);
           setIsLoading(false);
           setUser(null);
-          setErrorMessage(response.data.error);
+          setErrorMessage(response?.data?.error);
         });
     } else {
       // If the token is not available (or is removed)
@@ -72,19 +77,24 @@ function AuthProviderWrapper(props) {
     setIsLoading(true);
     setErrorMessage("");
 
-    apiConnect
-      .createUser(newUser)
-      .then(async (res) => {
-        const email = newUser.get("email");
-        const password = newUser.get("password");
+    try {
+      const response = await apiConnect.createUser(newUser);
+
+      if (response && response.data) {
+        // Sucessfullly signed up
+        const email = response.data.get("email");
+        const password = response.data.get("password");
         await login(email, password);
-      })
-      .catch((error) => {
-        const { response } = error;
-        console.log(response.data);
-        setErrorMessage(response.data?.message);
-        setIsLoading(false);
-      });
+      } else {
+        // Handle the case where the response or response.data is undefined
+        setErrorMessage("Invalid response from the server");
+      }
+    } catch (error) {
+      const { response } = error;
+      console.log(error);
+      setErrorMessage(response?.data?.message);
+      setIsLoading(false);
+    }
   }
 
   function handleProfilePicture(file) {

@@ -4,7 +4,7 @@ import ShopBanner from "./components/ShopBanner";
 import { useShopsContext } from "../../context/shops.context";
 import { useAuthContext } from "../../context/Auth.Context";
 import PetCardShimmer from "../../components/PetCardShimmer";
-import PetCard from "../../components/PetCard";
+import PetCardOwner from "../../components/PetCardOwner";
 
 function ShopDetailsPage() {
   const { getShopById, shopDetails, loading } = useShopsContext();
@@ -44,7 +44,7 @@ function ShopDetailsPage() {
                 return <PetCardShimmer key={shimmerId} />;
               })
             : shopDetails?.pets.map((petData) => {
-                return <PetCard petData={petData} key={petData._id} />;
+                return <PetCardOwner petData={petData} key={petData._id} />;
               })}
         </div>
       </section>

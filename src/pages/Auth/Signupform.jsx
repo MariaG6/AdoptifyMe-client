@@ -10,8 +10,7 @@ function Signupform() {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [address, setAddress] = useState("");
   const [profilePicture, setProfilePicture] = useState("");
-  const { signup, user, errorMessage, isLoading } = useAuthContext();
-  const navigate = useNavigate();
+  const { signup, errorMessage, isLoading } = useAuthContext();
 
   // ******** this method handles the file upload ********
   // const handleFileUpload = (e) => {
@@ -32,16 +31,16 @@ function Signupform() {
   //   setProfilePicture(e.target.file);
   // };
 
+  const uploadData = new FormData();
+  uploadData.append("profilePicture", profilePicture);
+  uploadData.append("fullName", fullName);
+  uploadData.append("email", email);
+  uploadData.append("password", password);
+  uploadData.append("address", address);
+  uploadData.append("phoneNumber", phoneNumber);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    const uploadData = new FormData();
-    uploadData.append("profilePicture", profilePicture);
-    uploadData.append("fullName", fullName);
-    uploadData.append("email", email);
-    uploadData.append("password", password);
-    uploadData.append("address", address);
-    uploadData.append("phoneNumber", phoneNumber);
 
     signup(uploadData).then(() => {
       if (errorMessage) {

@@ -22,6 +22,7 @@ import IsAdmin from "./components/IsAdmin";
 import MyShops from "./pages/UserProfile/components/MyShops";
 import MyPets from "./pages/UserProfile/components/MyPets";
 import UpdateShopForm from "./pages/ShopPages/UpdateShopPage";
+import UpdatePetPage from "./pages/PetsPage/UpdatePetPage.jsx";
 
 function App() {
   return (
@@ -37,6 +38,14 @@ function App() {
         {/* should be authenticated */}
         {/* <Route path="/pets/add" element={<PetForm />} /> */}
         <Route path="/shops/:id/pets/new" element={<PetForm />} />
+        <Route
+          path="/pets/:id/update"
+          element={
+            <IsPrivate>
+              <UpdatePetPage />
+            </IsPrivate>
+          }
+        />
 
         {/* should be authenticated */}
         <Route

@@ -1,18 +1,17 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { MapPin, PencilLine } from "@phosphor-icons/react";
 import { Link, useNavigate } from "react-router-dom";
 import { Fade } from "react-awesome-reveal";
 import { Trash } from "@phosphor-icons/react/dist/ssr";
-import { useAuthContext } from "../context/Auth.Context";
 import { usePetsContext } from "../context/pets.context";
 import Swal from "sweetalert2";
+import toast from "react-hot-toast";
 
 function PetCardOwner({ petData, owner, _id }) {
-  const navigate = useNavigate()
-  const user = useAuthContext()
-  const {deletePet} = usePetsContext()
+  const navigate = useNavigate();
+  const { deletePet, error, message } = usePetsContext();
 
-  const handleDeletePet = (petId) => {
+  const showDeleteAlert = () => {
     Swal.fire({
       title: "¿Are you sure?",
       text: "This action will remove the pet. This action can not be undone",
@@ -24,11 +23,26 @@ function PetCardOwner({ petData, owner, _id }) {
       cancelButtonText: "Cancel",
     }).then((result) => {
       if (result.isConfirmed) {
-          deletePet(petData._id);
+        deletePet(petData._id).then(() => {
+          if (error) {
+            toast.error(error, { position: "top-center" });
+          } else {
+            toast.success(message, { position: "top-center" });
+            navigate(`/pets`);
+          }
+        });
         Swal.fire("Deleted", "The pet has been removed", "success");
+      } else if (result.isDenied) {
+        Swal.fire("Changes are not saved", "", "info");
+        navigator(`/pets`);
       }
     });
-  }
+  };
+
+  const handleDelete = async (e) => {
+    e.preventDefault();
+    showDeleteAlert();
+  };
 
   return (
     <Link to={`/pets/${petData._id}`}>
@@ -42,7 +56,7 @@ function PetCardOwner({ petData, owner, _id }) {
                   <button
                     className="bg-transparent"
                     onClick={() => {
-                      navigate(`/pets/${petData._id}/`);
+                      navigate(`/pets/${petData._id}/update`);
                     }}
                   >
                     <PencilLine size={20} className="gray" />
@@ -56,7 +70,7 @@ function PetCardOwner({ petData, owner, _id }) {
                 />
 
                 <div className="m-2">
-                  <button className="bg-transparent" onClick={handleDeletePet(petData._id)}>
+                  <button className="bg-transparent" onClick={handleDelete()}>
                     <Trash size={20} className="gray" />
                   </button>
                 </div>

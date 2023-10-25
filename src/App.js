@@ -129,7 +129,7 @@ function App() {
         {/* This should be the error page, any routes that we have not declared will be routed here */}
         <Route path="*" element={<ErrorPage />} />
       </Routes>
-      {/* end add routes */}s
+      {/* end add routes */}
     </div>
   );
 }

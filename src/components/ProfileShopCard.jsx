@@ -14,12 +14,12 @@ function ProfileShopCard({ shopData }) {
       </div> */}
         <div></div>
         {/* image */}
-        <div className="h-[150px] overflow-hidden w-[30%]">
+        <div className="h-[150px] overflow-hidden w-[30%] flex items-center">
           <Fade>
             <img
               src={shopData.shopLogo}
               alt="shop logo"
-              className="object-cover object-center"
+              className="object-cover"
             />
           </Fade>
         </div>

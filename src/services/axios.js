@@ -89,6 +89,14 @@ class Api {
     return this.api.get(`/shops/user/${userId}`);
   }
 
+  getShopApplications(shopId) {
+    return this.api.get(`/shops/${shopId}/questionnaries`);
+  }
+
+  getApplicationById(shopId, queId) {
+    return this.api.get(`/shops/${shopId}/questionnaries/${queId}`);
+  }
+
   deleteShop(id) {
     return this.api.delete(`/shops/${id}`);
   }
@@ -100,7 +108,6 @@ class Api {
   }
   // ============ Questionnaire Routes ===============
   createQuestionnarie(id, formData) {
-    console.log(formData);
     return this.api.post(`/pets/${id}/adopt`, formData);
   }
 

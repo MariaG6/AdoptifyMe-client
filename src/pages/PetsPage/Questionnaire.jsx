@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import { PawPrint } from "@phosphor-icons/react/dist/ssr";
 import { usePetsContext } from "../../context/pets.context.js";
+import toast from "react-hot-toast";
 
 function Questionnaire() {
   const navigate = useNavigate();
@@ -57,7 +58,7 @@ function Questionnaire() {
       if (result.isConfirmed) {
         // Create questionnaire and save data
         createQuestionnaire(id, formData).then(() => {
-          Swal.fire("Saved!", message, "success");
+          toast.success(message, { position: "top-center" });
         });
 
         navigate(`/pets/${id}/adopt`);

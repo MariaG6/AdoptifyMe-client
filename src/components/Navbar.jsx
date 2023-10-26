@@ -48,7 +48,7 @@ function Navbar() {
               <NavLink
                 to={"/"}
                 className={
-                  "relative inline-block px-2 whitespace-nowrap text-black text-xs font-bold transition-all duration-200 hover:text-[#0080FF]"
+                  "relative inline-block px-2 whitespace-nowrap text-AMblue text-xs font-bold transition-all duration-200 hover:text-[#0080FF]"
                 }
               >
                 Home
@@ -59,7 +59,7 @@ function Navbar() {
               <NavLink
                 to={"/pets"}
                 className={
-                  "relative inline-block px-2 whitespace-nowrap text-black text-xs font-bold transition-all duration-200 hover:text-[#0080FF]"
+                  "relative inline-block px-2 whitespace-nowrap text-AMblue text-xs font-bold transition-all duration-200 hover:text-[#0080FF]"
                 }
               >
                 Adoptable Pets
@@ -70,7 +70,7 @@ function Navbar() {
               <NavLink
                 to={"/success-stories"}
                 className={
-                  "relative inline-block px-2 whitespace-nowrap text-black text-xs font-bold transition-all duration-200 hover:text-[#0080FF]"
+                  "relative inline-block px-2 whitespace-nowrap text-AMblue text-xs font-bold transition-all duration-200 hover:text-[#0080FF]"
                 }
               >
                 Success Stories
@@ -81,7 +81,7 @@ function Navbar() {
               <NavLink
                 to={"/shops"}
                 className={
-                  "relative inline-block px-2 whitespace-nowrap text-black text-xs font-bold transition-all duration-200 hover:text-[#0080FF]"
+                  "relative inline-block px-2 whitespace-nowrap text-AMblue text-xs font-bold transition-all duration-200 hover:text-[#0080FF]"
                 }
               >
                 Shops
@@ -170,7 +170,7 @@ function Navbar() {
                 <NavLink
                   to={"/"}
                   className={
-                    "relative inline-block px-2 whitespace-nowrap text-black text-xs font-bold transition-all duration-200 hover:text-[#0080FF]"
+                    "relative inline-block px-2 whitespace-nowrap text-AMblue text-xs font-bold transition-all duration-200 hover:text-[#0080FF]"
                   }
                 >
                   Home
@@ -181,7 +181,7 @@ function Navbar() {
                 <NavLink
                   to={"/pets"}
                   className={
-                    "relative inline-block px-2 whitespace-nowrap text-black text-xs font-bold transition-all duration-200 hover:text-[#0080FF]"
+                    "relative inline-block px-2 whitespace-nowrap text-AMblue text-xs font-bold transition-all duration-200 hover:text-[#0080FF]"
                   }
                 >
                   Adoptable Pets
@@ -192,7 +192,7 @@ function Navbar() {
                 <NavLink
                   to={"/shops"}
                   className={
-                    "relative inline-block px-2 whitespace-nowrap text-black text-xs font-bold transition-all duration-200 hover:text-[#0080FF]"
+                    "relative inline-block px-2 whitespace-nowrap text-AMblue text-xs font-bold transition-all duration-200 hover:text-[#0080FF]"
                   }
                 >
                   Shops
@@ -203,7 +203,7 @@ function Navbar() {
                 <NavLink
                   to={"/success-stories"}
                   className={
-                    "relative inline-block px-2 whitespace-nowrap text-black text-xs font-bold transition-all duration-200 hover:text-[#0080FF]"
+                    "relative inline-block px-2 whitespace-nowrap text-AMblue text-xs font-bold transition-all duration-200 hover:text-[#0080FF]"
                   }
                 >
                   Success Stories

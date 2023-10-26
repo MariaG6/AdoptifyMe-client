@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { usePetsContext } from "../../context/pets.context";
 import Swal from "sweetalert2";
 import { PawPrint } from "@phosphor-icons/react/dist/ssr";
@@ -25,12 +25,6 @@ function UpdatePetPage() {
     images: [],
     description: "",
   });
-
-  // Handle images
-  const handleFileUpload = (e) => {
-    const file = e.target.files[0];
-    setProfilePicture(file);
-  };
 
   const showSubmitAlert = () => {
     Swal.fire({
@@ -82,6 +76,10 @@ function UpdatePetPage() {
     // Reset the form
     setPetFormData("");
   };
+
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, []);
 
   return (
     <div className="w-full flex items-center justify-center pt-24 pb-12">

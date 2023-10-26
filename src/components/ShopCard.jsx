@@ -10,7 +10,7 @@ function ShopCard({ shopData }) {
         New
       </div> */}
         {/* image */}
-        <div className="h-[180px] overflow-hidden">
+        <div className="h-[180px] overflow-hidden flex items-center">
           <Fade>
             <img
               src={shopData.shopLogo}

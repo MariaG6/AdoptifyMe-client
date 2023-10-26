@@ -10,14 +10,16 @@ const ShopsProviderWrapper = ({ children }) => {
   const [error, setError] = useState(null);
   const [shopDetails, setShopDetails] = useState(null);
   const [userShops, setUserShops] = useState([]);
+  const [applications, setShopApplications] = useState([]);
   const [message, setMessage] = useState(null);
+  const [application, setApplication] = useState(null);
 
   function handleError(error) {
     setLoading(false);
     const { response } = error;
     // show toast messages
     toast.error(response.data.message);
-    setError(response.data?.message);
+    // setError(response.data?.message);
   }
 
   const fetchAllShops = async () => {
@@ -85,6 +87,7 @@ const ShopsProviderWrapper = ({ children }) => {
       setLoading(false);
       setError(null);
     } catch (error) {
+      setUserShops([]);
       handleError(error);
     }
   };
@@ -117,6 +120,31 @@ const ShopsProviderWrapper = ({ children }) => {
     }
   };
 
+  const getAdoptionApplications = async (id) => {
+    try {
+      setLoading(true);
+      const response = await apiConnect.getShopApplications(id);
+      setShopApplications(response.data);
+      setLoading(false);
+      setError(null);
+    } catch (error) {
+      handleError(error);
+    }
+  };
+
+  const getAdoptionApplicationById = async (shopId, queId) => {
+    try {
+      setLoading(true);
+      const response = await apiConnect.getApplicationById(shopId, queId);
+
+      setApplication(response.data);
+      setLoading(false);
+      setError(null);
+    } catch (error) {
+      handleError(error);
+    }
+  };
+
   useEffect(() => {
     fetchAllShops();
   }, []);
@@ -129,6 +157,8 @@ const ShopsProviderWrapper = ({ children }) => {
     message,
     userShops,
     error,
+    applications,
+    application,
     fetchAllShops,
     getShopById,
     deleteShopById,
@@ -136,6 +166,8 @@ const ShopsProviderWrapper = ({ children }) => {
     addNewShop,
     addPetToShop,
     getShopByUser,
+    getAdoptionApplications,
+    getAdoptionApplicationById,
   };
 
   return (

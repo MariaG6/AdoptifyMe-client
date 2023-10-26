@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useAuthContext } from "../../../context/Auth.Context";
 import { useShopsContext } from "../../../context/shops.context";
 import ProfileShopCard from "../../../components/ProfileShopCard";
+import { ArrowCircleRight } from "@phosphor-icons/react";
 
 function MyShop() {
   const { user } = useAuthContext();
@@ -16,7 +17,7 @@ function MyShop() {
 
   if (loading) {
     return (
-      <div className="text-xl mb-4 text-AMblue flex justify-center items-center h-full">
+      <div className="text-xl mb-4 text-AMblue flex justify-center items-center h-full bg-white">
         <p>Loading Your Shops </p>
       </div>
     );
@@ -42,13 +43,13 @@ function MyShop() {
     );
   } else {
     return (
-      <div className="items-center justify-center flex w-max mr-20 flex-1">
-        <div className="p-4 w-1/2 rounded-lg">
+      <div className="items-center justify-center flex flex-1 bg-white h-full">
+        <div className="p-4 rounded-lg flex flex-col items-center justify-center">
           <h2 className="text-2xl mb-4 text-AMblue">Shop Details</h2>
           <p>You currently have no shops.</p>
           <Link to="/shops/new">
-            <button className="mt-4 bg-blue-500 text-white py-2 px-4 rounded">
-              Connect your first shop
+            <button className="mt-4 bg-AMblue text-white py-2 px-4 rounded flex gap-4 items-center shadow-xl shadow-AMblue/25">
+              Connect your first shop <ArrowCircleRight />
             </button>
           </Link>
         </div>

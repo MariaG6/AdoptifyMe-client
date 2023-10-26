@@ -5,6 +5,7 @@ import UserDetails from "./components/UserDetails";
 import MyShops from "./components/MyShops";
 import MyPets from "./components/MyPets";
 import Adoptions from "./components/Adoptions";
+import ViewAdoptionApplication from "./components/ViewAdoptionApplication";
 
 function UserProfile() {
   return (
@@ -21,6 +22,10 @@ function UserProfile() {
               <Route path="mypets" element={<MyPets />} />
               <Route path="shops" element={<MyShops />} />
               <Route path="shops/:id/applications" element={<Adoptions />} />
+              <Route
+                path="shops/:shopId/applications/:queId"
+                element={<ViewAdoptionApplication />}
+              />
             </Routes>
           </div>
         </div>

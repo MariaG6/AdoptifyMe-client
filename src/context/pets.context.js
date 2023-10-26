@@ -113,7 +113,7 @@ const PetsProviderWrapper = ({ children }) => {
     try {
       setLoading(true);
       const response = await apiConnect.createQuestionnarie(id, formData);
-      setMessage(response.data.message);
+      setMessage(response.data?.message);
       setLoading(false);
     } catch (error) {
       handleError(error);

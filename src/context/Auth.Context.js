@@ -69,7 +69,7 @@ function AuthProviderWrapper(props) {
         authenticateUser();
       })
       .catch((error) => {
-        const { response } = error
+        const { response } = error;
         toast.error(response.data.message, { position: "top-center" });
         setErrorMessage(response.data.message);
         setIsLoading(false);
@@ -146,6 +146,17 @@ function AuthProviderWrapper(props) {
       setErrorMessage(null);
     } catch (error) {
       setErrorMessage(error);
+      
+  const updateProfile = async (id, updatedData) => {
+    try {
+      setIsLoading(true);
+      const response = await apiConnect.updateUserById(id, updatedData);
+      setMessage(response.data?.message);
+      setIsLoading(false);
+      setErrorMessage(null);
+    } catch (error) {
+      const { response } = error;
+      setErrorMessage(response?.data?.message);
     }
   };
 
@@ -167,7 +178,8 @@ function AuthProviderWrapper(props) {
         errorMessage,
         handleProfilePicture,
         getUserById,
-        getAllUsers
+        getAllUsers,
+        updateProfile,
       }}
     >
       {props.children}

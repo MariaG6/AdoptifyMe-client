@@ -14,7 +14,7 @@ const PetsProviderWrapper = ({ children }) => {
   function handleError(error) {
     setLoading(false);
     const { response } = error;
-    setError(response?.message);
+    setError(response.data?.message);
   }
 
   const fetchAllPets = async () => {
@@ -73,10 +73,10 @@ const PetsProviderWrapper = ({ children }) => {
     try {
       setLoading(true);
       const response = await apiConnect.updatePet(id, updatedData);
-      setMessage(response.data);
+      setMessage(response.data.message);
       // Update the pet in the state
-      await fetchAllPets();
       setLoading(false);
+      await fetchAllPets();
       setError(null);
     } catch (error) {
       handleError(error);
@@ -140,6 +140,7 @@ const PetsProviderWrapper = ({ children }) => {
     createQuestionnaire,
     createShop,
     searchPets,
+    setPetDetails,
   };
 
   return (

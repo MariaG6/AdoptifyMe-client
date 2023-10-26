@@ -18,7 +18,7 @@ function Adoptions() {
   if (loading) {
     return (
       <div className="text-xl mb-4 text-AMblue flex justify-center items-center h-full">
-        <p>Loading Your Shops </p>
+        <p>Loading Pet Applications</p>
       </div>
     );
   }
@@ -26,8 +26,9 @@ function Adoptions() {
   if (userShops.length > 0) {
     return (
       <div className="flex flex-col bg-white h-full p-4">
-        <h2 className="text-2xl mb-4 text-AMblue">Your shops</h2>
-        <div className="grid grid-cols-3 gap-4">
+        <h2 className="text-2xl text-AMblue">Adoption Applications</h2>
+        <hr />
+        <div className="grid grid-cols-3 gap-4 mt-4">
           {userShops.map((shop) => (
             <div key={shop._id} className="my-2">
               <ShopCard shopData={shop} key={shop._id} />

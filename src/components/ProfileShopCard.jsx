@@ -32,7 +32,7 @@ function ProfileShopCard({ shopData }) {
               <a
                 href={shopData.website}
                 target="_blank"
-                className="text-gray-400 flex items-center gap-1 text-xs"
+                className="text-gray-400 flex items-center gap-1 text-xs mt-[3px]"
               >
                 Visit Website <ArrowSquareIn size={16}/>
               </a>

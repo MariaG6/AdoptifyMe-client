@@ -25,8 +25,9 @@ function MyShop() {
   if (userShops.length > 0) {
     return (
       <div className="flex flex-col bg-white h-full p-4">
-        <h2 className="text-2xl mb-4 text-AMblue">Your shops</h2>
-        <div className="grid grid-cols-1 gap-4">
+        <h2 className="text-2xl text-AMblue">Your shops</h2>
+        <hr />
+        <div className="grid grid-cols-1 gap-4 mt-4">
           {userShops.map((shop) => (
             <div key={shop._id} className="my-2">
               <ProfileShopCard shopData={shop} key={shop._id} />

@@ -1,19 +1,43 @@
 import React, { useEffect, useState } from "react";
 import { useAuthContext } from "../../../context/Auth.Context";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 function UserDetails() {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [address, setAddress] = useState("");
-  const [profilePicture, setProfilePicture] = useState("");
-  const { errorMessage, isLoading, getUserById, user } = useAuthContext();
+  const [profilePicture, setProfilePicture] = useState(null);
+  const { errorMessage, isLoading, getUserById, user, updateProfile } =
+    useAuthContext();
+
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const uploadData = new FormData();
+    uploadData.append("fullName", fullName);
+    uploadData.append("email", email);
+    uploadData.append("phoneNumber", phoneNumber);
+    uploadData.append("address", address);
+
+    // You can add the profilePicture separately if needed
+    if (profilePicture) {
+      uploadData.append("profilePicture", profilePicture);
+    } else {
+      uploadData.append("profilePicture", user.profilePicture);
+    }
+
+    updateProfile(user._id, uploadData).then(() => {
+      if (errorMessage) {
+        toast.error(errorMessage, { position: "top-center" });
+      } else {
+        toast.success("User updated!", { position: "top-center" });
+        navigate(`/user/details`);
+      }
+    });
   };
 
   useEffect(() => {
@@ -67,6 +91,7 @@ function UserDetails() {
                 className="w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent"
                 placeholder="Email"
                 value={email}
+                disabled
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />

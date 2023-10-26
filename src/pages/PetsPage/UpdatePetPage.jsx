@@ -9,22 +9,20 @@ function UpdatePetPage() {
   const navigate = useNavigate();
 
   const { id } = useParams();
-  const { loading, message, error, updatePetById } = usePetsContext();
+  const {
+    loading,
+    message,
+    error,
+    updatePetById,
+    getPetById,
+    petDetails,
+    setPetDetails,
+  } = usePetsContext();
 
-  const [profilePicture, setProfilePicture] = useState("");
-  //   const [images,setImages] = useState('')
+  const [profilePicture, setProfilePicture] = useState(null);
+  const [images, setImages] = useState(null);
 
-  const [petFormData, setPetFormData] = useState({
-    typeOfAnimal: "dog",
-    breed: "Unknown",
-    age: "young",
-    size: "medium",
-    name: "",
-    gender: "Female",
-    dateOfBirth: "",
-    images: [],
-    description: "",
-  });
+  // const [petFormData, setPetFormData] = useState({});
 
   const showSubmitAlert = () => {
     Swal.fire({
@@ -38,10 +36,13 @@ function UpdatePetPage() {
       if (result.isConfirmed) {
         const petData = new FormData();
 
-        for (const [key, value] of Object.entries(petFormData)) {
-          petData.append(key, value);
+        for (const [key, value] of Object.entries(petDetails)) {
+          if (key !== "profilePicture" || key !== "images") {
+            petData.append(key, value);
+          }
         }
-        petData.append("profilePicture", profilePicture);
+        profilePicture && petData.append("profilePicture", profilePicture);
+        images !== null && petData.append("images", images);
 
         updatePetById(id, petData).then(() => {
           if (error) {
@@ -51,9 +52,6 @@ function UpdatePetPage() {
             navigate(`/pets/${id}`);
           }
         });
-
-        // Swal.fire("Pet created!", "Your pet has been created.", "success");
-        navigate(`/pets/`);
       } else if (result.isDenied) {
         Swal.fire("Changes are not saved", "", "info");
         navigate(`/pets/`);
@@ -64,8 +62,8 @@ function UpdatePetPage() {
   // Function to handle and save form information
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setPetFormData({
-      ...petFormData,
+    setPetDetails({
+      ...petDetails,
       [name]: value,
     });
   };
@@ -74,12 +72,13 @@ function UpdatePetPage() {
     showSubmitAlert();
 
     // Reset the form
-    setPetFormData("");
+    setPetDetails("");
   };
 
   useEffect(() => {
     window.scroll(0, 0);
-  }, []);
+    getPetById(id);
+  }, [id]);
 
   return (
     <div className="w-full flex items-center justify-center pt-24 pb-12">
@@ -100,7 +99,7 @@ function UpdatePetPage() {
               type="text"
               name="name"
               onChange={handleChange}
-              value={petFormData.name}
+              value={petDetails?.name || ""}
             />
           </div>
 
@@ -112,7 +111,7 @@ function UpdatePetPage() {
               className="w-full border-2 border-gray-100 rounded-xl mt-1 bg-transparent"
               name="typeOfAnimal"
               onChange={handleChange}
-              value={petFormData.typeOfAnimal}
+              value={petDetails?.typeOfAnimal || ""}
             >
               <option value="dog">Dog</option>
               <option value="cat">Cat</option>
@@ -126,7 +125,7 @@ function UpdatePetPage() {
               type="text"
               name="breed"
               onChange={handleChange}
-              value={petFormData.breed}
+              value={petDetails?.breed || ""}
             />
           </div>
 
@@ -135,7 +134,7 @@ function UpdatePetPage() {
             <select
               name="age"
               onChange={handleChange}
-              value={petFormData.age}
+              value={petDetails?.age || ""}
               className="w-full border-2 border-gray-100 rounded-xl mt-1 bg-transparent"
             >
               <option value="young">Young</option>
@@ -149,7 +148,7 @@ function UpdatePetPage() {
             <select
               name="size"
               onChange={handleChange}
-              value={petFormData.size}
+              value={petDetails?.size || ""}
               className="w-full border-2 border-gray-100 rounded-xl mt-1 bg-transparent"
             >
               <option value="very small">Very Small</option>
@@ -165,7 +164,7 @@ function UpdatePetPage() {
             <select
               name="gender"
               onChange={handleChange}
-              value={petFormData.gender}
+              value={petDetails?.gender || ""}
               className="w-full border-2 border-gray-100 rounded-xl mt-1 bg-transparent"
             >
               <option value="female">Female</option>
@@ -176,26 +175,14 @@ function UpdatePetPage() {
 
           <div className="mt-4">
             <label className="font-medium text-lg text-AMblue">
-              Do you know date of birth?
-            </label>
-            <input
-              type="date"
-              name="dateOfBirth"
-              onChange={handleChange}
-              value={petFormData.dateOfBirth}
-              className="w-full border-2 border-gray-100 rounded-xl mt-1 bg-transparent"
-            />
-          </div>
-
-          <div className="mt-4">
-            <label className="font-medium text-lg text-AMblue">
               Profile Picture:
             </label>
             <input
               type="file"
               name="profilePicture"
-              onChange={handleChange}
-              value={petFormData.profilePicture}
+              onChange={(e) => {
+                setProfilePicture(e.target.files[0]);
+              }}
               className="w-full border-2 border-gray-100 rounded-xl mt-1 bg-transparent"
             />
           </div>
@@ -206,8 +193,10 @@ function UpdatePetPage() {
             <input
               type="file"
               name="images"
-              onChange={handleChange}
-              value={petFormData.images}
+              multiple
+              onChange={(e) => {
+                setImages(e.target.files);
+              }}
               className="w-full border-2 border-gray-100 rounded-xl mt-1 bg-transparent"
             />
           </div>
@@ -218,7 +207,7 @@ function UpdatePetPage() {
             <textarea
               name="description"
               onChange={handleChange}
-              value={petFormData.description}
+              value={petDetails?.description || ""}
               className="w-full border-2 border-gray-100 rounded-xl mt-1 bg-transparent"
             />
           </div>
@@ -234,7 +223,7 @@ function UpdatePetPage() {
                 const value = e.target.checked;
                 handleChange({ target: { name: "isReported", value } });
               }}
-              checked={petFormData.isReported}
+              checked={petDetails?.isReported || false}
               className="ml-3"
             />
           </div>
@@ -244,7 +233,7 @@ function UpdatePetPage() {
               className="bg-orange-400 text-white p-5 rounded-xl text-sm shadow-xl shadow-orange-400/25"
               disabled={loading}
             >
-              {loading ? "Adding new pet" : "Add new pet"}
+              {loading ? "Updating Pet Details" : "Update Pet Details"}
             </button>
           </div>
         </form>

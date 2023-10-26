@@ -24,7 +24,7 @@ function ViewAdoptionApplication() {
     );
   } else {
     return (
-      <div className="flex flex-col bg-white h-full p-4">
+      <div className="flex flex-col h-full p-4">
         <div className="flex justify-between items-center mb-2">
           <h2 className="text-2xl text-AMblue">Application</h2>
 

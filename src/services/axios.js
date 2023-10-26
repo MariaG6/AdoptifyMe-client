@@ -49,6 +49,12 @@ class Api {
     return this.api.get(`/users/${id}`);
   }
 
+  updateUserById(id, updateData) {
+    return this.api.patch(`/users/${id}`, updateData, {
+      headers: { "Content-Type": "multipart/form-data" },
+    });
+  }
+
   // ========================================
 
   // ============ Pets Routes ===============
@@ -65,7 +71,9 @@ class Api {
   }
 
   updatePet(id, updateData) {
-    return this.api.put(`/pets/${id}`, updateData);
+    return this.api.patch(`/pets/${id}`, updateData, {
+      headers: { "Content-Type": "multipart/form-data" },
+    });
   }
 
   adoptPet(id, applicationData) {

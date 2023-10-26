@@ -24,7 +24,7 @@ function QuestionnaireCard({ questionnaireData }) {
                     1) What area of the home will be designated for the animal?
                   </p>
                   <p className="text-base text-blue-950 w-1/2">
-                    {questionnaireData.designatedArea}
+                    {questionnaireData?.designatedArea}
                   </p>
                 </div>
                 <div className="mt-1 flex">
@@ -34,7 +34,7 @@ function QuestionnaireCard({ questionnaireData }) {
                     do they agree to it?
                   </p>
                   <p className="text-base text-blue-950 w-1/2">
-                    {questionnaireData.landlordAware}
+                    {questionnaireData?.landlordAware}
                   </p>
                 </div>
                 <div className="mt-1 flex">
@@ -42,7 +42,7 @@ function QuestionnaireCard({ questionnaireData }) {
                     3) Where will it stay when you are not at home?
                   </p>
                   <p className="text-base text-blue-950 w-1/2">
-                    {questionnaireData.whereStaysWhenNotHome}
+                    {questionnaireData?.whereStaysWhenNotHome}
                   </p>
                 </div>
               </section>
@@ -56,7 +56,7 @@ function QuestionnaireCard({ questionnaireData }) {
                     agree to the decision to adopt?
                   </p>
                   <p className="text-base text-blue-950 w-1/2">
-                    {questionnaireData.familyInfo}
+                    {questionnaireData?.familyInfo}
                   </p>
                 </div>
                 <div className="mt-1 flex">
@@ -65,7 +65,7 @@ function QuestionnaireCard({ questionnaireData }) {
                     characteristics. What are your children like?
                   </p>
                   <p className="text-base text-blue-950 w-1/2">
-                    {questionnaireData.childrenCharacteristics}
+                    {questionnaireData?.childrenCharacteristics}
                   </p>
                 </div>
                 <div className="mt-1 flex">
@@ -75,7 +75,7 @@ function QuestionnaireCard({ questionnaireData }) {
                     care, as well as any unexpected expenses?
                   </p>
                   <p className="text-base text-blue-950 w-1/2">
-                    {questionnaireData.annualExpenses}
+                    {questionnaireData?.annualExpenses}
                   </p>
                 </div>
               </section>
@@ -88,7 +88,7 @@ function QuestionnaireCard({ questionnaireData }) {
                     7) Are you currently employed?
                   </p>
                   <p className="text-base text-blue-950 w-1/2">
-                    {questionnaireData.employed}
+                    {questionnaireData?.employed}
                   </p>
                 </div>
                 <div className="mt-1 flex">
@@ -97,7 +97,7 @@ function QuestionnaireCard({ questionnaireData }) {
                     you will be away for a weekend?
                   </p>
                   <p className="text-base text-blue-950 w-1/2">
-                    {questionnaireData.vacationPlans}
+                    {questionnaireData?.vacationPlans}
                   </p>
                 </div>
                 <div className="mt-1 flex">
@@ -105,7 +105,7 @@ function QuestionnaireCard({ questionnaireData }) {
                     9) How much time will the animal spend alone at home?
                   </p>
                   <p className="text-base text-blue-950 w-1/2">
-                    {questionnaireData.timeAloneAtHome}
+                    {questionnaireData?.timeAloneAtHome}
                   </p>
                 </div>
               </section>
@@ -121,7 +121,7 @@ function QuestionnaireCard({ questionnaireData }) {
                     animal?
                   </p>
                   <p className="text-base text-blue-950 w-1/2">
-                    {questionnaireData.expenses}
+                    {questionnaireData?.expenses}
                   </p>
                 </div>
                 <div className="mt-1 flex">
@@ -130,7 +130,7 @@ function QuestionnaireCard({ questionnaireData }) {
                     animal?
                   </p>
                   <p className="text-base text-blue-950 w-1/2">
-                    {questionnaireData.suitableFood}
+                    {questionnaireData?.suitableFood}
                   </p>
                 </div>
                 <div className="mt-1 flex">
@@ -140,7 +140,7 @@ function QuestionnaireCard({ questionnaireData }) {
                     them:
                   </p>
                   <p className="text-base text-blue-950 w-1/2">
-                    {questionnaireData.previousAnimals}
+                    {questionnaireData?.previousAnimals}
                   </p>
                 </div>
               </section>
@@ -153,7 +153,7 @@ function QuestionnaireCard({ questionnaireData }) {
                     13) Why do you choose this animal?
                   </p>
                   <p className="text-base text-blue-950 w-1/2">
-                    {questionnaireData.whyAdopt}
+                    {questionnaireData?.whyAdopt}
                   </p>
                 </div>
                 <div className="mt-1 flex">
@@ -162,7 +162,7 @@ function QuestionnaireCard({ questionnaireData }) {
                     walks?
                   </p>
                   <p className="text-base text-blue-950 w-1/2">
-                    {questionnaireData.walkingFrequency}
+                    {questionnaireData?.walkingFrequency}
                   </p>
                 </div>
               </section>
@@ -177,7 +177,7 @@ function QuestionnaireCard({ questionnaireData }) {
                     progress?
                   </p>
                   <p className="text-base text-blue-950 w-1/2">
-                    {questionnaireData.willingnessToTrain}
+                    {questionnaireData?.willingnessToTrain}
                   </p>
                 </div>
                 <div className="mt-1 flex">
@@ -188,7 +188,7 @@ function QuestionnaireCard({ questionnaireData }) {
                     to someone else...):
                   </p>
                   <p className="text-base text-blue-950 w-1/2">
-                    {questionnaireData.behaviorResponse}
+                    {questionnaireData?.behaviorResponse}
                   </p>
                 </div>
                 <div class="mt-1 flex">
@@ -197,7 +197,7 @@ function QuestionnaireCard({ questionnaireData }) {
                     receive possible visits for the adoption process?
                   </p>
                   <p className="text-base text-blue-950 w-1/2">
-                    {questionnaireData.preAdoptionFollowUps}
+                    {questionnaireData?.preAdoptionFollowUps}
                   </p>
                 </div>
               </section>
@@ -207,7 +207,7 @@ function QuestionnaireCard({ questionnaireData }) {
                 <h2 className="mt-1 text-AMblue ">OBSERVATIONS</h2>
                 <div className="flex">
                   <p className="text-base text-blue-950 w-1/2">
-                    {questionnaireData.observations}
+                    {questionnaireData?.observations}
                   </p>
                 </div>
               </section>

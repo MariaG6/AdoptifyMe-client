@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
-import { useAuthContext } from "../../../context/Auth.Context";
 import { useShopsContext } from "../../../context/shops.context";
 import { useParams } from "react-router-dom";
 import { XCircle } from "@phosphor-icons/react/dist/ssr";
 import { CheckCircle } from "@phosphor-icons/react";
+import UserCard from "./UserCard";
+import QuestionnaireCard from "./QuestionnaireCard";
 
 function ViewAdoptionApplication() {
   const { shopId, queId } = useParams();
@@ -39,10 +40,14 @@ function ViewAdoptionApplication() {
         <hr />
         <div className="mt-4 flex gap-3">
           {/* user Profile */}
-          <div className="w-1/3"></div>
+          <div className="w-1/3">
+            <UserCard />
+          </div>
 
           {/* application answers */}
-          <div className="w-2/3"></div>
+          <div className="w-2/3">
+            <QuestionnaireCard questionnaireData={application} />
+          </div>
         </div>
       </div>
     );

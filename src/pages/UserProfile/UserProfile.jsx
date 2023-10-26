@@ -4,6 +4,7 @@ import UserMenu from "./components/UserMenu";
 import UserDetails from "./components/UserDetails";
 import MyShops from "./components/MyShops";
 import MyPets from "./components/MyPets";
+import Adoptions from "./components/Adoptions";
 
 function UserProfile() {
   return (
@@ -13,13 +14,14 @@ function UserProfile() {
           <div>
             <UserMenu />
           </div>
-          
+
           <div className="w-[100%] h-full overflow-y-scroll">
-          <Routes>
-            <Route path="details" element={<UserDetails />} />
-            <Route path="mypets" element={<MyPets />} />
-            <Route path="shops" element={<MyShops />} />
-          </Routes>
+            <Routes>
+              <Route path="details" element={<UserDetails />} />
+              <Route path="mypets" element={<MyPets />} />
+              <Route path="shops" element={<MyShops />} />
+              <Route path="shops/:id/applications" element={<Adoptions />} />
+            </Routes>
           </div>
         </div>
       </section>

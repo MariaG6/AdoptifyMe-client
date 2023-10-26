@@ -24,6 +24,7 @@ import MyPets from "./pages/UserProfile/components/MyPets";
 import UpdateShopForm from "./pages/ShopPages/UpdateShopPage";
 import UpdatePetPage from "./pages/PetsPage/UpdatePetPage.jsx";
 import SearchResults from "./pages/Homepage/SearchResults";
+import Adoptions from "./pages/UserProfile/components/Adoptions";
 
 function App() {
   return (
@@ -135,6 +136,7 @@ function App() {
           <Route path="details" element={<UserDetails />} />
           <Route path="mypets" element={<MyPets />} />
           <Route path="shops" element={<MyShops />} />
+          <Route path="shops/:id/applications" element={<Adoptions />} />
         </Route>
 
         {/* This should be the error page, any routes that we have not declared will be routed here */}

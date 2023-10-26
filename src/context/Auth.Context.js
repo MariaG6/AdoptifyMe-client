@@ -68,8 +68,8 @@ function AuthProviderWrapper(props) {
       })
       .catch((error) => {
         const { response } = error;
-        setErrorMessage(response.data.errorMessage);
-        setIsLoading(true);
+        setErrorMessage(response.data.message);
+        setIsLoading(false);
       });
   }
 

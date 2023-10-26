@@ -86,7 +86,7 @@ class Api {
   }
 
   getShopByUser(userId) {
-    return this.api.get(`/shops/${userId}`);
+    return this.api.get(`/shops/user/${userId}`);
   }
 
   deleteShop(id) {

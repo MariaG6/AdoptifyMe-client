@@ -1,11 +1,11 @@
 import {
+  Dog,
   PawPrint,
   SignOut,
   Storefront,
   UserList,
   Users,
 } from "@phosphor-icons/react";
-import { House } from "@phosphor-icons/react/dist/ssr";
 import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../../context/Auth.Context";
@@ -62,6 +62,8 @@ function UserMenu() {
             <p className="ml-2">My Shops</p>
           </NavLink>
         </div>
+
+
       </section>
 
       {isAdmin && (

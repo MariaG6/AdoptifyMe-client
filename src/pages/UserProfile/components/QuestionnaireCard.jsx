@@ -2,7 +2,7 @@ import React from "react";
 
 function QuestionnaireCard({ questionnaireData }) {
   return (
-    <div className="overflow-y-auto">
+    <div className="h-screen overflow-y-auto">
       <div className="shadow-xl shadow-gray-400/10 overflow-hidden hover:shadow-orange-400/20 rounded-xl">
         <div className="w-full border-r pb-20 bg-white">
           {/* gradient */}
@@ -10,12 +10,9 @@ function QuestionnaireCard({ questionnaireData }) {
           {/* profile down */}
           <div className="mt-5 relative text-left">
             {/* title */}
-            <div className="text-lg font-bold">Adoption questionnaire</div>
+            <div className="text-lg font-bold m-2 text-center">Adoption questionnaire</div>
             {/* questions & response */}
             <div className="px-5 py-3">
-              <p className="text-base font-bold text-gray-500">Question</p>
-              <p className="text-base text-blue-950">Answer</p>
-
               {/* Section A - HOUSING */}
               <section className="mt-1">
                 <h2 className="mt-1 text-AMblue">A) HOUSING</h2>
@@ -33,7 +30,7 @@ function QuestionnaireCard({ questionnaireData }) {
                     landlord/landlady know that you are adopting an animal, and
                     do they agree to it?
                   </p>
-                  <p className="text-base text-blue-950 w-1/2">
+                  <p className="text-base text-blue-950 w-1/2">  
                     {questionnaireData?.landlordAware}
                   </p>
                 </div>

@@ -20,11 +20,21 @@ function UserCard() {
           <div className="text-lg font-bold">{user.name} Name</div>
           {/* profile description */}
           <div className="text-base px-5 py-3">
-            <p>Address {user.address}</p>
+            <p>Address: {user.address}</p>
+            <p>Phone Number: {user.phoneNumber}</p>
+          </div>
+          <div className="m-1 text-sm">
+            {user.shop ? (
+              <h4>Shop Website: {user.shop.website}</h4>
+            ) : (
+              <p>This user doesn't have a shop.</p>
+            )}
           </div>
           {/* profile button */}
           <button className="w-1/2 mx-auto px-2 py-2 text-sm bg-AMblue text-white shadow-lg border border-AMblue">
-            <a className="text-none text-white" href={`mailto:${user.email}`}>Send an email</a>
+            <a className="text-none text-white" href={`mailto:${user.email}`}>
+              Send an email
+            </a>
           </button>
         </div>
       </div>

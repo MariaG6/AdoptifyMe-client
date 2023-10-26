@@ -6,6 +6,9 @@ import MyShops from "./components/MyShops";
 import MyPets from "./components/MyPets";
 import Adoptions from "./components/Adoptions";
 import ViewAdoptionApplication from "./components/ViewAdoptionApplication";
+import Users from "./components/admin/Users";
+import Shops from "./components/admin/Shops";
+import Pets from "./components/admin/Pets";
 
 function UserProfile() {
   return (
@@ -26,6 +29,9 @@ function UserProfile() {
                 path="shops/:shopId/applications/:queId"
                 element={<ViewAdoptionApplication />}
               />
+              <Route path="admin/users" element={<Users />} />
+              <Route path="admin/shops" element={<Shops />} />
+              <Route path="admin/pets" element={<Pets />} />
             </Routes>
           </div>
         </div>

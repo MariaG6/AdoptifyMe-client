@@ -136,7 +136,6 @@ const ShopsProviderWrapper = ({ children }) => {
     try {
       setLoading(true);
       const response = await apiConnect.getApplicationById(shopId, queId);
-
       setApplication(response.data);
       setLoading(false);
       setError(null);

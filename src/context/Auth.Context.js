@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { apiConnect } from "../services/axios";
+import toast from "react-hot-toast";
 
 const AuthContext = React.createContext();
 
@@ -67,7 +68,8 @@ function AuthProviderWrapper(props) {
         authenticateUser();
       })
       .catch((error) => {
-        const { response } = error;
+        const { response } = error
+        toast.error(response.data.message, { position: "top-center" });
         setErrorMessage(response.data.message);
         setIsLoading(false);
       });

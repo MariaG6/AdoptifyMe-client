@@ -49,6 +49,10 @@ class Api {
     return this.api.get(`/users/${id}`);
   }
 
+  getAllUsers() {
+    return this.api.get("/users");
+  }
+
   // ========================================
 
   // ============ Pets Routes ===============

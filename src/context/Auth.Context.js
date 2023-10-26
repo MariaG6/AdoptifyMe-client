@@ -8,6 +8,7 @@ function AuthProviderWrapper(props) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState(null);
+  const [allUser,setAllUser] = useState(null)
   const [errorMessage, setErrorMessage] = useState(null);
 
   const storeToken = (token) => {
@@ -136,6 +137,18 @@ function AuthProviderWrapper(props) {
       });
   }
 
+  const getAllUsers= async () => {
+    try {
+      setIsLoading(true);
+      const response = await apiConnect.getAllUsers();
+      setAllUser(response.data);
+      setIsLoading(false);
+      setErrorMessage(null);
+    } catch (error) {
+      setErrorMessage(error);
+    }
+  };
+
   useEffect(() => {
     authenticateUser();
   }, []);
@@ -154,6 +167,7 @@ function AuthProviderWrapper(props) {
         errorMessage,
         handleProfilePicture,
         getUserById,
+        getAllUsers
       }}
     >
       {props.children}

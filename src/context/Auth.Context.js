@@ -10,6 +10,7 @@ function AuthProviderWrapper(props) {
   const [user, setUser] = useState(null);
   const [allUser, setAllUser] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
+  const [message, setMessage] = useState(null);
 
   const storeToken = (token) => {
     localStorage.setItem("authToken", token);

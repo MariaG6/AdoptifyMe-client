@@ -8,44 +8,48 @@ function QuestionnaireCard({ questionnaireData }) {
           {/* gradient */}
           <div className="h-125 rounded-tl-4 rounded-tr-4 bg-gradient-to-r from-orange-500 to-yellow-500 h-32"></div>
           {/* profile down */}
-          <div className="mt-5 relative text-left">
+          <div className="mt-5 relative text-left px-3">
             {/* title */}
-            <div className="text-lg font-bold m-2 text-center">Adoption questionnaire</div>
+            <div className="text-lg font-bold m-2 text-center">
+              Adoption questionnaire
+            </div>
             {/* questions & response */}
             <div className="px-5 py-3">
               {/* Section A - HOUSING */}
               <section className="mt-1">
                 <h2 className="mt-1 text-AMblue">A) HOUSING</h2>
-                <div className="mt-1 flex">
-                  <p className="font-medium text-base text-gray-500 w-1/2">
+                <div className="mt-1 flex flex-col">
+                  <p className="font-medium text-base text-gray-500 w-full">
                     1) What area of the home will be designated for the animal?
                   </p>
-                  <p className="text-base text-blue-950 w-1/2">
+                  <p className="text-base fw-fw-bold  text-orange-400 w-full pl-4">
                     {questionnaireData?.designatedArea}
                   </p>
                 </div>
-                <div className="mt-1 flex">
-                  <p className="font-medium text-base text-gray-500 w-1/2">
+
+                <div className="mt-4 flex flex-col">
+                  <p className="font-medium text-base text-gray-500 w-full">
                     2) If you live in a rented property, does the
                     landlord/landlady know that you are adopting an animal, and
                     do they agree to it?
                   </p>
-                  <p className="text-base text-blue-950 w-1/2">  
+                  <p className="text-base text-orange-400 w-full pl-4">
                     {questionnaireData?.landlordAware}
                   </p>
                 </div>
-                <div className="mt-1 flex">
-                  <p className="font-medium text-base text-gray-500 w-1/2">
+
+                <div className="mt-4 flex flex-col">
+                  <p className="font-medium text-base text-gray-500 w-full">
                     3) Where will it stay when you are not at home?
                   </p>
-                  <p className="text-base text-blue-950 w-1/2">
+                  <p className="text-base text-orange-400 w-full pl-4">
                     {questionnaireData?.whereStaysWhenNotHome}
                   </p>
                 </div>
               </section>
 
               {/* Section B - FAMILY */}
-              <section className="mt-1">
+              <section className="mt-4">
                 <h2 className="mt-1 text-AMblue"> B) FAMILY</h2>
                 <div className="mt-1 flex">
                   <p className="font-medium text-base text-gray-500 w-1/2">

@@ -51,8 +51,8 @@ function Signupform() {
 
   return (
     <div className="flex w-full">
-      <div className="w-full lg:w-1/2 flex items-center justify-center bg-white">
-        <div className="bg-white px-10 pt-24 pb-8">
+      <div className="w-full h-[100vh] lg:w-1/2 flex items-center justify-center bg-white pt-16">
+        <div className="bg-white px-[20%] pt-24 pb-8 w-full">
           <h1 className="text-3xl font-semibold">Welcome to Adoptify!</h1>
           <p className="font-medium text-lg text-gray-500 mt-4">
             Please enter your details
@@ -172,6 +172,7 @@ function Signupform() {
         <img
           src="https://unsplash.com/photos/XATEEfeN7C4/download?ixid=M3wxMjA3fDB8MXxhbGx8fHx8fHx8fHwxNjk3OTYzODQzfA&force=true&w=640"
           alt="Puppy-img"
+          className="justify-center flex flex-1 object-cover"
         />
       </div>
     </div>

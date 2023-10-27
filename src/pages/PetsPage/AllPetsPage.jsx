@@ -4,11 +4,12 @@ import PetCardShimmer from "../../components/PetCardShimmer";
 import PetCard from "../../components/PetCard";
 
 function AllPetsPage() {
-  const { loading, allPets } = usePetsContext();
+  const { loading, allPets, fetchAllPets } = usePetsContext();
 
   useEffect(() => {
-window.scroll(0, 0)
-  }, [])
+    window.scroll(0, 0);
+    fetchAllPets();
+  }, []);
 
   return (
     <div className="w-full pb-12">

@@ -66,6 +66,10 @@ class Api {
     return this.api.get("/pets/allPets");
   }
 
+  getAllAdoptedPets() {
+    return this.api.get("/pets/all-adopted");
+  }
+
   getPetById(id) {
     return this.api.get(`/pets/${id}`);
   }
@@ -107,6 +111,14 @@ class Api {
 
   getApplicationById(shopId, queId) {
     return this.api.get(`/shops/${shopId}/questionnaries/${queId}`);
+  }
+
+  acceptApplicationById(shopId, queId) {
+    return this.api.patch(`/shops/${shopId}/questionnaries/${queId}/accept`);
+  }
+
+  rejectApplicationById(shopId, queId) {
+    return this.api.patch(`/shops/${shopId}/questionnaries/${queId}/reject`);
   }
 
   deleteShop(id) {

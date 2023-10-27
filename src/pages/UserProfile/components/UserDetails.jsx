@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useAuthContext } from "../../../context/Auth.Context";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
 
 function UserDetails() {
   const [fullName, setFullName] = useState("");
@@ -12,9 +11,7 @@ function UserDetails() {
   const { errorMessage, isLoading, getUserById, user, updateProfile } =
     useAuthContext();
 
-  const navigate = useNavigate();
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const uploadData = new FormData();
@@ -34,19 +31,24 @@ function UserDetails() {
       if (errorMessage) {
         toast.error(errorMessage, { position: "top-center" });
       } else {
-        toast.success("User updated!", { position: "top-center" });
-        navigate(`/user/details`);
+        getInitialData().then(() => {
+          toast.success("User updated!", { position: "top-center" });
+        });
       }
     });
   };
 
-  useEffect(() => {
-    getUserById(user?._id);
+  async function getInitialData() {
+    await getUserById(user?._id);
 
     setFullName(user?.fullName);
     setEmail(user?.email);
     setPhoneNumber(user?.phoneNumber);
     setAddress(user?.address);
+  }
+
+  useEffect(() => {
+    getInitialData();
   }, []);
 
   return (

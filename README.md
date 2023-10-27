@@ -1,8 +1,9 @@
 # AdoptifyMe Client 🐱
 
-Welcome to the frontend repository for this project! – **AdoptifyMe** is a web platform designed to simplify the process of pet adoption from shelters and connecting users with their future furry companions. Not only can you adopt pets from registered stores, but if you come across a stray animal, you can also add it to the database for another user to adopt. To ensure the perfect match, potential pet owners must complete a brief owner questionnaire before finalizing the adoption. AdoptifyMe makes pet adoption easy, convenient, and tailored to suit the needs and preferences of both pets and their future owners.
+<p align="center"><img src="public\homepage.png" a alt='homepage-image' width='600px' heigh='600px'></p>
 
-<img src="public\homepage.png" align="center" alt='homepage-image'>
+**Welcome to the AdoptifyMe frontend repository for this project!**
+<p align="justify"> AdoptifyMe is a web platform designed to simplify the process of pet adoption from shelters and connecting users with their future furry companions. Not only can you adopt pets from registered stores, but if you come across a stray animal, you can also add it to the database for another user to adopt. To ensure the perfect match, potential pet owners must complete a brief owner questionnaire before finalizing the adoption. AdoptifyMe makes pet adoption easy, convenient, and tailored to suit the needs and preferences of both pets and their future owners.<p/>
 
 ## Project Overview
 
@@ -117,10 +118,10 @@ If you wish to contribute to this project, please follow these steps:
 
 ## 🚀 Deployment here!
 
-👉 [AdoptifyMe](https://adoptifyme.netlify.app/)
+👉 [AdoptifyMe](https://adoptifyme.netlify.app/) 
 
 ## Authors
 
 [Franklin](https://github.com/franklinosei) & [María](https://github.com/MariaG6)
 
-Thank you for using and contributing to the AdoptifyMe Server! 👋
+<p align="center"> Thank you for using and contributing to the AdoptifyMe Server! 👋 <p/>

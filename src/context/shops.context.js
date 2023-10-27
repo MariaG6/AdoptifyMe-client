@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { apiConnect } from "../services/axios";
+import toast from "react-hot-toast";
 
 const ShopsContext = createContext();
 
@@ -8,15 +9,17 @@ const ShopsProviderWrapper = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [shopDetails, setShopDetails] = useState(null);
+  const [userShops, setUserShops] = useState([]);
+  const [applications, setShopApplications] = useState([]);
   const [message, setMessage] = useState(null);
+  const [application, setApplication] = useState(null);
 
   function handleError(error) {
     setLoading(false);
-
-    console.log(error);
-
     const { response } = error;
-    setError(response?.message);
+    // show toast messages
+    toast.error(response.data.message);
+    // setError(response.data?.message);
   }
 
   const fetchAllShops = async () => {
@@ -76,6 +79,19 @@ const ShopsProviderWrapper = ({ children }) => {
     }
   };
 
+  const getShopByUser = async (id) => {
+    try {
+      setLoading(true);
+      const response = await apiConnect.getShopByUser(id);
+      setUserShops(response.data);
+      setLoading(false);
+      setError(null);
+    } catch (error) {
+      setUserShops([]);
+      handleError(error);
+    }
+  };
+
   const deleteShopById = async (id) => {
     try {
       setLoading(true);
@@ -104,6 +120,30 @@ const ShopsProviderWrapper = ({ children }) => {
     }
   };
 
+  const getAdoptionApplications = async (id) => {
+    try {
+      setLoading(true);
+      const response = await apiConnect.getShopApplications(id);
+      setShopApplications(response.data);
+      setLoading(false);
+      setError(null);
+    } catch (error) {
+      handleError(error);
+    }
+  };
+
+  const getAdoptionApplicationById = async (shopId, queId) => {
+    try {
+      setLoading(true);
+      const response = await apiConnect.getApplicationById(shopId, queId);
+      setApplication(response.data);
+      setLoading(false);
+      setError(null);
+    } catch (error) {
+      handleError(error);
+    }
+  };
+
   useEffect(() => {
     fetchAllShops();
   }, []);
@@ -114,13 +154,19 @@ const ShopsProviderWrapper = ({ children }) => {
     shopDetails,
     loading,
     message,
+    userShops,
     error,
+    applications,
+    application,
     fetchAllShops,
     getShopById,
     deleteShopById,
     updateShopById,
     addNewShop,
     addPetToShop,
+    getShopByUser,
+    getAdoptionApplications,
+    getAdoptionApplicationById,
   };
 
   return (

@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { Storefront } from "@phosphor-icons/react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import service from "../../api/service.js";
-import { usePetsContext } from "../../context/pets.context.js";
 import { useShopsContext } from "../../context/shops.context.js";
 import toast from "react-hot-toast";
 

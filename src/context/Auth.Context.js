@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { apiConnect } from "../services/axios";
+import toast from "react-hot-toast";
 
 const AuthContext = React.createContext();
 
@@ -7,6 +8,7 @@ function AuthProviderWrapper(props) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState(null);
+  const [allUser, setAllUser] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
 
   const storeToken = (token) => {
@@ -68,8 +70,9 @@ function AuthProviderWrapper(props) {
       })
       .catch((error) => {
         const { response } = error;
-        setErrorMessage(response.data.errorMessage);
-        setIsLoading(true);
+        toast.error(response.data.message, { position: "top-center" });
+        setErrorMessage(response.data.message);
+        setIsLoading(false);
       });
   }
 
@@ -134,6 +137,32 @@ function AuthProviderWrapper(props) {
       });
   }
 
+  const getAllUsers = async () => {
+    try {
+      setIsLoading(true);
+      const response = await apiConnect.getAllUsers();
+      setAllUser(response.data);
+      setIsLoading(false);
+      setErrorMessage(null);
+    } catch (error) {
+      const { response } = error;
+      setErrorMessage(response?.data?.message);
+    }
+  };
+
+  const updateProfile = async (id, updatedData) => {
+    try {
+      setIsLoading(true);
+      const response = await apiConnect.updateUserById(id, updatedData);
+      setErrorMessage(response.data?.message);
+      setIsLoading(false);
+      setErrorMessage(null);
+    } catch (error) {
+      const { response } = error;
+      setErrorMessage(response?.data?.message);
+    }
+  };
+
   useEffect(() => {
     authenticateUser();
   }, []);
@@ -152,6 +181,8 @@ function AuthProviderWrapper(props) {
         errorMessage,
         handleProfilePicture,
         getUserById,
+        getAllUsers,
+        updateProfile,
       }}
     >
       {props.children}

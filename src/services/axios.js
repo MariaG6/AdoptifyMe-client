@@ -49,6 +49,16 @@ class Api {
     return this.api.get(`/users/${id}`);
   }
 
+  getAllUsers() {
+    return this.api.get("/users");
+  }
+
+  updateUserById(id, updateData) {
+    return this.api.patch(`/users/${id}`, updateData, {
+      headers: { "Content-Type": "multipart/form-data" },
+    });
+  }
+
   // ========================================
 
   // ============ Pets Routes ===============
@@ -65,7 +75,9 @@ class Api {
   }
 
   updatePet(id, updateData) {
-    return this.api.put(`/pets/${id}`, updateData);
+    return this.api.patch(`/pets/${id}`, updateData, {
+      headers: { "Content-Type": "multipart/form-data" },
+    });
   }
 
   adoptPet(id, applicationData) {
@@ -86,7 +98,15 @@ class Api {
   }
 
   getShopByUser(userId) {
-    return this.api.get(`/shops/${userId}`);
+    return this.api.get(`/shops/user/${userId}`);
+  }
+
+  getShopApplications(shopId) {
+    return this.api.get(`/shops/${shopId}/questionnaries`);
+  }
+
+  getApplicationById(shopId, queId) {
+    return this.api.get(`/shops/${shopId}/questionnaries/${queId}`);
   }
 
   deleteShop(id) {
@@ -100,7 +120,6 @@ class Api {
   }
   // ============ Questionnaire Routes ===============
   createQuestionnarie(id, formData) {
-    console.log(formData);
     return this.api.post(`/pets/${id}/adopt`, formData);
   }
 

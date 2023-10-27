@@ -1,30 +1,33 @@
 import React, { useEffect } from "react";
-import { useAuthContext } from "../../../../context/Auth.Context";
-import { Link, useNavigate } from "react-router-dom";
-import DataTable from "react-data-table-component";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { useAuthContext } from "../../../context/Auth.Context";
 import { ArrowCircleLeft } from "@phosphor-icons/react";
+import { useShopsContext } from "../../../context/shops.context";
+import DataTable from "react-data-table-component";
 
-function Users() {
-  const { allUsers, getAllUsers, isLoading } = useAuthContext();
-  const navigate = useNavigate();
+function Adoptions() {
+  const { id } = useParams();
+  const { getAdoptionApplications, applications, loading } = useShopsContext();
 
-  // Fetch users when the component render
+  const navigator = useNavigate();
+
+  // Fetch user shops when the component render
   useEffect(() => {
-    getAllUsers();
+    getAdoptionApplications(id);
   }, []);
 
   const columns = [
     {
-      name: "User",
+      name: "Pet",
       selector: (row) => (
         <button
           onClick={() => {
-            navigate(`/user/details/${row.user.id}`);
+            navigator(`/pets/${row.pet._id}`);
           }}
         >
           <img
-            src={row.user.profilePicture}
-            alt="user"
+            src={row.pet.profilePicture}
+            alt=""
             className="h-10 w-10 rounded-full p-[4px]"
           />
         </button>
@@ -33,34 +36,56 @@ function Users() {
       wrap: true,
     },
     {
-      name: "User name",
-      selector: (row) => row.user.name,
+      name: "Pet Name",
+      selector: (row) => row.pet.name,
       sortable: true,
       wrap: true,
     },
+
     {
-      name: "User address",
-      selector: (row) => row.user.address,
+      name: "Pet Gender",
+      selector: (row) => row.pet.gender,
       sortable: true,
       wrap: false,
     },
+
     {
-      name: "User phone number",
-      selector: (row) => row.user.phoneNumber,
-      sortable: true,
-    },
-    {
-      name: "User email",
-      selector: (row) => row.user.email,
+      name: "Type of Pet",
+      selector: (row) => row.pet.typeOfAnimal,
       sortable: true,
     },
 
     {
-      name: "Shops",
+      name: "Applicant",
+      selector: (row) => (
+        <img
+          src={row.user.profilePicture}
+          alt=""
+          className="h-10 w-10 rounded-full p-[4px]"
+        />
+      ),
+      sortable: true,
+      wrap: true,
+    },
+
+    {
+      name: "Applicant Name",
+      selector: (row) => row.user.fullName,
+      sortable: true,
+    },
+
+    {
+      name: "Accepted",
+      selector: (row) => (row.isAccepted ? "Yes" : "No"),
+      sortable: true,
+    },
+
+    {
+      name: "Action",
       selector: (row) => (
         <button
           className="bg-orange-400 text-white text-xs p-[5px] rounded-xl shadow-xl"
-          onClick={() => navigate(`/user/shops/${row.id}`)}
+          onClick={() => navigator(`/user/shops/${id}/applications/${row._id}`)}
         >
           View
         </button>
@@ -68,23 +93,24 @@ function Users() {
       sortable: true,
     },
   ];
-  if (isLoading) {
+
+  if (loading) {
     return (
       <div className="text-xl mb-4 text-AMblue flex justify-center items-center h-full bg-white">
-        <p>Loading Users </p>
+        <p>Loading Pet Applications</p>
       </div>
     );
   }
 
-  if (allUsers.length > 0) {
+  if (applications.length > 0) {
     return (
       <div className="flex flex-col bg-white h-full p-4">
-        <h2 className="text-2xl text-AMblue">All Users</h2>
+        <h2 className="text-2xl text-AMblue">Adoption Applications</h2>
         <hr />
         <div className="">
           <DataTable
             columns={columns}
-            data={allUsers}
+            data={applications}
             pagination
             fixedHeader
             fixedHeaderScrollHeight="90vh"
@@ -92,7 +118,8 @@ function Users() {
             highlightOnHover
             subHeader
             onRowClicked={(row) => {
-              navigator(`/user/shops/${row.id}`);
+              // console.log(row);
+              navigator(`/user/shops/${id}/applications/${row._id}`);
             }}
             pointerOnHover
             responsive
@@ -108,11 +135,11 @@ function Users() {
     return (
       <div className="items-center justify-center flex flex-1 bg-white h-full">
         <div className="p-4 rounded-lg flex flex-col items-center justify-center">
-          <h2 className="text-2xl mb-4 text-AMblue">All Users</h2>
-          <p>There is no users at the moment</p>
-          <Link to="/">
+          <h2 className="text-2xl mb-4 text-AMblue">Adoption Applications</h2>
+          <p>There is not applications at the moment</p>
+          <Link to="/user/shops">
             <button className="mt-4 bg-AMblue text-white py-2 px-4 rounded flex gap-4 items-center shadow-xl shadow-AMblue/25">
-              <ArrowCircleLeft /> Go Homepage
+              <ArrowCircleLeft /> Go Back
             </button>
           </Link>
         </div>
@@ -121,4 +148,4 @@ function Users() {
   }
 }
 
-export default Users;
+export default Adoptions;

@@ -1,54 +1,41 @@
-import React, { useState, useEffect } from "react";
-import { Link, NavLink } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useAuthContext } from "../../../context/Auth.Context";
-import { Storefront } from "@phosphor-icons/react";
 import { useShopsContext } from "../../../context/shops.context";
+import ProfileShopCard from "../../../components/ProfileShopCard";
+import { ArrowCircleRight } from "@phosphor-icons/react";
 
 function MyShop() {
-  const user = useAuthContext();
-  const [userShops, setUserShops] = useState([]);
-  const { getShopByUser, loading, setLoading } = useShopsContext();
+  const { user } = useAuthContext();
+
+  const { getShopByUser, userShops, loading, error } = useShopsContext();
 
   // Fetch user shops when the component render
   useEffect(() => {
-    async function fetchUserShops() {
-      try {
-        const userShopsData = await getShopByUser(user._id);
-        if (userShopsData && userShopsData.length > 0) {
-          setUserShops(userShopsData);
-          setLoading(false);
-        } else {
-          setUserShops([]);
-        }
-      } catch (error) {
-        console.error("Error getting user shops", error);
-      }
-    }
-
-    fetchUserShops();
-  }, [user]);
+    getShopByUser(user?._id);
+  }, [user._id]);
 
   if (loading) {
-    return <p className="text-2xl mb-4 text-AMblue">Loading shops...</p>;
+    return (
+      <div className="text-xl mb-4 text-AMblue flex justify-center items-center h-full bg-white">
+        <p>Loading Your Shops </p>
+      </div>
+    );
   }
 
   if (userShops.length > 0) {
     return (
-      <div className="items-center justify-center flex w-max mr-20 flex-1">
-        <div className="p-4 w-1/2 rounded-lg">
-          <h2 className="text-2xl mb-4 text-AMblue">Shop Details</h2>
+      <div className="flex flex-col bg-white h-full p-4">
+        <h2 className="text-2xl text-AMblue">Your shops</h2>
+        <hr />
+        <div className="grid grid-cols-1 gap-4 mt-4">
           {userShops.map((shop) => (
             <div key={shop._id} className="my-2">
-              <NavLink
-                to={`/shops/details/${shop._id}`}
-                className="flex items-center text-xl text-gray-700 active:text-AMblue active:text-lg"
-              >
-                <Storefront size={25} color="gray" />
-                <h3 className="ml-2">{shop.shopName}</h3>
-              </NavLink>
-              <button className="mt-4 bg-red-500 text-white py-2 px-4 rounded">
+              <ProfileShopCard shopData={shop} key={shop._id} />
+
+              {/* <button className="mt-4 bg-red-500 text-white py-2 px-4 rounded">
                 Delete shop from AdoptifyMe
-              </button>
+              </button> */}
             </div>
           ))}
         </div>
@@ -56,13 +43,13 @@ function MyShop() {
     );
   } else {
     return (
-      <div className="items-center justify-center flex w-max mr-20 flex-1">
-        <div className="p-4 w-1/2 rounded-lg">
+      <div className="items-center justify-center flex flex-1 bg-white h-full">
+        <div className="p-4 rounded-lg flex flex-col items-center justify-center">
           <h2 className="text-2xl mb-4 text-AMblue">Shop Details</h2>
           <p>You currently have no shops.</p>
           <Link to="/shops/new">
-            <button className="mt-4 bg-blue-500 text-white py-2 px-4 rounded">
-              Connect your first shop
+            <button className="mt-4 bg-AMblue text-white py-2 px-4 rounded flex gap-4 items-center shadow-xl shadow-AMblue/25">
+              Connect your first shop <ArrowCircleRight />
             </button>
           </Link>
         </div>

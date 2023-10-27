@@ -105,6 +105,14 @@ class Api {
     return this.api.get(`/shops/${shopId}/questionnaries/${queId}`);
   }
 
+  acceptApplicationById(shopId, queId) {
+    return this.api.patch(`/shops/${shopId}/questionnaries/${queId}/accept`);
+  }
+
+  rejectApplicationById(shopId, queId) {
+    return this.api.patch(`/shops/${shopId}/questionnaries/${queId}/reject`);
+  }
+
   deleteShop(id) {
     return this.api.delete(`/shops/${id}`);
   }

@@ -7,6 +7,8 @@ const ShopsContext = createContext();
 const ShopsProviderWrapper = ({ children }) => {
   const [allShops, setAllShops] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [accepting, setAccepting] = useState(false);
+  const [rejecting, setrejecting] = useState(false);
   const [error, setError] = useState(null);
   const [shopDetails, setShopDetails] = useState(null);
   const [userShops, setUserShops] = useState([]);
@@ -144,6 +146,33 @@ const ShopsProviderWrapper = ({ children }) => {
     }
   };
 
+  const acceptAdoptionApplication = async (shopId, queId) => {
+    try {
+      setAccepting(true);
+      const response = await apiConnect.acceptApplicationById(shopId, queId);
+      // setMessage(response.data.message);
+      toast.success(response.data.message, { position: "top-center" });
+      setAccepting(false);
+      setError(null);
+    } catch (error) {
+      setAccepting(false);
+      handleError(error);
+    }
+  };
+
+  const rejectAdoptionApplication = async (shopId, queId) => {
+    try {
+      setrejecting(true);
+      const response = await apiConnect.rejectApplicationById(shopId, queId);
+      toast.success(response.data.message, { position: "top-center" });
+      setrejecting(false);
+      setError(null);
+    } catch (error) {
+      setrejecting(false);
+      handleError(error);
+    }
+  };
+
   useEffect(() => {
     fetchAllShops();
   }, []);
@@ -158,6 +187,8 @@ const ShopsProviderWrapper = ({ children }) => {
     error,
     applications,
     application,
+    accepting,
+    rejecting,
     fetchAllShops,
     getShopById,
     deleteShopById,
@@ -167,6 +198,8 @@ const ShopsProviderWrapper = ({ children }) => {
     getShopByUser,
     getAdoptionApplications,
     getAdoptionApplicationById,
+    acceptAdoptionApplication,
+    rejectAdoptionApplication,
   };
 
   return (

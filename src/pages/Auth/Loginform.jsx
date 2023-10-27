@@ -125,11 +125,11 @@ function Loginform() {
         </div>
       </div>
 
-      <div className="hidden lg:flex items-center justify-center h-[100vh] w-1/2 overflow-hidden">
+      <div className="hidden lg:flex h-screen w-1/2 overflow-hidden">
         <img
           src="https://unsplash.com/photos/XATEEfeN7C4/download?ixid=M3wxMjA3fDB8MXxhbGx8fHx8fHx8fHwxNjk3OTYzODQzfA&force=true&w=640"
           alt="Puppy-img"
-          className="h-max"
+          className="justify-center flex flex-1 object-cover"
         />
       </div>
     </div>

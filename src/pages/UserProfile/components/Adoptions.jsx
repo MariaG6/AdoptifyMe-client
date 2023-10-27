@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useAuthContext } from "../../../context/Auth.Context";
-import { ArrowCircleLeft } from "@phosphor-icons/react";
+import { ArrowCircleLeft, X, XCircle } from "@phosphor-icons/react";
 import { useShopsContext } from "../../../context/shops.context";
 import DataTable from "react-data-table-component";
+import { CheckCircle } from "@phosphor-icons/react/dist/ssr";
 
 function Adoptions() {
   const { id } = useParams();
@@ -32,7 +33,7 @@ function Adoptions() {
           />
         </button>
       ),
-      sortable: true,
+   
       wrap: true,
     },
     {
@@ -64,7 +65,6 @@ function Adoptions() {
           className="h-10 w-10 rounded-full p-[4px]"
         />
       ),
-      sortable: true,
       wrap: true,
     },
 
@@ -76,12 +76,12 @@ function Adoptions() {
 
     {
       name: "Accepted",
-      selector: (row) => (row.isAccepted ? "Yes" : "No"),
+      selector: (row) => (row.isAccepted ? <p className="flex items-center text-green-400 gap-1"><CheckCircle size={12}/> Yes</p> : <p className="flex items-center text-gray-400 gap-1"><XCircle size={12}/> No</p>),
       sortable: true,
     },
 
     {
-      name: "Action",
+      name: "",
       selector: (row) => (
         <button
           className="bg-orange-400 text-white text-xs p-[5px] rounded-xl shadow-xl"
@@ -90,7 +90,7 @@ function Adoptions() {
           View
         </button>
       ),
-      sortable: true,
+   
     },
   ];
 

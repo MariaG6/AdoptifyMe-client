@@ -1,16 +1,16 @@
 import React, { useEffect } from "react";
-import { useAuthContext } from "../../../../context/Auth.Context";
 import { Link, useNavigate } from "react-router-dom";
 import DataTable from "react-data-table-component";
 import { ArrowCircleLeft } from "@phosphor-icons/react";
+import { useAdminContext } from "../../../../context/Admin.Context";
 
 function Users() {
-  const { allUsers, getAllUsers, isLoading } = useAuthContext();
+  const { loading, allUsers, fetchAllUsers } = useAdminContext();
   const navigate = useNavigate();
 
   // Fetch users when the component render
   useEffect(() => {
-    getAllUsers();
+    fetchAllUsers();
   }, []);
 
   const columns = [
@@ -18,12 +18,10 @@ function Users() {
       name: "User",
       selector: (row) => (
         <button
-          onClick={() => {
-            navigate(`/user/details/${row.user.id}`);
-          }}
+          disabled
         >
           <img
-            src={row.user.profilePicture}
+            src={row.profilePicture}
             alt="user"
             className="h-10 w-10 rounded-full p-[4px]"
           />
@@ -33,45 +31,40 @@ function Users() {
       wrap: true,
     },
     {
-      name: "User name",
-      selector: (row) => row.user.name,
+      name: "Name",
+      selector: (row) => row.fullName,
       sortable: true,
       wrap: true,
     },
     {
-      name: "User address",
-      selector: (row) => row.user.address,
+      name: "Address",
+      selector: (row) => row.address ?? "N/A",
       sortable: true,
-      wrap: false,
+      wrap: true,
+      center: true,
     },
     {
-      name: "User phone number",
-      selector: (row) => row.user.phoneNumber,
+      name: "Contact",
+      selector: (row) => row.phoneNumber,
       sortable: true,
     },
     {
       name: "User email",
-      selector: (row) => row.user.email,
+      selector: (row) => row.email,
       sortable: true,
     },
 
     {
-      name: "Shops",
-      selector: (row) => (
-        <button
-          className="bg-orange-400 text-white text-xs p-[5px] rounded-xl shadow-xl"
-          onClick={() => navigate(`/user/shops/${row.id}`)}
-        >
-          View
-        </button>
-      ),
+      name: "No. of Shops",
+      selector: (row) => row.shops.length,
       sortable: true,
+      center: true,
     },
   ];
-  if (isLoading) {
+  if (loading) {
     return (
       <div className="text-xl mb-4 text-AMblue flex justify-center items-center h-full bg-white">
-        <p>Loading Users </p>
+        <p>Loading Users</p>
       </div>
     );
   }
@@ -91,9 +84,10 @@ function Users() {
             selectableRowsHighlight
             highlightOnHover
             subHeader
-            onRowClicked={(row) => {
-              navigator(`/user/shops/${row.id}`);
-            }}
+          
+            // onRowClicked={(row) => {
+            //   navigator(`/user/shops/${row.id}`);
+            // }}
             pointerOnHover
             responsive
             striped

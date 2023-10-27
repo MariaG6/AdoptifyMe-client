@@ -9,6 +9,8 @@ import ViewAdoptionApplication from "./components/ViewAdoptionApplication";
 import Users from "./components/admin/Users";
 import Shops from "./components/admin/Shops";
 import Pets from "./components/admin/Pets";
+import AdminAllShops from "./components/admin/Shops";
+import AllPets from "./components/admin/Pets";
 
 function UserProfile() {
   return (
@@ -29,9 +31,10 @@ function UserProfile() {
                 path="shops/:shopId/applications/:queId"
                 element={<ViewAdoptionApplication />}
               />
-              <Route path="admin/users" element={<Users />} />
-              <Route path="admin/shops" element={<Shops />} />
-              <Route path="admin/pets" element={<Pets />} />
+
+              <Route path="all-users" element={<Users />} />
+              <Route path="all-shops" element={<AdminAllShops />} />
+              <Route path="all-pets" element={<AllPets />} />
             </Routes>
           </div>
         </div>

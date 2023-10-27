@@ -27,7 +27,7 @@ function Adoptions() {
           }}
         >
           <img
-            src={row.pet.profilePicture}
+            src={row?.pet?.profilePicture}
             alt=""
             className="h-10 w-10 rounded-full p-[4px]"
           />
@@ -38,21 +38,21 @@ function Adoptions() {
     },
     {
       name: "Pet Name",
-      selector: (row) => row.pet.name,
+      selector: (row) => row?.pet?.name,
       sortable: true,
       wrap: true,
     },
 
     {
       name: "Pet Gender",
-      selector: (row) => row.pet.gender,
+      selector: (row) => row?.pet?.gender,
       sortable: true,
       wrap: false,
     },
 
     {
       name: "Type of Pet",
-      selector: (row) => row.pet.typeOfAnimal,
+      selector: (row) => row?.pet?.typeOfAnimal,
       sortable: true,
     },
 
@@ -60,7 +60,7 @@ function Adoptions() {
       name: "Applicant",
       selector: (row) => (
         <img
-          src={row.user.profilePicture}
+          src={row?.user?.profilePicture}
           alt=""
           className="h-10 w-10 rounded-full p-[4px]"
         />
@@ -70,7 +70,7 @@ function Adoptions() {
 
     {
       name: "Applicant Name",
-      selector: (row) => row.user.fullName,
+      selector: (row) => row?.user?.fullName,
       sortable: true,
     },
 
@@ -94,7 +94,7 @@ function Adoptions() {
       selector: (row) => (
         <button
           className="bg-orange-400 text-white text-xs p-[5px] rounded-xl shadow-xl"
-          onClick={() => navigator(`/user/shops/${id}/applications/${row._id}`)}
+          onClick={() => navigator(`/user/shops/${id}/applications/${row?._id}`)}
         >
           View
         </button>

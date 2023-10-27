@@ -49,10 +49,6 @@ class Api {
     return this.api.get(`/users/${id}`);
   }
 
-  getAllUsers() {
-    return this.api.get("/users");
-  }
-
   updateUserById(id, updateData) {
     return this.api.patch(`/users/${id}`, updateData, {
       headers: { "Content-Type": "multipart/form-data" },
@@ -60,6 +56,25 @@ class Api {
   }
 
   // ========================================
+
+  // ================= Admin Routes ===========
+  adminGetAllUsers() {
+    return this.api.get("/admin/users");
+  }
+
+  adminGetAllPets() {
+    return this.api.get("/admin/pets");
+  }
+
+  adminGetAllShops() {
+    return this.api.get("/admin/shops");
+  }
+
+  adminGetAllAdoptionApplications() {
+    return this.api.get("/admin/applications");
+  }
+
+  // ==========================================
 
   // ============ Pets Routes ===============
   getAllPets() {

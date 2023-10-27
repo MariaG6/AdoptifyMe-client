@@ -2,9 +2,9 @@ import React from "react";
 
 function PetCardShimmer() {
   return (
-    <div className="w-full shadow-xl overflow-hidden transition-transform hover:scale-105 hover:shadow-orange-400/20">
+    <div className="w-full shadow-xl overflow-hidden transition-transform hover:scale-105 hover:shadow-orange-400/20 rounded-xl">
       {/* Shimmer Effect - Loading Animation */}
-      <div className="animate-pulse">
+      <div className="animate-pulse rounded-xl">
         {/* Shimmer Image */}
         <div className="h-[180px] bg-gray-300 shimmer-loading"></div>
         {/* Shimmer Card Body */}

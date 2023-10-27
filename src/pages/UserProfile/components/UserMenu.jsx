@@ -69,7 +69,7 @@ function UserMenu() {
           <div className="my-2">
             <NavLink
               exact
-              to="/admin/users"
+              to="/user/all-users"
               className="flex items-center text-sm text-gray-400"
             >
               <Users size={25} color="gray" />
@@ -79,7 +79,7 @@ function UserMenu() {
           <div className="my-2">
             <NavLink
               exact
-              to="/admin/shops"
+              to="/user/all-shops"
               className="flex items-center text-sm text-gray-400"
             >
               <Storefront size={25} color="gray" />
@@ -89,7 +89,7 @@ function UserMenu() {
           <div className="my-2">
             <NavLink
               exact
-              to="/admin/pets"
+              to="/user/all-pets"
               className="flex items-center text-sm text-gray-400"
             >
               <PawPrint size={25} color="gray" />

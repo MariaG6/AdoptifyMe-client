@@ -22,7 +22,7 @@ For the Backend code, please visit the AdoptifyMe serverrepository.
 - [Context Providers](#context-providers)
 - [Services](#services)
 - [Contribution](#contribution)
-- [Deployment](#deployment) 
+- [Deployment](#deployment) 🚀
 - [Authors](#authors)
 
 ## Features
@@ -117,7 +117,7 @@ If you wish to contribute to this project, please follow these steps:
 
 4. Submit a Pull Request with your changes.
 
-## 🚀 Deployment here!
+## Deployment
 
 👉 [AdoptifyMe](https://adoptifyme.netlify.app/) 
 

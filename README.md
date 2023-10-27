@@ -1,70 +1,122 @@
-# Getting Started with Create React App
+# AdoptifyMe Client 🐱
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to the frontend repository for this project! – **AdoptifyMe** is a web platform designed to simplify the process of pet adoption from shelters and connecting users with their future furry companions. Not only can you adopt pets from registered stores, but if you come across a stray animal, you can also add it to the database for another user to adopt. To ensure the perfect match, potential pet owners must complete a brief owner questionnaire before finalizing the adoption. AdoptifyMe makes pet adoption easy, convenient, and tailored to suit the needs and preferences of both pets and their future owners.
 
-## Available Scripts
+<img src="public\homepage.png" align="center" alt='homepage-image'>
 
-In the project directory, you can run:
+## Project Overview
 
-### `npm start`
+AdoptifyMe's frontend is built using React, and it provides a user-friendly interface to explore pets available for adoption, create user profiles, and more.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Table of Contents
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- [Features](#features)
+- [Project Structure](#project-structure)
+- [Installation](#installation)
+- [Custom Components](#custom-components)
+- [Context Providers](#context-providers)
+- [Services](#services)
+- [Contribution](#contribution)
+- [Authors](#authors)
 
-### `npm test`
+## Features
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Pet Adoption Profiles**: Create and customize your own user profile to help shelters and other users get to know you.
 
-### `npm run build`
+- **Search and Explore**: Easily search and browse pets available for adoption from various sources, including registered stores and other users.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **Adopt a Pet**: Initiate the adoption process by selecting a pet, filling out a questionnaire to ensure compatibility, and making arrangements for the adoption.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **Stray Pets Inclusion**: If you find a stray animal, you can add it to our database to give it the chance to find a new loving home.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **Communication**: Connect with pet shops, shelters, and other users to discuss adoption details and ask questions.
 
-### `npm run eject`
+- **Shop Owner Features**: Shop owners have the capability to view adoption applications from other users interested in adopting their pets. They can review and accept or reject user applications based on the provided questionnaires.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- **Admin Dashboard**: Administrators have the ability to view and manage all user profiles, pet listings, and shop information. They can also remove unwanted listings and users as needed.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **Error Handling**: Our platform is designed to provide smooth user experiences, with error handling to ensure issues are addressed effectively.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Project Structure
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- `public/`: Contains static assets and the main HTML file.
+- `src/`: Contains the React application source code.
+  - `api/`: Handles API calls and interactions with the backend.
+  - `assets/images/`: Contains images used in the application.
+  - `components/`: Custom React components used throughout the app.
+  - `context/`: Manages global state and context providers.
+  - `pages/`: Represents the different pages and views in the application.
+  - `services/`: Provides service functions and utilities.
+  - `utils/`: Includes utility functions and helpers.
+- `App.js`: The main entry point of the application.
+- `index.js`: Renders the application into the DOM.
+- `App.css`, `index.css`: Styling files.
+- `package.json`, `package-lock.json`: Manage project dependencies.
 
-## Learn More
+## Installation
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+To set up and run the AdoptifyMe frontend locally, follow these steps:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Clone this repository:
 
-### Code Splitting
+   ```bash
+   git clone https://github.com/MariaG6/AdoptifyMe-client.git
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+2. Navigate to the project directory:
 
-### Analyzing the Bundle Size
+   ```bash
+   cd AdoptifyMe-client
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+3. Install the required dependencies:
 
-### Making a Progressive Web App
+   ```bash
+   npm install
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+4. Start the development server:
 
-### Advanced Configuration
+   ```bash
+   npm run start
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+The frontend will be accessible in your web browser at `http://localhost:3000`.
 
-### Deployment
+## Custom Components
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+The `components/` directory contains custom React components that are used to build the user interface and interactive elements of the application.
 
-### `npm run build` fails to minify
+## Context Providers
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The `context/` directory manages global state and context providers for the application, ensuring data can be shared across components.
+
+## Services
+
+The `services/` directory provides service functions and utility scripts, such as handling API requests.
+
+## Contribution
+
+If you wish to contribute to this project, please follow these steps:
+
+1. Fork the repository.
+
+2. Create a new branch for your contribution:
+
+   ```bash
+   git checkout -b my-contribution
+   ```
+
+3. Make your changes, document new features, and ensure the application is working correctly.
+
+4. Submit a Pull Request with your changes.
+
+## 🚀 Deployment here!
+
+👉 [AdoptifyMe](https://adoptifyme.netlify.app/)
+
+## Authors
+
+[Franklin](https://github.com/franklinosei) & [María](https://github.com/MariaG6)
+
+Thank you for using and contributing to the AdoptifyMe Server! 👋

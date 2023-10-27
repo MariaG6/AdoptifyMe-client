@@ -1,5 +1,4 @@
 import {
-  Dog,
   PawPrint,
   SignOut,
   Storefront,
@@ -62,8 +61,6 @@ function UserMenu() {
             <p className="ml-2">My Shops</p>
           </NavLink>
         </div>
-
-
       </section>
 
       {isAdmin && (
@@ -71,6 +68,7 @@ function UserMenu() {
           <h3 className="text-lg text-gray-700">Admin Controls</h3>
           <div className="my-2">
             <NavLink
+              exact
               to="/admin/users"
               className="flex items-center text-sm text-gray-400"
             >
@@ -79,13 +77,21 @@ function UserMenu() {
             </NavLink>
           </div>
           <div className="my-2">
-            <NavLink to="/" className="flex items-center text-sm text-gray-400">
+            <NavLink
+              exact
+              to="/admin/shops"
+              className="flex items-center text-sm text-gray-400"
+            >
               <Storefront size={25} color="gray" />
               <p className="ml-2">Shops</p>
             </NavLink>
           </div>
           <div className="my-2">
-            <NavLink to="/" className="flex items-center text-sm text-gray-400">
+            <NavLink
+              exact
+              to="/admin/pets"
+              className="flex items-center text-sm text-gray-400"
+            >
               <PawPrint size={25} color="gray" />
               <p className="ml-2">Pets</p>
             </NavLink>

@@ -49,6 +49,10 @@ class Api {
     return this.api.get(`/users/${id}`);
   }
 
+  getAllUsers() {
+    return this.api.get("/users");
+  }
+
   updateUserById(id, updateData) {
     return this.api.patch(`/users/${id}`, updateData, {
       headers: { "Content-Type": "multipart/form-data" },

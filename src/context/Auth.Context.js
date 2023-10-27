@@ -8,6 +8,7 @@ function AuthProviderWrapper(props) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState(null);
+  const [allUser, setAllUser] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
   const [message, setMessage] = useState(null);
 
@@ -137,11 +138,24 @@ function AuthProviderWrapper(props) {
       });
   }
 
+  const getAllUsers = async () => {
+    try {
+      setIsLoading(true);
+      const response = await apiConnect.getAllUsers();
+      setAllUser(response.data);
+      setIsLoading(false);
+      setErrorMessage(null);
+    } catch (error) {
+      const { response } = error;
+      setErrorMessage(response?.data?.message);
+    }
+  };
+
   const updateProfile = async (id, updatedData) => {
     try {
       setIsLoading(true);
       const response = await apiConnect.updateUserById(id, updatedData);
-      setMessage(response.data?.message);
+      setErrorMessage(response.data?.message);
       setIsLoading(false);
       setErrorMessage(null);
     } catch (error) {
@@ -168,6 +182,7 @@ function AuthProviderWrapper(props) {
         errorMessage,
         handleProfilePicture,
         getUserById,
+        getAllUsers,
         updateProfile,
       }}
     >

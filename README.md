@@ -22,6 +22,7 @@ For the Backend code, please visit the AdoptifyMe serverrepository.
 - [Context Providers](#context-providers)
 - [Services](#services)
 - [Contribution](#contribution)
+- [Deployment](#deployment) 
 - [Authors](#authors)
 
 ## Features

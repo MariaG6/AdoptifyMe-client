@@ -56,7 +56,7 @@ function QuestionnaireCard({ questionnaireData }) {
                     4) Is there anyone in your family with allergies or not
                     agree to the decision to adopt?
                   </p>
-                  <p className="text-base text-blue-950 w-1/2">
+                  <p className="text-base text-orange-400  w-1/2">
                     {questionnaireData?.familyInfo}
                   </p>
                 </div>
@@ -65,7 +65,7 @@ function QuestionnaireCard({ questionnaireData }) {
                     5) We want to offer you the most suitable animal for your
                     characteristics. What are your children like?
                   </p>
-                  <p className="text-base text-blue-950 w-1/2">
+                  <p className="text-base  text-orange-400  w-1/2">
                     {questionnaireData?.childrenCharacteristics}
                   </p>
                 </div>
@@ -75,7 +75,7 @@ function QuestionnaireCard({ questionnaireData }) {
                     incur to feed the animal and provide for its veterinary
                     care, as well as any unexpected expenses?
                   </p>
-                  <p className="text-base text-blue-950 w-1/2">
+                  <p className="text-base  text-orange-400  w-1/2">
                     {questionnaireData?.annualExpenses}
                   </p>
                 </div>
@@ -88,7 +88,7 @@ function QuestionnaireCard({ questionnaireData }) {
                   <p className="font-medium text-base text-gray-500 w-1/2">
                     7) Are you currently employed?
                   </p>
-                  <p className="text-base text-blue-950 w-1/2">
+                  <p className="text-base  text-orange-400  w-1/2">
                     {questionnaireData?.employed}
                   </p>
                 </div>
@@ -97,7 +97,7 @@ function QuestionnaireCard({ questionnaireData }) {
                     8) What will you do with the animal during vacations or when
                     you will be away for a weekend?
                   </p>
-                  <p className="text-base text-blue-950 w-1/2">
+                  <p className="text-base  text-orange-400  w-1/2">
                     {questionnaireData?.vacationPlans}
                   </p>
                 </div>
@@ -105,7 +105,7 @@ function QuestionnaireCard({ questionnaireData }) {
                   <p className="font-medium text-base text-gray-500 w-1/2">
                     9) How much time will the animal spend alone at home?
                   </p>
-                  <p className="text-base text-blue-950 w-1/2">
+                  <p className="text-base  text-orange-400  w-1/2">
                     {questionnaireData?.timeAloneAtHome}
                   </p>
                 </div>
@@ -121,7 +121,7 @@ function QuestionnaireCard({ questionnaireData }) {
                     10) What expenses do you think come with having a companion
                     animal?
                   </p>
-                  <p className="text-base text-blue-950 w-1/2">
+                  <p className="text-base  text-orange-400  w-1/2">
                     {questionnaireData?.expenses}
                   </p>
                 </div>
@@ -130,7 +130,7 @@ function QuestionnaireCard({ questionnaireData }) {
                     11) What kind of food do you think is suitable for the
                     animal?
                   </p>
-                  <p className="text-base text-blue-950 w-1/2">
+                  <p className="text-base  text-orange-400  w-1/2">
                     {questionnaireData?.suitableFood}
                   </p>
                 </div>
@@ -140,7 +140,7 @@ function QuestionnaireCard({ questionnaireData }) {
                     other animals at home? If so, please tell us a bit about
                     them:
                   </p>
-                  <p className="text-base text-blue-950 w-1/2">
+                  <p className="text-base  text-orange-400  w-1/2">
                     {questionnaireData?.previousAnimals}
                   </p>
                 </div>
@@ -153,7 +153,7 @@ function QuestionnaireCard({ questionnaireData }) {
                   <p className="font-medium text-base text-gray-500 w-1/2">
                     13) Why do you choose this animal?
                   </p>
-                  <p className="text-base text-blue-950 w-1/2">
+                  <p className="text-base  text-orange-400  w-1/2">
                     {questionnaireData?.whyAdopt}
                   </p>
                 </div>
@@ -162,7 +162,7 @@ function QuestionnaireCard({ questionnaireData }) {
                     14) How often and for how long will you take the animal for
                     walks?
                   </p>
-                  <p className="text-base text-blue-950 w-1/2">
+                  <p className="text-base  text-orange-400  w-1/2">
                     {questionnaireData?.walkingFrequency}
                   </p>
                 </div>
@@ -177,7 +177,7 @@ function QuestionnaireCard({ questionnaireData }) {
                     inform the shelter about its temperament, behavior, and
                     progress?
                   </p>
-                  <p className="text-base text-blue-950 w-1/2">
+                  <p className="text-base  text-orange-400  w-1/2">
                     {questionnaireData?.willingnessToTrain}
                   </p>
                 </div>
@@ -188,7 +188,7 @@ function QuestionnaireCard({ questionnaireData }) {
                     return the animal to us, give it to another shelter, give it
                     to someone else...):
                   </p>
-                  <p className="text-base text-blue-950 w-1/2">
+                  <p className="text-base  text-orange-400  w-1/2">
                     {questionnaireData?.behaviorResponse}
                   </p>
                 </div>
@@ -197,7 +197,7 @@ function QuestionnaireCard({ questionnaireData }) {
                     17) We conduct pre-adoption follow-ups, are you willing to
                     receive possible visits for the adoption process?
                   </p>
-                  <p className="text-base text-blue-950 w-1/2">
+                  <p className="text-base  text-orange-400  w-1/2">
                     {questionnaireData?.preAdoptionFollowUps}
                   </p>
                 </div>
@@ -207,7 +207,7 @@ function QuestionnaireCard({ questionnaireData }) {
               <section className="mt-1">
                 <h2 className="mt-1 text-AMblue ">OBSERVATIONS</h2>
                 <div className="flex">
-                  <p className="text-base text-blue-950 w-1/2">
+                  <p className="text-base  text-orange-400  w-1/2">
                     {questionnaireData?.observations}
                   </p>
                 </div>

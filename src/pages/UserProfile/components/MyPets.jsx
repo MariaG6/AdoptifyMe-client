@@ -13,7 +13,7 @@ function MyPets() {
       <div className="flex flex-col bg-white h-full p-4">
         <h2 className="text-2xl text-AMblue">My Pets</h2>
         <hr />
-        <div className="grid grid-cols-1 gap-4 mt-4">
+        <div className="grid grid-cols-3 gap-4 mt-4">
           {userPets.map((pet) => (
             <div key={pet._id} className="my-2">
               <PetCard petData={pet} key={pet._id} />

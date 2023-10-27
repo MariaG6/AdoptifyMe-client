@@ -10,7 +10,9 @@ function QuestionnaireCard({ questionnaireData }) {
           {/* profile down */}
           <div className="mt-5 relative text-left px-3">
             {/* title */}
-            <div className="text-lg font-bold m-2 text-center">Adoption questionnaire</div>
+            <div className="text-lg font-bold m-2 text-center">
+              Adoption questionnaire
+            </div>
             {/* questions & response */}
             <div className="px-5 py-3">
               {/* Section A - HOUSING */}
@@ -25,7 +27,6 @@ function QuestionnaireCard({ questionnaireData }) {
                   </p>
                 </div>
 
-
                 <div className="mt-4 flex flex-col">
                   <p className="font-medium text-base text-gray-500 w-full">
                     2) If you live in a rented property, does the
@@ -36,7 +37,6 @@ function QuestionnaireCard({ questionnaireData }) {
                     {questionnaireData?.landlordAware}
                   </p>
                 </div>
-
 
                 <div className="mt-4 flex flex-col">
                   <p className="font-medium text-base text-gray-500 w-full">

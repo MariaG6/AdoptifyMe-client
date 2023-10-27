@@ -33,7 +33,7 @@ function Adoptions() {
           />
         </button>
       ),
-   
+
       wrap: true,
     },
     {
@@ -76,7 +76,16 @@ function Adoptions() {
 
     {
       name: "Accepted",
-      selector: (row) => (row.isAccepted ? <p className="flex items-center text-green-400 gap-1"><CheckCircle size={12}/> Yes</p> : <p className="flex items-center text-gray-400 gap-1"><XCircle size={12}/> No</p>),
+      selector: (row) =>
+        row.isAccepted ? (
+          <p className="flex items-center text-green-400 gap-1">
+            <CheckCircle size={12} /> Yes
+          </p>
+        ) : (
+          <p className="flex items-center text-gray-400 gap-1">
+            <XCircle size={12} /> No
+          </p>
+        ),
       sortable: true,
     },
 
@@ -90,7 +99,6 @@ function Adoptions() {
           View
         </button>
       ),
-   
     },
   ];
 
@@ -105,7 +113,17 @@ function Adoptions() {
   if (applications.length > 0) {
     return (
       <div className="flex flex-col bg-white h-full p-4">
-        <h2 className="text-2xl text-AMblue">Adoption Applications</h2>
+        <div className="flex gap-4">
+          <button
+            onClick={() => {
+              navigator(-1);
+            }}
+          >
+            <ArrowCircleLeft size={30} />
+          </button>
+
+          <h2 className="text-2xl text-AMblue">Adoption Application</h2>
+        </div>
         <hr />
         <div className="">
           <DataTable

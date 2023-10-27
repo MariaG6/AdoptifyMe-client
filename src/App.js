@@ -28,6 +28,7 @@ import Adoptions from "./pages/UserProfile/components/Adoptions";
 import ViewAdoptionApplication from "./pages/UserProfile/components/ViewAdoptionApplication";
 import Shops from "./pages/UserProfile/components/admin/Shops";
 import Pets from "./pages/UserProfile/components/admin/Pets";
+import SuccessStories from "./pages/SuccessStories/SuccessStories";
 
 function App() {
   return (
@@ -41,8 +42,8 @@ function App() {
         <Route path="/pets" element={<AllPetsPage />} />
         <Route path="/pets/:id" element={<PetDetailsPage />} />
 
+        <Route path="/success-stories" element={<SuccessStories />} />
         {/* should be authenticated */}
-        {/* <Route path="/pets/add" element={<PetForm />} /> */}
         <Route path="/shops/:id/pets/new" element={<PetForm />} />
         <Route
           path="/pets/:id/update"

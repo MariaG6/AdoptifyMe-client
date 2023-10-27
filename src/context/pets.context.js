@@ -5,6 +5,7 @@ const PetsContext = createContext();
 
 const PetsProviderWrapper = ({ children }) => {
   const [allPets, setAllPets] = useState([]);
+  const [allAdoptedPets, setAllAdoptedPets] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [searchResults, setsearchResults] = useState([]);
@@ -22,6 +23,18 @@ const PetsProviderWrapper = ({ children }) => {
       setLoading(true);
       const response = await apiConnect.getAllPets();
       setAllPets(response.data);
+      setLoading(false);
+      setError(null);
+    } catch (error) {
+      handleError(error);
+    }
+  };
+
+  const fetchAllAdoptedPets = async () => {
+    try {
+      setLoading(true);
+      const response = await apiConnect.getAllAdoptedPets();
+      setAllAdoptedPets(response.data);
       setLoading(false);
       setError(null);
     } catch (error) {
@@ -132,6 +145,7 @@ const PetsProviderWrapper = ({ children }) => {
     message,
     error,
     searchResults,
+    allAdoptedPets,
     createPet,
     fetchAllPets,
     getPetById,
@@ -141,6 +155,7 @@ const PetsProviderWrapper = ({ children }) => {
     createShop,
     searchPets,
     setPetDetails,
+    fetchAllAdoptedPets,
   };
 
   return (

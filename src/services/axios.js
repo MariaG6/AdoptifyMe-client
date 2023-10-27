@@ -66,6 +66,10 @@ class Api {
     return this.api.get("/pets/allPets");
   }
 
+  getAllAdoptedPets() {
+    return this.api.get("/pets/all-adopted");
+  }
+
   getPetById(id) {
     return this.api.get(`/pets/${id}`);
   }

@@ -8,6 +8,10 @@ Welcome to the frontend repository for this project! – **AdoptifyMe** is a web
 
 AdoptifyMe's frontend is built using React, and it provides a user-friendly interface to explore pets available for adoption, create user profiles, and more.
 
+For the Backend code, please visit the AdoptifyMe serverrepository.
+
+[![Backend Repository](https://img.shields.io/badge/Backend-Repository-brightgreen.svg)](https://github.com/MariaG6/AdoptifyMe-server)
+
 ## Table of Contents
 
 - [Features](#features)

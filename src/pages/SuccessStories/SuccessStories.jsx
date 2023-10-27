@@ -5,16 +5,16 @@ import PetCardShimmer from "../../components/PetCardShimmer";
 function SuccessStories() {
   const {
     fetchAllAdoptedPets,
-    allPets,
-
     loading,
-
     allAdoptedPets,
   } = usePetsContext();
 
   useEffect(() => {
     fetchAllAdoptedPets();
   }, []);
+
+
+  console.log(allAdoptedPets);
 
   return (
     <div className="w-full pb-12">

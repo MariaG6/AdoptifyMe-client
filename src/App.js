@@ -29,6 +29,8 @@ import ViewAdoptionApplication from "./pages/UserProfile/components/ViewAdoption
 import Shops from "./pages/UserProfile/components/admin/Shops";
 import Pets from "./pages/UserProfile/components/admin/Pets";
 import SuccessStories from "./pages/SuccessStories/SuccessStories";
+import AdminAllShops from "./pages/UserProfile/components/admin/Shops";
+import AllPets from "./pages/UserProfile/components/admin/Pets";
 
 function App() {
   return (
@@ -100,7 +102,7 @@ function App() {
           }
         />
 
-        <Route
+        {/* <Route
           path="/admin/users"
           element={
             <IsPrivate>
@@ -137,7 +139,7 @@ function App() {
               </UserProfile>
             </IsPrivate>
           }
-        />
+        /> */}
 
         {/* <Route
           path="/user/details"
@@ -171,6 +173,11 @@ function App() {
             path="shops/:shopId/applications/:queId"
             element={<ViewAdoptionApplication />}
           />
+
+          {/* admin */}
+          <Route path="all-users" element={<Users />} />
+          <Route path="all-pets" element={<AllPets />} />
+          <Route path="all-shops" element={<AdminAllShops />} />
         </Route>
 
         {/* This should be the error page, any routes that we have not declared will be routed here */}

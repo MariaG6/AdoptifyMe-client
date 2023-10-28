@@ -86,8 +86,8 @@ function AuthProviderWrapper(props) {
 
       if (response && response.data) {
         // Sucessfullly signed up
-        const email = response.data.get("email");
-        const password = response.data.get("password");
+        const email = newUser.get("email");
+        const password = newUser.get("password");
         await login(email, password);
       } else {
         // Handle the case where the response or response.data is undefined
@@ -95,8 +95,7 @@ function AuthProviderWrapper(props) {
       }
     } catch (error) {
       const { response } = error;
-      console.log(error);
-      setErrorMessage(response?.data?.message);
+      toast.error(response.data?.message, { position: "top-center" });
       setIsLoading(false);
     }
   }

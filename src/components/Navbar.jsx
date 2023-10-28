@@ -109,8 +109,14 @@ function Navbar() {
                 navigator("/user/details");
               }}
             >
-              {`${user.fullName.split(" ")[0][0]}${
-                user.fullName.split(" ")[1][0]
+              {`${
+                user?.fullName
+                  ? user?.fullName.split(" ").length > 1
+                    ? `${user?.fullName.split(" ")[0][0]}${
+                        user?.fullName.split(" ")[1][0]
+                      }`
+                    : user?.fullName.slice(0, 2)
+                  : ""
               }`}
             </button>
           )}

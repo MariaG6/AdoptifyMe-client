@@ -5,10 +5,7 @@ import PetCardShimmer from "../../components/PetCardShimmer";
 function SuccessStories() {
   const {
     fetchAllAdoptedPets,
-    allPets,
-
     loading,
-
     allAdoptedPets,
   } = usePetsContext();
 
@@ -16,11 +13,14 @@ function SuccessStories() {
     fetchAllAdoptedPets();
   }, []);
 
+
+  console.log(allAdoptedPets);
+
   return (
     <div className="w-full pb-12">
       {/* body */}
       <section className="pt-16 px-4 md:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 mt-4 px-4 md:px-8 py-4 bg-opacity-50 backdrop-blur-md">
+        <div className={`${loading && "gap-4"} grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 mt-4 px-4 md:px-8 py-4 bg-opacity-50 backdrop-blur-md`}>
           {loading
             ? [1, 2, 3, 4, 5, 6].map((shimmerId) => {
                 return <PetCardShimmer key={shimmerId} />;

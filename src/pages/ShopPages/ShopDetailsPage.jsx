@@ -26,11 +26,11 @@ function ShopDetailsPage() {
         <div className="flex justify-between">
           <h3 className="text-lg font-bold">Pets available</h3>
 
-          {shopDetails?.owner.includes(user._id) && (
+          {shopDetails?.owner.includes(user?._id) && (
             <button
               className="flex items-center gap-4 bg-orange-400 p-2 text-sm text-white rounded"
               onClick={() => {
-                navigator(`/shops/${shopDetails._id}/pets/new`);
+                navigator(`/shops/${shopDetails?._id}/pets/new`);
               }}
             >
               Add New Pet
@@ -44,7 +44,7 @@ function ShopDetailsPage() {
                 return <PetCardShimmer key={shimmerId} />;
               })
             : shopDetails?.pets.map((petData) => {
-                return <PetCardOwner petData={petData} shop={shopDetails} key={petData._id} />;
+                return <PetCardOwner petData={petData} shop={shopDetails} key={petData?._id} />;
               })}
         </div>
       </section>

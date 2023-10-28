@@ -8,7 +8,7 @@ function Loginform() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  const { login, isLoading, isLoggedIn, errorMessage } = useAuthContext();
+  const { login, isLoading, isLoggedIn } = useAuthContext();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,10 +21,6 @@ function Loginform() {
       setEmail("");
       setPassword("");
       navigate("/");
-    } else {
-      if (errorMessage) {
-        toast.error(errorMessage, { position: "top-center" });
-      }
     }
   };
 

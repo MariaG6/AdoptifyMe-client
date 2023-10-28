@@ -7,15 +7,18 @@ import { BrowserRouter } from "react-router-dom";
 import { PetsProviderWrapper } from "./context/pets.context";
 import { AuthProviderWrapper } from "./context/Auth.Context";
 import { ShopsProviderWrapper } from "./context/shops.context";
+import { AdminProvider } from "./context/Admin.Context";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <AuthProviderWrapper>
     <PetsProviderWrapper>
       <ShopsProviderWrapper>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
+        <AdminProvider>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </AdminProvider>
       </ShopsProviderWrapper>
     </PetsProviderWrapper>
   </AuthProviderWrapper>
